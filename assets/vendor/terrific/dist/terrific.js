@@ -13,7 +13,7 @@
  *
  * @copyright   Copyright (c) 2015 Remo Brunschwiler
  * @license     Licensed under MIT license
- * @version     3.0.0-beta.2
+ * @version     3.0.0-beta.3
  */
 
 /**
@@ -41,18 +41,18 @@ function Application(ctx, config) {
 		ctx = document;
 		config = {};
 	}
-	else if (config instanceof Node) {
+	else if (Utils.isNode(config)) {
 		// reverse order of arguments
 		var tmpConfig = config;
 		config = ctx;
 		ctx = tmpConfig;
 	}
-	else if (!(ctx instanceof Node) && !config) {
+	else if (!Utils.isNode(ctx) && !config) {
 		// only config is given
 		config = ctx;
 		ctx = document;
 	}
-	else if (ctx instanceof Node && !config) {
+	else if (Utils.isNode(ctx) && !config) {
 		// only ctx is given
 		config = {};
 	}
@@ -63,7 +63,7 @@ function Application(ctx, config) {
 	 * @property _ctx
 	 * @type Node
 	 */
-	this._ctx = ctx;
+	this._ctx = Utils.getElement(ctx);
 
 	/**
 	 * The sandbox to get the resources from.
@@ -105,19 +105,12 @@ function Application(ctx, config) {
 Application.prototype.registerModules = function (ctx) {
 	var modules = {};
 
-	ctx = ctx || this._ctx;
+	ctx = Utils.getElement(ctx) || this._ctx;
 
 	this._sandbox.dispatch('t.register.start');
 
-	// check childrens
-	var nodes = [].slice.call(ctx.querySelectorAll('[data-t-name]'));
-
-	// check context itself
-	if(ctx.matches('[data-t-name]')) {
-		nodes.unshift(ctx);
-	}
-
-	// check childrens
+	// get module nodes
+	var nodes = Utils.getModuleNodes(ctx);
 	nodes.forEach(function (ctx) {
 
 		/*
@@ -149,7 +142,7 @@ Application.prototype.registerModules = function (ctx) {
 		var module = this.registerModule(ctx, ctx.getAttribute('data-t-name'), ctx.getAttribute('data-t-skin'), ctx.getAttribute('data-t-namespace'));
 
 		if (module) {
-			modules[module.id] = module;
+			modules[module._ctx.getAttribute('data-t-id')] = module;
 		}
 	}.bind(this));
 
@@ -198,10 +191,12 @@ Application.prototype.start = function (modules) {
 
 	// start the modules
 	function getPromise(id) {
-		return new Promise(function (resolve) {
-			modules[id].start(function() {
-				resolve();
-			});
+		return new Promise(function (resolve, reject) {
+			try {
+				modules[id].start(resolve, reject);
+			} catch (err) {
+				reject(err);
+			}
 		});
 	}
 
@@ -215,10 +210,9 @@ Application.prototype.start = function (modules) {
 	var all = Promise.all(promises);
 	all.then(function () {
 		this._sandbox.dispatch('t.sync');
-	}.bind(this))
-		.catch(function (error) {
-			throw Error('Synchronizing the modules failed: ' + error);
-		});
+	}.bind(this)).catch(function (error) {
+		throw Error('Starting or synchronizing the modules failed: ' + error);
+	});
 
 	return all;
 };
@@ -264,8 +258,8 @@ Application.prototype.registerModule = function (ctx, mod, skins, namespace) {
 	// validate params
 	mod = Utils.capitalize(Utils.camelize(mod));
 
-	if(Utils.isString(skins)) {
-		if(window[skins]) {
+	if (Utils.isString(skins)) {
+		if (window[skins]) {
 			// skins param is the namespace
 			namespace = window[skins];
 			skins = null;
@@ -275,7 +269,7 @@ Application.prototype.registerModule = function (ctx, mod, skins, namespace) {
 			skins = skins.split(',');
 		}
 	}
-	else if(!Array.isArray(skins) && Utils.isObject(skins)) {
+	else if (!Array.isArray(skins) && Utils.isObject(skins)) {
 		// skins is the namespace object
 		namespace = skins;
 		skins = null;
@@ -297,7 +291,7 @@ Application.prototype.registerModule = function (ctx, mod, skins, namespace) {
 		modules[id] = new namespace[mod](ctx, this._sandbox);
 
 		// decorate it
-		for(var i = 0, len = skins.length; i < len; i++) {
+		for (var i = 0, len = skins.length; i < len; i++) {
 			var skin = skins[i];
 
 			if (namespace[mod][skin]) {
@@ -346,6 +340,7 @@ Application.prototype.getModuleById = function (id) {
  * @param {Object} config
  *      The configuration
  */
+/* global Utils */
 function Sandbox(application, config) {
 	/**
 	 * The application.
@@ -385,7 +380,7 @@ Sandbox.prototype.addModules = function (ctx) {
 	var modules = [],
 		application = this._application;
 
-	if (ctx instanceof Node) {
+	if (Utils.isNode(ctx)) {
 		// register modules
 		modules = application.registerModules(ctx);
 
@@ -408,14 +403,12 @@ Sandbox.prototype.addModules = function (ctx) {
 Sandbox.prototype.removeModules = function (modules) {
 	var application = this._application;
 
-	if (modules instanceof Node) {
+	if (Utils.isNode(modules)) {
 		// get modules
 		var tmpModules = [];
 
-		var fragment = document.createDocumentFragment();
-		fragment.appendChild(modules);
-
-		[].forEach.call(fragment.querySelectorAll('[data-t-name]'), function (ctx) {
+		var nodes = Utils.getModuleNodes(modules);
+		nodes.forEach(function (ctx) {
 			// check for instance
 			var id = ctx.getAttribute('data-t-id');
 
@@ -579,11 +572,14 @@ function Module(ctx, sandbox) {
  * Template method to start the module.
  *
  * @method start
- * @param {Function} callback
- *      The synchronize callback
+ * @param {Function} resolve
+ *      The resolve promise function
+ * @param {Function} reject
+ * 		The reject promise function
  */
-Module.prototype.start = function (callback) {
-	callback();
+/*jshint unused: true */
+Module.prototype.start = function (resolve) {
+	resolve();
 };
 
 /**
@@ -862,9 +858,82 @@ var Utils = {
 	 *      The object to check
 	 * @return {Boolean}
 	 */
-
 	isObject : function (obj) {
 		return obj === Object(obj);
+	},
+
+	/**
+	 * Check whether the given param is a valid node.
+	 *
+	 * @method isNode
+	 * @param {Node} node
+	 *      The node to check
+	 * @return {Boolean}
+	 */
+	isNode : function (node) {
+		if(!node || !node.nodeType) {
+			return false;
+		}
+
+		return node.nodeType === 1 || node.nodeType === 9;
+	},
+
+	/**
+	 * Check whether the element matches the given selector.
+	 *
+	 * @method matches
+	 * @param {Element} el
+	 *      The element to check
+ 	 * @param {String} selector
+ 	 * 		The selector to check against
+	 * @return {Boolean}
+	 */
+	matches: function(el, selector) {
+		var p = Element.prototype;
+		var f = p.matches || p.webkitMatchesSelector || p.mozMatchesSelector || p.msMatchesSelector || function(s) {
+			return [].slice.call(document.querySelectorAll(s)).indexOf(this) !== -1;
+		};
+		return f.call(el, selector);
+	},
+
+	/**
+	 * Get the element from a given node.
+	 *
+	 * @method getElement
+	 * @param {Node} node
+	 *      The node to check
+	 * @return {Element}
+	 */
+	getElement: function(node) {
+		if(!this.isNode(node)) {
+			return null;
+		}
+
+		if (node.nodeType === 9 && node.documentElement) {
+			return node.documentElement;
+		}
+		else {
+			return node;
+		}
+	},
+
+	/**
+	 * Get the module nodes.
+	 *
+	 * @method getModuleNodes
+	 * @param {Node} ctx
+	 *      The ctx to check
+	 * @return {Array}
+	 */
+	getModuleNodes: function(ctx) {
+		var nodes = [].slice.call(ctx.querySelectorAll('[data-t-name]'));
+
+		// check context itself
+		if(this.matches(ctx, '[data-t-name]')) {
+			nodes.unshift(ctx);
+		}
+
+		return nodes;
 	}
 };
 
@@ -876,7 +945,7 @@ var T = {
 	Module: Module,
 	Connector: Connector,
 	Utils: Utils,
-	version: '3.0.0-beta.2'
+	version: '3.0.0-beta.3'
 };
 return T;
 }));
