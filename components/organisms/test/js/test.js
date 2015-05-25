@@ -13,12 +13,14 @@
 	}
 
 	util.inherits(Test, T.Module);
+	T.Module.Test = Test;
 
 	Test.prototype.start = function(callback) {
 		var $ctx = $(this.ctx);
 
+
+		console.log('start');
+
 		callback();
 	};
-
-	T.Module.Test = Test;
 }(jQuery));
