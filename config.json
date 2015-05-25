@@ -1,0 +1,41 @@
+{
+	"assets": {
+		"app.css": [
+			"+assets/css/variables.less",
+			"+assets/css/mixins.less",
+			"assets/css/reset.css",
+			"assets/css/basic.less",
+			"components/**/css/*.less",
+			"components/**/css/skins/*.less"
+		],
+		"app.js": [
+			"assets/vendor/es6-promise/promise.min.js",
+			"assets/vendor/jquery/dist/jquery.min.js",
+			"assets/vendor/terrific/dist/terrific.min.js",
+			"assets/js/util.inherits.js",
+			"assets/js/*.js",
+			"components/**/js/*.js",
+			"components/**/js/skins/*.js"
+		]
+	},
+	"nitro": {
+		"components": {
+			"atom": {
+				"template": "project/blueprints/atom",
+				"path": "components/atoms",
+				"component_prefix": "a"
+			},
+			"molecule": {
+				"template": "project/blueprints/component",
+				"path": "components/molecules",
+				"component_prefix": "m"
+			},
+			"organism": {
+				"template": "project/blueprints/component",
+				"path": "components/organisms",
+				"component_prefix": "o",
+				"skin_prefix": "skin"
+			}
+		}
+	}
+}
