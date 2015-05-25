@@ -1,6 +1,6 @@
 var gulp = require('gulp'),
-	path = require('path'),
-	precompile = require('gulp-less'),
+	path = require('path'), 
+	precompile = require('gulp-less'), 
 	minify = require('gulp-minify-css'),
 	autoprefixer = require('gulp-autoprefixer'),
 	concat = require('gulp-concat'),
@@ -60,7 +60,7 @@ gulp.task('compile-css', function () {
 			imports += fs.readFileSync(src);
 		});
 
-		return gulp
+		gulp
 			.src(asset.src)
 			.pipe(plumber())
 			.pipe(header(imports))
@@ -75,14 +75,20 @@ gulp.task('compile-css', function () {
 			.pipe(gulp.dest('./public/latest/'))
 			.pipe(browserSync.reload({stream: true}));
 	});
+
+	return gulp;
 });
 
-gulp.task('compile-js', function () {
+
+
+gulp.task('compile-js',   function () {
 	var assets = getSourceFiles('.js');
 
 	assets.forEach(function (asset) {
-		return gulp
+		
+		gulp
 			.src(asset.src)
+		
 			.pipe(plumber())
 			.pipe(jshint())
 			.pipe(jshint.reporter('jshint-stylish'))
@@ -90,30 +96,40 @@ gulp.task('compile-js', function () {
 			.pipe(gulp.dest('./public/latest'))
 			.pipe(browserSync.reload({stream: true}));
 	});
+
+	return gulp;
 });
 
 gulp.task('minify-css', ['compile-css'], function () {
 	var assets = getSourceFiles('.css');
 
-	return gulp
-		.src('./public/latest/' + assets.name)
-		.pipe(minify())
-		.pipe(rename(assets.name.replace('.css', '.min.css')))
-		.pipe(gulp.dest('./public/latest/'));
+	assets.forEach(function (asset) {
+		gulp
+			.src('./public/latest/' + asset.name)
+			.pipe(minify())
+			.pipe(rename(asset.name.replace('.css', '.min.css')))
+			.pipe(gulp.dest('./public/latest/'));
+	});
+
+	return gulp;
 });
 
 gulp.task('minify-js', ['compile-js'], function () {
 	var assets = getSourceFiles('.js');
 
-	return gulp
-		.src('./public/latest/' + assets.name)
-		.pipe(uglify())
-		.pipe(rename(assets.name.replace('.js', '.min.js')))
-		.pipe(gulp.dest('./public/latest/'));
+	assets.forEach(function (asset) {
+		gulp
+			.src('./public/latest/' + asset.name)
+			.pipe(uglify())
+			.pipe(rename(asset.name.replace('.js', '.min.js')))
+			.pipe(gulp.dest('./public/latest/'));
+	});
+
+	return gulp;
 });
 
 gulp.task('minify-img', function () {
-	gulp
+	return gulp
 		.src('./assets/img/**/*.*')
 		.pipe(plumber())
 		.pipe(imagemin({

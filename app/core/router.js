@@ -42,11 +42,14 @@ router.get('/:view', function (req, res) {
 			cfg.nitro.view_directory,
 			'/',
 			tplName + '.' + cfg.nitro.view_file_extension
-		);
+		),
+		data = {
+			pageTitle: 'Page Title: ' + tplName
+		};
 
 	fs.exists(tplPath, function (exists) {
 		if (exists) {
-			res.render(tplName);
+			res.render(tplName, data);
 		}
 		else {
 			res.status(404);

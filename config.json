@@ -14,14 +14,14 @@
 			"assets/vendor/terrific/dist/terrific.min.js",
 			"assets/js/util.inherits.js",
 			"assets/js/*.js",
-			"components/**/js/*.js",
-			"components/**/js/skins/*.js"
+		    "components/**/js/*.js",
+		    "components/**/js/skins/*.js"
 		]
 	},
 	"nitro": {
 		"components": {
 			"atom": {
-				"template": "project/blueprints/atom",
+				"template": "project/blueprints/component",
 				"path": "components/atoms",
 				"component_prefix": "a"
 			},
