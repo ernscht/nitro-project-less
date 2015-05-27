@@ -166,7 +166,8 @@ gulp.task('watch', ['compile-css', 'compile-js'], function () {
 
 	gulp.watch([
 		'./views/**/*.html',
-		'./components/**/*.html'
+		'./components/**/*.html',
+		'./components/**/data/*.json'
 	])
 		.on('change', function (e) {
 			browserSync.reload();
