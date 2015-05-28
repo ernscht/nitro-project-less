@@ -8,6 +8,14 @@
 			"components/**/css/*.less",
 			"components/**/css/skins/*.less"
 		],
+		"app2.css": [
+			"+assets/css/variables.less",
+			"+assets/css/mixins.less",
+			"assets/css/reset.css",
+			"assets/css/basic.less",
+			"components/**/css/*.less",
+			"components/**/css/skins/*.less"
+		],
 		"app.js": [
 			"assets/vendor/es6-promise/promise.min.js",
 			"assets/vendor/jquery/dist/jquery.min.js",
