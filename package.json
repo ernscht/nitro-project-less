@@ -1,53 +1,54 @@
 {
-  "name": "nitro",
-  "version": "0.1.0",
-  "description": "Nitro is micro power on Node.js",
-  "license": "MIT",
-  "repository": "namics/generator-nitro",
-  "author": "The Nitro Team",
-  "keywords": [
-    "terrific",
-    "component",
-    "frontend",
-    "modular",
-    "app",
-    "nitro"
-  ],
-  "scripts": {
-    "test": "karma start --single-run --no-auto-watch",
-    "start": "node server"
-  },
-  "dependencies": {
-    "body-parser": "^1.12.4",
-    "express": "^4.12.4",
-    "hbs": "^3.0.1",
-    "hbs-utils": "0.0.3",
-    "es6-promise": "^2.1.1",
-    "merge": "^1.2.0"
-  },
-  "devDependencies": {
-    "browser-sync": "^2.7.5",
-    "gulp": "^3.8.11",
-    "gulp-autoprefixer": "^2.3.0",
-    "gulp-cached": "^1.1.0",
-    "gulp-concat": "^2.5.2",
-    "gulp-express": "^0.1.7",
-    "gulp-header": "^1.2.2",
-    "gulp-imagemin": "^2.2.1",
-    "gulp-jshint": "^1.11.0",
-    "gulp-karma": "~0.0.1",
-    "gulp-less": "^3.0.3",
-    "gulp-minify-css": "^1.1.1",
-    "gulp-plumber": "^0.6.6",
-    "gulp-remember": "^0.3.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-sourcemaps": "^1.2.8",
-    "gulp-uglify": "^1.2.0",
-    "gulp-watch": "^2.0.0",
-    "jasmine": "^2.1.1",
-    "jshint-stylish": "^2.0.0",
-    "karma": "^0.12.31",
-    "karma-chrome-launcher": "^0.1.7",
-    "karma-jasmine": "~0.2.0"
-  }
+	"name": "nitro",
+	"version": "0.1.0",
+	"description": "Nitro is micro power on Node.js",
+	"license": "MIT",
+	"repository": "namics/generator-nitro",
+	"author": "The Nitro Team",
+	"keywords": [
+		"terrific",
+		"component",
+		"frontend",
+		"modular",
+		"app",
+		"nitro"
+	],
+	"scripts": {
+		"test": "karma start --single-run --no-auto-watch",
+		"start": "node server"
+	},
+	"dependencies": {
+		"body-parser": "^1.12.4",
+		"compression": "^1.4.4",
+		"express": "^4.12.4",
+		"hbs": "^3.0.1",
+		"hbs-utils": "0.0.3",
+		"es6-promise": "^2.1.1",
+		"merge": "^1.2.0"
+	},
+	"devDependencies": {
+		"browser-sync": "^2.7.5",
+		"gulp": "^3.8.11",
+		"gulp-autoprefixer": "^2.3.0",
+		"gulp-cached": "^1.1.0",
+		"gulp-concat": "^2.5.2",
+		"gulp-express": "^0.1.7",
+		"gulp-header": "^1.2.2",
+		"gulp-imagemin": "^2.2.1",
+		"gulp-jshint": "^1.11.0",
+		"gulp-karma": "~0.0.1",
+		"gulp-less": "^3.0.3",
+		"gulp-minify-css": "^1.1.1",
+		"gulp-plumber": "^0.6.6",
+		"gulp-remember": "^0.3.0",
+		"gulp-rename": "^1.2.2",
+		"gulp-sourcemaps": "^1.2.8",
+		"gulp-uglify": "^1.2.0",
+		"gulp-watch": "^2.0.0",
+		"jasmine": "^2.1.1",
+		"jshint-stylish": "^2.0.0",
+		"karma": "^0.12.31",
+		"karma-chrome-launcher": "^0.1.7",
+		"karma-jasmine": "~0.2.0"
+	}
 }
