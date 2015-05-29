@@ -15,8 +15,12 @@ var gulp = require('gulp'),
 	karma = require('karma').server,
 	server = require('gulp-express'),
 	browserSync = require('browser-sync'),
+	compression = require('compression'),
 	rename = require('gulp-rename'),
-	fs = require('fs');
+	fs = require('fs'),
+    Promise = require('es6-promise').Promise,
+	cfg = require('./app/core/config');
+
 
 function getSourceFiles(ext) {
 	var assetsConfig = require('./config.json').assets,
@@ -72,7 +76,7 @@ gulp.task('compile-css', function () {
 			}))
 			.pipe(remember(asset.name))
 			.pipe(concat(asset.name))
-			.pipe(gulp.dest('./public/latest/'))
+			.pipe(gulp.dest('./public/assets/css/'))
 			.pipe(browserSync.reload({stream: true}));
 	});
 
@@ -93,7 +97,7 @@ gulp.task('compile-js',   function () {
 			.pipe(jshint())
 			.pipe(jshint.reporter('jshint-stylish'))
 			.pipe(concat(asset.name))
-			.pipe(gulp.dest('./public/latest'))
+			.pipe(gulp.dest('./public/assets/js'))
 			.pipe(browserSync.reload({stream: true}));
 	});
 
@@ -105,10 +109,10 @@ gulp.task('minify-css', ['compile-css'], function () {
 
 	assets.forEach(function (asset) {
 		gulp
-			.src('./public/latest/' + asset.name)
+			.src('./public/assets/css/' + asset.name)
 			.pipe(minify())
 			.pipe(rename(asset.name.replace('.css', '.min.css')))
-			.pipe(gulp.dest('./public/latest/'));
+			.pipe(gulp.dest('./public/assets/css/'));
 	});
 
 	return gulp;
@@ -119,10 +123,10 @@ gulp.task('minify-js', ['compile-js'], function () {
 
 	assets.forEach(function (asset) {
 		gulp
-			.src('./public/latest/' + asset.name)
+			.src('./public/assets/img/' + asset.name)
 			.pipe(uglify())
 			.pipe(rename(asset.name.replace('.js', '.min.js')))
-			.pipe(gulp.dest('./public/latest/'));
+			.pipe(gulp.dest('./public/assets/img/'));
 	});
 
 	return gulp;
@@ -136,6 +140,11 @@ gulp.task('minify-img', function () {
 			progressive: true
 		}))
 		.pipe(gulp.dest('./assets/img'));
+});
+
+gulp.task('copy-assets',   function () {
+	gulp.src(['./assets/font/**/*']).pipe(gulp.dest('./public/assets/font'));
+	gulp.src(['./assets/img/**/*']).pipe(gulp.dest('./public/assets/img'));
 });
 
 gulp.task('watch', ['compile-css', 'compile-js'], function () {
@@ -166,6 +175,7 @@ gulp.task('watch', ['compile-css', 'compile-js'], function () {
 
 	gulp.watch([
 		'./views/**/*.html',
+		'!./' + cfg.nitro.view_partials_directory + '/*.html', // exclude partials
 		'./views/**/*.json',
 		'./components/**/*.html',
 		'./components/**/data/*.json'
@@ -180,7 +190,10 @@ gulp.task('browser-sync', ['server-watch'], function () {
 		proxy = process.env.PROXY || 8081;
 
 	browserSync({
-		proxy: 'localhost:' + port,
+		proxy: {
+			target: 'localhost:' + port,
+			middleware: [compression()]
+		},
 		port:  proxy
 	}, function (err) {
 		if (!err) {
@@ -209,5 +222,6 @@ gulp.task('test', ['compile-css', 'compile-js'], function (done) {
 	}, done);
 });
 
-gulp.task('develop', ['browser-sync', 'watch']);
-gulp.task('production', ['minify-css', 'minify-js', 'server-run']);
+gulp.task('develop', ['copy-assets', 'watch', 'browser-sync']);
+gulp.task('production', ['copy-assets', 'minify-css', 'minify-js', 'server-run']);
+gulp.task('assets', ['copy-assets', 'minify-css', 'minify-js']);

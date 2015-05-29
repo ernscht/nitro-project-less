@@ -1,23 +1,20 @@
-(function($) {
+(function ($) {
 	'use strict';
 	/**
-	 * btn module implementation.
+	 * Btn module implementation.
 	 *
-	 * @author ernscht <ernscht@gmail.com>
+	 * @author Pre Name <pre.name@domain.com>
 	 * @namespace T.Module
 	 * @class Btn
 	 * @extends T.Module
 	 */
-	function Btn(ctx, sandbox) {
-		T.Module.call(this, ctx, sandbox);
-	}
+	T.Module.Btn = T.createModule({
+		start: function (callback) {
+			var $ctx = $(this._ctx);
 
-	util.inherits(Btn, T.Module);
-	T.Module.Btn = Btn;
+			console.log('Btn - start [id:' + $ctx.data('t-id') + ']');
 
-	Btn.prototype.start = function(callback) {
-		var $ctx = $(this._ctx);
-
-		callback();
-	};
+			callback();
+		}
+	});
 }(jQuery));

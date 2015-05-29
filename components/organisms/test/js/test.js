@@ -1,25 +1,20 @@
-(function($) {
+(function ($) {
 	'use strict';
 	/**
-	 * test module implementation.
+	 * Test module implementation.
 	 *
-	 * @author ernscht <ernscht@gmail.com>
+	 * @author Pre Name <pre.name@domain.com>
 	 * @namespace T.Module
 	 * @class Test
 	 * @extends T.Module
 	 */
-	function Test(ctx, sandbox) {
-		T.Module.call(this, ctx, sandbox);
-	}
+	T.Module.Test = T.createModule({
+		start: function (callback) {
+			var $ctx = $(this._ctx);
 
-	util.inherits(Test, T.Module);
-	T.Module.Test = Test;
+			console.log('Test - start [id:' + $ctx.data('t-id') + ']');
 
-	Test.prototype.start = function(callback) {
-		var $ctx = $(this._ctx);
-
-		console.log('Test - start [id:' + $ctx.data('t-id') + ']');
-
-		callback();
-	};
+			callback();
+		}
+	});
 }(jQuery));
