@@ -1,6 +1,6 @@
 var gulp = require('gulp'),
-	path = require('path'),
-	precompile = require('gulp-less'),
+	path = require('path'), 
+	precompile = require('gulp-less'), 
 	minify = require('gulp-minify-css'),
 	autoprefixer = require('gulp-autoprefixer'),
 	concat = require('gulp-concat'),
@@ -8,6 +8,7 @@ var gulp = require('gulp'),
 	uglify = require('gulp-uglify'),
 	plumber = require('gulp-plumber'),
 	jshint = require('gulp-jshint'),
+	newer = require('gulp-newer'),
 	imagemin = require('gulp-imagemin'),
 	pngquant = require('imagemin-pngquant'),
 	cache = require('gulp-cached'),
@@ -21,6 +22,7 @@ var gulp = require('gulp'),
 	fs = require('fs'),
 	Promise = require('es6-promise').Promise,
 	cfg = require('./app/core/config');
+
 
 function getSourceFiles(ext) {
 	var assetsConfig = require('./config.json').assets,
@@ -83,12 +85,16 @@ gulp.task('compile-css', function () {
 	return gulp;
 });
 
+
+
 gulp.task('compile-js',   function () {
 	var assets = getSourceFiles('.js');
 
 	assets.forEach(function (asset) {
+		
 		gulp
 			.src(asset.src)
+		
 			.pipe(plumber())
 			.pipe(jshint())
 			.pipe(jshint.reporter('jshint-stylish'))
@@ -119,10 +125,10 @@ gulp.task('minify-js', ['compile-js'], function () {
 
 	assets.forEach(function (asset) {
 		gulp
-			.src('public/assets/img/' + asset.name)
+			.src('public/assets/js/' + asset.name)
 			.pipe(uglify())
 			.pipe(rename(asset.name.replace('.js', '.min.js')))
-			.pipe(gulp.dest('public/assets/img/'));
+			.pipe(gulp.dest('public/assets/js/'));
 	});
 
 	return gulp;
@@ -131,19 +137,24 @@ gulp.task('minify-js', ['compile-js'], function () {
 gulp.task('minify-img', function () {
 	return gulp
 		.src('assets/img/**/*')
-		.pipe(plumber())
+		.pipe(newer('public/assets/img'))
 		.pipe(imagemin({
 			optimizationLevel: 7,
 			progressive: true,
 			multipass: true,
-			svgoPlugins: [{cleanupIDs: false}],
+			svgoPlugins: [{cleanupIDs: false}, {removeUnknownsAndDefaults: false}, {removeViewBox: false}],
 			use: [pngquant()]
 		}))
 		.pipe(gulp.dest('public/assets/img'));
 });
 
-gulp.task('copy-assets', function () {
-	gulp.src(['assets/font/**/*']).pipe(gulp.dest('public/assets/font'));
+gulp.task('copy-assets',   function () {
+	gulp
+		.src(['assets/font/**/*'])
+		.pipe(newer('public/assets/font'))
+		.pipe(gulp.dest('public/assets/font'));
+
+	return gulp;
 });
 
 gulp.task('assets', ['copy-assets', 'minify-img', 'minify-css', 'minify-js']);
@@ -192,7 +203,6 @@ gulp.task('watch', ['assets'], function () {
 	gulp.watch([
 		'assets/font/**/*'
 	], ['copy-assets']);
-
 });
 
 gulp.task('browser-sync', ['server-watch'], function () {
@@ -234,7 +244,7 @@ gulp.task('test', ['compile-css', 'compile-js'], function (done) {
 
 gulp.task('clean', function(){});
 
-gulp.task('develop', ['assets', 'watch', 'browser-sync']);
+gulp.task('develop', ['watch', 'browser-sync']);
 gulp.task('production', ['assets', 'server-run']);
 gulp.task('build', ['clean'], function() {
 	gulp.start('assets');
