@@ -1,3 +1,9 @@
 {
-	"pageTitle": "The \"index\" page"
+	"pageTitle": "The \"index\" page",
+	"test": {
+		"datum": "11.1.2015",
+		"num": 42000,
+		"completed": 0.9,
+		"price": 100.95
+	}
 }
