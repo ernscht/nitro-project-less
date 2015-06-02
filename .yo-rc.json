@@ -1,0 +1,7 @@
+{
+  "generator-nitro": {
+    "name": "nitro-bla",
+    "preprocessor": "less",
+    "jscompiler": "JavaScript"
+  }
+}
