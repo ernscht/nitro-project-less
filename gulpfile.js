@@ -171,7 +171,7 @@ gulp.task('watch', ['assets'], function () {
 
 
 	gulp.watch([
-		'config.json',
+		'config.json'
 	]).on('change', function(e) {
 		if ('changed' === e.type) {
 			cfg = cfg.reload();
