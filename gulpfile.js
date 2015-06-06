@@ -169,51 +169,51 @@ gulp.task('watch', ['assets'], function () {
 		}
 	};
 
-
-	gulp.watch([
+	watch([
 		'config.json'
-	]).on('change', function(e) {
-		if ('changed' === e.type) {
-			cfg = cfg.reload();
-			gulp.start('compile-css');
-			gulp.start('compile-js');
-		}
+	], function(e) {
+		cfg = cfg.reload();
+		gulp.start('compile-css');
+		gulp.start('compile-js');
 	});
 
-	gulp.watch([
+	watch([
 		'assets/**/*.less',
 		'components/**/*.less'
-	], ['compile-css'])
-		.on('change', function (e) {
-			clearCache(e);
-		});
+	], function(e) {
+		clearCache(e);
+		gulp.start('compile-css');
+	});
 
-	gulp.watch([
+	watch([
 		'assets/**/*.js',
 		'components/**/*.js'
-	], ['compile-js'])
-		.on('change', function (e) {
-			clearCache(e);
-		});
+	], function(e) {
+		clearCache(e);
+		gulp.start('compile-js');
+	});
 
-	gulp.watch([
+	watch([
 		'views/**/*.html',
 		'!' + cfg.nitro.view_partials_directory + '/*.html', // exclude partials
 		'views/**/*.json',
 		'components/**/*.html',
 		'components/**/data/*.json'
-	])
-		.on('change', function (e) {
-			browserSync.reload();
-		});
+	], function(e) {
+		browserSync.reload();
+	});
 
-	gulp.watch([
+	watch([
 		'assets/img/**/*'
-	], ['minify-img']);
+	], function(e) {
+		gulp.start('minify-img');
+	});
 
-	gulp.watch([
+	watch([
 		'assets/font/**/*'
-	], ['copy-assets']);
+	], function(e) {
+		gulp.start('copy-assets');
+	});
 });
 
 gulp.task('browser-sync', ['server-watch'], function () {
@@ -240,7 +240,7 @@ gulp.task('server-run', function () {
 
 gulp.task('server-watch', ['server-run'], function () {
 	var port = process.env.PORT || 8080;
-	gulp.watch(['./server.js', './app/core/*.js'], function () {
+	watch(['./server.js', './app/core/*.js'], function () {
 		server.run(['./server.js'], {env: {PORT: port}});
 	});
 });
