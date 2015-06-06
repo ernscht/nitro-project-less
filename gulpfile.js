@@ -21,6 +21,7 @@ var gulp = require('gulp'),
 	compression = require('compression'),
 	rename = require('gulp-rename'),
 	fs = require('fs'),
+	del = require('del'),
 	Promise = require('es6-promise').Promise,
 	cfg = require('./app/core/config');
 
@@ -253,7 +254,9 @@ gulp.task('test', ['compile-css', 'compile-js'], function (done) {
 	}, done);
 });
 
-gulp.task('clean', function(){});
+gulp.task('clean', function() {
+	del.bind( null, ['public/assets/*'] );
+});
 
 gulp.task('develop', ['watch', 'browser-sync']);
 gulp.task('production', ['assets', 'server-run']);
