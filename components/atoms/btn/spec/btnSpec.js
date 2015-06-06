@@ -1,24 +1,18 @@
 'use strict';
 
-describe('btn module', function(){
-	var mod;
-
+describe('Btn module', function(){
 	beforeEach(function(){
 		var application = new T.Application();
-		mod = new T.Module.Btn(document.createElement('div'), application.sandbox);
+		this.mod = new T.Module.Btn(document.createElement('div'), application._sandbox);
 	});
 
-	it('should have a "start" method', function(){
-		expect(mod.start).toBeDefined();
+	it('should have a .start() method', function(){
+		expect(this.mod.start).toBeDefined();
 	});
 
-	it('should execute the callback in the "start" method', function(){
-		var called = false;
-		spyOn(mod, 'start').and.callFake(function() {
-			called = true;
-		});
-
-		expect(mod.on).toHaveBeenCalled();
-		expect(called).toBeTruthy();
+	it('should execute promise.resolve callback in the .start() method', function(){
+		var resolve = jasmine.createSpy('resolve');
+		this.mod.start(resolve);
+		expect(resolve).toHaveBeenCalled();
 	});
 });
