@@ -9,12 +9,12 @@
 	 * @extends T.Module
 	 */
 	T.Module.Test = T.createModule({
-		start: function (callback) {
+		start: function (resolve) {
 			var $ctx = $(this._ctx);
 
 			console.log('Test - start [id:' + $ctx.data('t-id') + ']');
 
-			callback();
+			resolve();
 		}
 	});
 }(jQuery));

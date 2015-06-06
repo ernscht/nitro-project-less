@@ -9,12 +9,12 @@
 	 * @extends T.Module
 	 */
 	T.Module.Btn = T.createModule({
-		start: function (callback) {
+		start: function(resolve) {
 			var $ctx = $(this._ctx);
 
 			console.log('Btn - start [id:' + $ctx.data('t-id') + ']');
 
-			callback();
+			resolve();
 		}
 	});
 }(jQuery));
