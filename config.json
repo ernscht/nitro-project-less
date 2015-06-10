@@ -40,8 +40,7 @@
 			"organism": {
 				"template": "project/blueprints/component",
 				"path": "components/organisms",
-				"component_prefix": "o",
-				"skin_prefix": "skin"
+				"component_prefix": "o"
 			}
 		}
 	}
