@@ -1,3 +1,4 @@
 {
-	"skin": "red"
+	"modifier": "red",
+	"decorator": "red"
 }
