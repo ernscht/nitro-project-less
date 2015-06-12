@@ -1,6 +1,6 @@
 {
   "name": "terrific",
-  "version": "3.0.0-beta.6",
+  "version": "3.0.0-beta.7",
   "description": "TerrificJS modularizes your frontend code by solely relying on naming conventions.",
   "homepage": "https://github.com/brunschgi/terrificjs",
   "main": "dist/terrific.js",
@@ -25,7 +25,8 @@
     "node_modules",
     "bower_components",
     "spec",
-    "src"
+    "src",
+    "dist/docs"
   ],
   "repository": {
     "type": "git",
@@ -38,13 +39,13 @@
     "modularize",
     "scalalable"
   ],
-  "_release": "3.0.0-beta.6",
+  "_release": "3.0.0-beta.7",
   "_resolution": {
     "type": "version",
-    "tag": "3.0.0-beta.6",
-    "commit": "a65c73f84baa099079cc63d611b5619a0d6e43bb"
+    "tag": "3.0.0-beta.7",
+    "commit": "9df5f7f9bfb564a23e6e3dd11102e19a6615ee8a"
   },
   "_source": "git://github.com/brunschgi/terrificjs.git",
-  "_target": "~3.0.0-beta.6",
+  "_target": "~3.0.0-beta.7",
   "_originalSource": "terrific"
 }

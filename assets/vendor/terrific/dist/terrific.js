@@ -13,7 +13,7 @@
  *
  * @copyright   Copyright (c) 2015 Remo Brunschwiler
  * @license     Licensed under MIT license
- * @version     3.0.0-beta.6
+ * @version     3.0.0-beta.7
  */
 
 /**
@@ -142,18 +142,18 @@ Application.prototype.registerModules = function (ctx) {
 		/*
 		 * @config data-t-namespace="{namespace}"
 		 *
-		 * Example: data-t-skin="App.Components"
+		 * Example: data-t-namespace="App.Components"
 		 * The namespace of the module. Optional.
 		 */
 
 		/*
-		 * @config data-t-skin="{skin-name}"
+		 * @config data-t-decorator="{decorator-name}"
 		 *
-		 * Example: data-t-skin="bar"
-		 * Indicates that the module Foo should be decorated by the skin Bar.
-		 * Multiple skins should be comma-separated. Optional.
+		 * Example: data-t-decorator="bar"
+		 * Indicates that the module Foo should be decorated with the Bar decorator.
+		 * Multiple decorators should be comma-separated. Optional.
 		 */
-		var module = this.registerModule(ctx, ctx.getAttribute('data-t-name'), ctx.getAttribute('data-t-skin'), ctx.getAttribute('data-t-namespace'));
+		var module = this.registerModule(ctx, ctx.getAttribute('data-t-name'), ctx.getAttribute('data-t-decorator'), ctx.getAttribute('data-t-namespace'));
 
 		if (module) {
 			modules[module._ctx.getAttribute('data-t-id')] = module;
@@ -259,39 +259,39 @@ Application.prototype.stop = function (modules) {
  *      The context node
  * @param {String} mod
  *      The module name. It must match the class name of the module
- * @param {Array} skins
- *      A list of skin names. Each entry must match a class name of a skin
+ * @param {Array} decorators
+ *      A list of decorator names. Each entry must match a class name of a decorator
  * @param {String} namespace
  *      The module namespace
  * @return {Module}
  *      The reference to the registered module
  */
-Application.prototype.registerModule = function (ctx, mod, skins, namespace) {
+Application.prototype.registerModule = function (ctx, mod, decorators, namespace) {
 	var modules = this._modules;
 
 	// validate params
 	mod = Utils.capitalize(Utils.camelize(mod));
 
-	if (Utils.isString(skins)) {
-		if (window[skins]) {
-			// skins param is the namespace
-			namespace = window[skins];
-			skins = null;
+	if (Utils.isString(decorators)) {
+		if (window[decorators]) {
+			// decorators param is the namespace
+			namespace = window[decorators];
+			decorators = null;
 		}
 		else {
 			// convert string to array
-			skins = skins.split(',');
+			decorators = decorators.split(',');
 		}
 	}
-	else if (!Array.isArray(skins) && Utils.isObject(skins)) {
-		// skins is the namespace object
-		namespace = skins;
-		skins = null;
+	else if (!Array.isArray(decorators) && Utils.isObject(decorators)) {
+		// decorators is the namespace object
+		namespace = decorators;
+		decorators = null;
 	}
 
-	skins = skins || [];
-	skins = skins.map(function (skin) {
-		return Utils.capitalize(Utils.camelize(skin.trim()));
+	decorators = decorators || [];
+	decorators = decorators.map(function (decorator) {
+		return Utils.capitalize(Utils.camelize(decorator.trim()));
 	});
 
 	namespace = namespace || this._config.namespace;
@@ -305,18 +305,18 @@ Application.prototype.registerModule = function (ctx, mod, skins, namespace) {
 		modules[id] = new namespace[mod](ctx, this._sandbox);
 
 		// decorate it
-		for (var i = 0, len = skins.length; i < len; i++) {
-			var skin = skins[i];
+		for (var i = 0, len = decorators.length; i < len; i++) {
+			var decorator = decorators[i];
 
-			if (namespace[mod][skin]) {
-				namespace[mod][skin](modules[id]);
+			if (namespace[mod][decorator]) {
+				namespace[mod][decorator](modules[id]);
 			}
 		}
 
 		return modules[id];
 	}
 
-	this._sandbox.dispatch('t.missing', ctx, mod, skins, namespace);
+	this._sandbox.dispatch('t.missing', ctx, mod, decorators, namespace);
 
 	return null;
 };
@@ -363,12 +363,12 @@ function Sandbox(application) {
 	this._application = application;
 
 	/**
-	 * Contains references to all module connectors.
+	 * Contains references to all module event emitters.
 	 *
-	 * @property _connectors
+	 * @property _eventEmitters
 	 * @type Array
 	 */
-	this._connectors = [];
+	this._eventEmitters = [];
 }
 
 /**
@@ -381,7 +381,7 @@ function Sandbox(application) {
  *      A collection containing the registered modules
  */
 Sandbox.prototype.addModules = function (ctx) {
-	var modules = [],
+	var modules = {},
 		application = this._application;
 
 	if (Utils.isNode(ctx)) {
@@ -409,7 +409,7 @@ Sandbox.prototype.removeModules = function (modules) {
 
 	if (Utils.isNode(modules)) {
 		// get modules
-		var tmpModules = [];
+		var tmpModules = {};
 
 		var nodes = Utils.getModuleNodes(modules);
 		nodes.forEach(function (ctx) {
@@ -420,7 +420,7 @@ Sandbox.prototype.removeModules = function (modules) {
 				var module = this.getModuleById(id);
 
 				if (module) {
-					tmpModules.push(module);
+					tmpModules[id] = module;
 				}
 			}
 		}.bind(this));
@@ -428,7 +428,7 @@ Sandbox.prototype.removeModules = function (modules) {
 		modules = tmpModules;
 	}
 
-	if (Array.isArray(modules)) {
+	if(Utils.isObject(modules)) {
 		// stop modules – let the module clean itself
 		application.stop(modules);
 
@@ -484,31 +484,31 @@ Sandbox.prototype.getConfigParam = function (name) {
 };
 
 /**
- * Adds a connector instance.
+ * Adds an event emitter instance.
  *
- * @method addConnector
- * @param {Connector} connector
- *      The connector
+ * @method addEventEmitter
+ * @param {EventEmitter} eventEmitter
+ *      The event emitter
  * @return {Sandbox}
  */
-Sandbox.prototype.addConnector = function (connector) {
-	this._connectors.push(connector);
+Sandbox.prototype.addEventEmitter = function (eventEmitter) {
+	this._eventEmitters.push(eventEmitter);
 	return this;
 };
 
 /**
- * Removes a connector instance.
+ * Removes an event emitter instance.
  *
- * @method addConnector
- * @param {Connector} connector
- *      The connector
+ * @method addEventEmitter
+ * @param {EventEmitter} eventEmitter
+ *      The event emitter
  * @return {Sandbox}
  */
-Sandbox.prototype.removeConnector = function (connector) {
-	var connectors = this._connectors;
-	for (var i = 0, len = connectors.length; i < len; i++) {
-		if (connectors[i] === connector) {
-			connectors.splice(i, 1);
+Sandbox.prototype.removeEventEmitter = function (eventEmitter) {
+	var eventEmitters = this._eventEmitters;
+	for (var i = 0, len = eventEmitters.length; i < len; i++) {
+		if (eventEmitters[i] === eventEmitter) {
+			eventEmitters.splice(i, 1);
 			break;
 		}
 	}
@@ -516,18 +516,18 @@ Sandbox.prototype.removeConnector = function (connector) {
 };
 
 /**
- * Dispatches the event with the given arguments to the attached connectors.
+ * Dispatches the event with the given arguments to the attached event emitters.
  *
  * @method dispatch
  * @param {Mixed} ...
  * @return {Sandbox}
  */
 Sandbox.prototype.dispatch = function () {
-	var connectors = this._connectors;
+	var eventEmitters = this._eventEmitters;
 
-	for(var i = 0, len = connectors.length; i < len; i++) {
-		var connector = connectors[i];
-		connector.handle.apply(connector, arguments);
+	for(var i = 0, len = eventEmitters.length; i < len; i++) {
+		var eventEmitter = eventEmitters[i];
+		eventEmitter.handle.apply(eventEmitter, arguments);
 	}
 
 	return this;
@@ -545,7 +545,7 @@ Sandbox.prototype.dispatch = function () {
  * @param {Sandbox} sandbox
  *      The sandbox to get the resources from
  */
-/* global Connector */
+/* global EventEmitter */
 function Module(ctx, sandbox) {
 	/**
 	 * Contains the context node.
@@ -567,9 +567,9 @@ function Module(ctx, sandbox) {
 	 * The emitter.
 	 *
 	 * @property _events
-	 * @type Connector
+	 * @type EventEmitter
 	 */
-	this._events = new Connector(sandbox);
+	this._events = new EventEmitter(sandbox);
 }
 
 /**
@@ -592,7 +592,7 @@ Module.prototype.start = function (resolve) {
  * @method stop
  */
 Module.prototype.stop = function () {
-	this._events.disconnect();
+	this._events.off().disconnect();
 };
 
 /**
@@ -601,14 +601,14 @@ Module.prototype.stop = function () {
  *
  * @author Remo Brunschwiler
  * @namespace T
- * @class Connector
+ * @class EventEmitter
  *
  * @constructor
  *
  * @param {Sandbox} sandbox
  *      The sandbox instance
  */
-function Connector(sandbox) {
+function EventEmitter(sandbox) {
 	/**
 	 * The listeners.
 	 *
@@ -640,9 +640,9 @@ function Connector(sandbox) {
  * @method on
  * @param {String} event
  * @param {Function} listener
- * @return {Connector}
+ * @return {EventEmitter}
  */
-Connector.prototype.on = Connector.prototype.addListener = function (event, listener) {
+EventEmitter.prototype.on = EventEmitter.prototype.addListener = function (event, listener) {
 	this.connect();
 
 	(this._listeners['$' + event] = this._listeners['$' + event] || []).push(listener);
@@ -656,9 +656,9 @@ Connector.prototype.on = Connector.prototype.addListener = function (event, list
  * @method once
  * @param {String} event
  * @param {Function} listener
- * @return {Connector}
+ * @return {EventEmitter}
  */
-Connector.prototype.once = function (event, listener) {
+EventEmitter.prototype.once = function (event, listener) {
 	this.connect();
 
 	function on() {
@@ -678,9 +678,9 @@ Connector.prototype.once = function (event, listener) {
  * @method off
  * @param {String} event
  * @param {Function} listener
- * @return {Connector}
+ * @return {EventEmitter}
  */
-Connector.prototype.off = Connector.prototype.removeListener = Connector.prototype.removeAllListeners = function (event, listener) {
+EventEmitter.prototype.off = EventEmitter.prototype.removeListener = EventEmitter.prototype.removeAllListeners = function (event, listener) {
 	// all
 	if (arguments.length === 0) {
 		this._listeners = {};
@@ -717,9 +717,9 @@ Connector.prototype.off = Connector.prototype.removeListener = Connector.prototy
  *
  * @method emit
  * @param {Mixed} ...
- * @return {Connector}
+ * @return {EventEmitter}
  */
-Connector.prototype.emit = function () {
+EventEmitter.prototype.emit = function () {
 	this.connect();
 
 	// dispatches event to the sandbox
@@ -734,9 +734,9 @@ Connector.prototype.emit = function () {
  * @method handle
  * @param {String} event
  * @param {Mixed} ...
- * @return {Connector}
+ * @return {EventEmitter}
  */
-Connector.prototype.handle = function (event) {
+EventEmitter.prototype.handle = function (event) {
 	var args = [].slice.call(arguments, 1),
 		listeners = this._listeners['$' + event];
 
@@ -758,18 +758,18 @@ Connector.prototype.handle = function (event) {
  * @param {String} event
  * @return {Array}
  */
-Connector.prototype.listeners = function (event) {
+EventEmitter.prototype.listeners = function (event) {
 	return this._listeners['$' + event] || [];
 };
 
 /**
- * Check if this connector has listeners.
+ * Check if this event emitter has listeners.
  *
  * @method hasListeners
  * @param {String} event
  * @return {Boolean}
  */
-Connector.prototype.hasListeners = function (event) {
+EventEmitter.prototype.hasListeners = function (event) {
 	return !!this.listeners(event).length;
 };
 
@@ -777,11 +777,11 @@ Connector.prototype.hasListeners = function (event) {
  * Connect instance to the sandbox.
  *
  * @method connect
- * @return {Connector}
+ * @return {EventEmitter}
  */
-Connector.prototype.connect = function () {
+EventEmitter.prototype.connect = function () {
 	if (!this._connected) {
-		this._sandbox.addConnector(this);
+		this._sandbox.addEventEmitter(this);
 		this._connected = true;
 	}
 
@@ -792,11 +792,11 @@ Connector.prototype.connect = function () {
  * Disconnect instance from the sandbox.
  *
  * @method disconnect
- * @return {Connector}
+ * @return {EventEmitter}
  */
-Connector.prototype.disconnect = function () {
+EventEmitter.prototype.disconnect = function () {
 	if (this._connected) {
-		this._sandbox.removeConnector(this);
+		this._sandbox.removeEventEmitter(this);
 		this._connected = false;
 	}
 
@@ -865,7 +865,7 @@ var Utils = {
 	 */
 	isObject: function (obj) {
 		var type = typeof obj;
-		return !!obj && (type === 'object' || type === 'function');
+		return !!obj && (type === 'object' || type === 'function') && !Array.isArray(obj);
 	},
 
 	/**
@@ -1029,16 +1029,16 @@ var Utils = {
 	},
 
 	/**
-	 * Creates a skin given a decorator specification.
+	 * Creates a decorator given a decorator specification.
 	 *
-	 * @method createSkin
-	 * @param {object} spec Skin specification.
+	 * @method createDecorator
+	 * @param {object} spec Decorator specification.
 	 * @return {function} Decorator function
 	 */
-	createSkin: function (spec) {
+	createDecorator: function (spec) {
 		// validate params
 		if (!spec || !Utils.isObject(spec)) {
-			throw Error('Your skin spec is not an object. Usage: T.createSkin({ … })');
+			throw Error('Your decorator spec is not an object. Usage: T.createDecorator({ … })');
 		}
 
 		return function (orig) {
@@ -1077,16 +1077,16 @@ var Utils = {
 };
 
 
-/* global Application, Sandbox, Module, Connector, Utils */
+/* global Application, Sandbox, Module, EventEmitter, Utils */
 /* jshint unused: false */
 var T = {
 	Application: Application,
 	Sandbox: Sandbox,
 	Module: Module,
-	Connector: Connector,
+	EventEmitter: EventEmitter,
 	createModule: Utils.createModule,
-	createSkin: Utils.createSkin,
-	version: '3.0.0-beta.6'
+	createDecorator: Utils.createDecorator,
+	version: '3.0.0-beta.7'
 };
 return T;
 }));
