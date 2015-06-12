@@ -51,16 +51,16 @@ A component uses the following structure:
     /Example/js/example.js
     /Example/data/example.json
 
-Terrific Skins (css or js) are created using the following conventions:
+Terrific modifiers & decorators are created using the following conventions:
 
-    /Example/css/skins/example-skinname.css
-    /Example/js/skins/example-skinname.js
+    /Example/css/modifier/example-<modifier>.css
+    /Example/js/decorator/example-<decorator>.js
 
 Different data variantions has to be placed in the `_data` folder:
 
     /Example/_data/example-variant.json
 
-### Creating Components & Skins with yo
+### Creating Components with yo
 
     yo nitro:component
 
@@ -78,9 +78,9 @@ Create a new `*.html` file in the `views` folder. You can make as many subfolder
 
 Your new page can then be called by the according URL (with or without an extension). Subfolders are represented with a dash.
 
-    http://localhost/project/index
-    http://localhost/project/content
-    http://localhost/project/content-variant
+    http://localhost:8080/index
+    http://localhost:8080/content
+    http://localhost:8080/content-variant
 
 ### Render Components
 
@@ -104,6 +104,25 @@ Render a partial (HTML snippet). Partials are placed in `views/_partials/` as `*
 
     {{> head}}
 
+### Passing data
+
+You may pass data to your templates (view, partial, component) per view.  
+Put a file with the same name as the view in the folder `views/_data/` with the file extension `.json`. (Use the same folder structure as in `views`)
+
+    /views/index.html
+    /views/_data/index.json
+    http://localhost:8080/index
+    
+    /views/content/variant.html
+    /views/_data/content/variant.json
+    http://localhost:8080/content-variant
+
+It's also possilbe to use a custom data file by requesting with a query param `?_data=...`:
+
+    /views/index.html
+    /views/_data/index-test.json
+    http://localhost:8080/index?_data=index-test
+
 ## Assets
 
 Nitro's main feature is asset concatenation for CSS and JavaScript files. If changed, the files will be updated on
@@ -119,7 +138,7 @@ You can configure the include order of your assets by defining patterns in `conf
             "assets/css/cssreset.css",
             "assets/css/*.*",
             "components/modules/*/css/*.*",
-            "components/modules/*/css/skins/*.*"
+            "components/modules/*/css/modifier/*.*"
         ],
         "app.js": [
             "!assets/js/somefile.js",
@@ -127,7 +146,7 @@ You can configure the include order of your assets by defining patterns in `conf
             "assets/js/terrific-2-1.0.js",
             "assets/js/*.js",
             "components/modules/*/js/*.js",
-            "components/modules/*/js/skins/*.js"
+            "components/modules/*/js/decorator/*.js"
         ]
     }
 

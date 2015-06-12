@@ -6,7 +6,7 @@
 			"assets/css/reset.css",
 			"assets/css/basic.less",
 			"components/**/css/*.less",
-			"components/**/css/skins/*.less"
+			"components/**/css/modifier/*.less"
 		],
 		"app2.css": [
 			"+assets/css/variables.less",
@@ -14,7 +14,7 @@
 			"assets/css/reset.css",
 			"assets/css/basic.less",
 			"components/**/css/*.less",
-			"components/**/css/skins/*.less"
+			"components/**/css/modifier/*.less"
 		],
 		"app.js": [
 			"assets/vendor/es6-promise/promise.min.js",
@@ -22,7 +22,7 @@
 			"assets/vendor/terrific/dist/terrific.min.js",
 			"assets/js/*.js",
 			"components/**/js/*.js",
-			"components/**/js/skins/*.js"
+			"components/**/js/decorator/*.js"
 		]
 	},
 	"nitro": {
