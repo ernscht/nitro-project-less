@@ -3,6 +3,7 @@ var gulp = require('gulp'),
 	precompile = require('gulp-less'), 
 	minify = require('gulp-minify-css'),
 	autoprefixer = require('gulp-autoprefixer'),
+	install = require('gulp-install'),
 	concat = require('gulp-concat'),
 	watch = require('gulp-watch'),
 	uglify = require('gulp-uglify'),
@@ -59,54 +60,63 @@ function getSourceFiles(ext) {
 
 gulp.task('compile-css', function () {
 	var assets = getSourceFiles('.css');
+	var promises = [];
 
 	assets.forEach(function (asset) {
-		globby(asset.deps, function(err, paths) {
-			var imports = '';
+		promises.push(new Promise(function(resolve) {
+			globby(asset.deps, function(err, paths) {
+				var imports = '';
 
-			paths.forEach(function(path) {
-				imports += fs.readFileSync(path);
+				paths.forEach(function(path) {
+					imports += fs.readFileSync(path);
+				});
+
+				gulp.src(asset.src)
+					.pipe(plumber())
+					.pipe(header(imports))
+					.pipe(cache(asset.name))
+					.pipe(precompile())
+					.pipe(autoprefixer({
+						browsers: ['> 1%', 'last 2 versions', 'ie 9', 'android 4', 'Firefox ESR', 'Opera 12.1'],
+						cascade: true
+					}))
+					.pipe(remember(asset.name))
+					.pipe(concat(asset.name))
+					.pipe(gulp.dest('public/assets/css/'))
+					.on('end', function() {
+						resolve();
+					})
+					.pipe(browserSync.reload({stream: true}));
 			});
-
-			gulp
-				.src(asset.src)
-				.pipe(plumber())
-				.pipe(header(imports))
-				.pipe(cache(asset.name))
-				.pipe(precompile())
-				.pipe(autoprefixer({
-					browsers: ['> 1%', 'last 2 versions', 'ie 9', 'android 4', 'Firefox ESR', 'Opera 12.1'],
-					cascade: true
-				}))
-				.pipe(remember(asset.name))
-				.pipe(concat(asset.name))
-				.pipe(gulp.dest('public/assets/css/'))
-				.pipe(browserSync.reload({stream: true}));
-
-			return gulp;
-		});
+		}));
 	});
+
+	return Promise.all(promises);
 });
 
 
 
-gulp.task('compile-js',   function () {
+gulp.task('compile-js',  function () {
 	var assets = getSourceFiles('.js');
+	var promises = [];
 
 	assets.forEach(function (asset) {
 		
-		gulp
-			.src(asset.src)
-		
-			.pipe(plumber())
-			.pipe(jshint())
-			.pipe(jshint.reporter('jshint-stylish'))
-			.pipe(concat(asset.name))
-			.pipe(gulp.dest('public/assets/js'))
-			.pipe(browserSync.reload({stream: true}));
+		promises.push(new Promise(function(resolve) {
+			gulp.src(asset.src)
+				.pipe(plumber())
+				.pipe(jshint())
+				.pipe(jshint.reporter('jshint-stylish'))
+				.pipe(concat(asset.name))
+				.pipe(gulp.dest('public/assets/js'))
+				.on('end', function () {
+					resolve();
+				})
+				.pipe(browserSync.reload({stream: true}));
+		}));
 	});
 
-	return gulp;
+	return Promise.all(promises);
 });
 
 gulp.task('minify-css', ['compile-css'], function () {
@@ -234,16 +244,25 @@ gulp.task('browser-sync', ['server-watch'], function () {
 	});
 });
 
-gulp.task('server-run', function () {
-	var port = process.env.PORT || 8080;
-	server.run(['./server.js'], {env: {PORT: port}});
-});
-
 gulp.task('server-watch', ['server-run'], function () {
 	var port = process.env.PORT || 8080;
 	watch(['./server.js', './app/core/*.js'], function () {
 		server.run(['./server.js'], {env: {PORT: port}});
 	});
+});
+
+gulp.task('server-run', function () {
+	var port = process.env.PORT || 8080;
+	server.run(['./server.js'], {env: {PORT: port}});
+});
+
+gulp.task('install', function () {
+	return gulp.src(['./bower.json', './package.json'])
+		.pipe(install());
+});
+
+gulp.task('clean', function() {
+	del.bind( null, ['public/assets/*'] );
 });
 
 gulp.task('test', ['compile-css', 'compile-js'], function (done) {
@@ -254,12 +273,8 @@ gulp.task('test', ['compile-css', 'compile-js'], function (done) {
 	}, done);
 });
 
-gulp.task('clean', function() {
-	del.bind( null, ['public/assets/*'] );
-});
-
-gulp.task('develop', ['watch', 'browser-sync']);
-gulp.task('production', ['assets', 'server-run']);
-gulp.task('build', ['clean'], function() {
+gulp.task('develop', ['install', 'watch', 'browser-sync']);
+gulp.task('production', ['install', 'assets', 'server-run']);
+gulp.task('build', ['install', 'clean'], function() {
 	gulp.start('assets');
 });

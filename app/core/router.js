@@ -70,6 +70,8 @@ function getView(req, res, next) {
 			);
 
 			if (fs.existsSync(tplPath)) {
+
+				// collect data
 				var dataPath = path.join(
 					cfg.nitro.view_directory,
 					'/_data/',
@@ -87,6 +89,13 @@ function getView(req, res, next) {
 				else if (fs.existsSync(dataPath)) {
 					merge.recursive(data, JSON.parse(fs.readFileSync(dataPath, 'utf8')));
 				}
+
+				if (Object.keys(req.query).length !== 0) {
+					merge.recursive(data, req.query);
+					data._query = req.query;
+				}
+
+				// render
 				res.render(tplPath, data);
 				rendered = true;
 			}
@@ -105,7 +114,8 @@ router.get('/:view', getView);
  * TODO: Nice looking 404?
  */
 router.use(function (req, res, next) {
-	res.status(404).send('Sorry, Not Found!');
+	res.status(404);
+	res.render('404');
 });
 
 module.exports = router;
