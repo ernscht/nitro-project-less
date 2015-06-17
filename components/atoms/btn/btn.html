@@ -1,3 +1,15 @@
+{{#if linkText}}
 <button class="a-btn{{#if modifier}} a-btn--{{modifier}}{{/if}}" data-t-name="Btn"{{#if decorator}} data-t-decorator="{{decorator}}{{/if}}">
-	{{linkText}}{{pageTitle}}
+	{{linkText}}
 </button>
+{{/if}}
+{{#if test.text}}
+<button class="a-btn{{#if modifier}} a-btn--{{modifier}}{{/if}}" data-t-name="Btn"{{#if decorator}} data-t-decorator="{{decorator}}{{/if}}">
+	{{test.text}}
+</button>
+{{/if}}
+{{#if pageTitle}}
+<button class="a-btn{{#if modifier}} a-btn--{{modifier}}{{/if}}" data-t-name="Btn"{{#if decorator}} data-t-decorator="{{decorator}}{{/if}}">
+	{{pageTitle}}
+</button>
+{{/if}}

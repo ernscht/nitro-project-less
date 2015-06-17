@@ -1,5 +1,8 @@
 {
 	"modifier": "",
 	"decorator": "",
-	"linkText": "Go to (btn): "
+	"linkText": "linkText",
+	"test": {
+		"text": "test.text"
+	}
 }
