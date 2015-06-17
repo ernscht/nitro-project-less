@@ -19,7 +19,7 @@ atlassian-ide-plugin.xml
 # Project
 node_modules/
 public/assets/
-#assets/vendor/
+assets/vendor/
 
 # allow
 !.gitkeep
