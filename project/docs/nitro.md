@@ -40,7 +40,6 @@ Different data variantions has to be placed in the `_data` folder:
 
     yo nitro:component
 
-
 ### Using gulp
 
 #### Starting the app
@@ -100,6 +99,8 @@ Render a partial (HTML snippet). Partials are placed in `views/_partials/` as `*
 
 ### Passing data
 
+#### Data per view
+
 You may pass data to your templates (view, partial, component) per view.  
 Put a file with the same name as the view in the folder `views/_data/` with the file extension `.json`. (Use the same folder structure as in `views`)
 
@@ -116,6 +117,16 @@ It's also possilbe to use a custom data file by requesting with a query param `?
     /views/index.html
     /views/_data/index-test.json
     http://localhost:8080/index?_data=index-test
+
+#### Data in request
+
+You may overwrite data in request parameters.
+
+`?pageTitle=Testpage` will overwrite the the data for the handlebars expression `{{pageTitle}}`
+
+It's also possilbe to use dot notation for object data:
+
+`?page.title=Testpage` will overwrite the value for `{{page.title}}` 
 
 ## Assets
 
@@ -290,19 +301,3 @@ Nitro is an alternative to [Terrific Micro](https://github.com/namics/terrific-m
 ## License
 
 Released under the [MIT license](LICENSE)
-
-## Should I check in dependencies? Todo: #23
-
-[What npm says](https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git-):
-Usually, no. Allow npm to resolve dependencies for your packages.
-
-For packages you deploy, such as websites and apps, you should use npm shrinkwrap to lock down your full dependency
-tree.
-
-**Don't checkin node_modules and use npm-shrinkwrap for deployments.**
-
-[What bower says](http://addyosmani.com/blog/checking-in-front-end-dependencies/):
-If you aren’t authoring a package that is intended to be consumed by others (e.g., you’re building a web app), you
-should always check installed packages into source control.
-
-Therefore node_modules **is** ignored, bower_components (well in this case assets/vendor) **is not**.
