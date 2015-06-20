@@ -17,7 +17,7 @@ var gulp = require('gulp'),
 	header = require('gulp-header'),
 	globby = require('globby'),
 	karma = require('karma').server,
-	server = require('gulp-express'),
+	liveServer = require('gulp-live-server'),
 	browserSync = require('browser-sync'),
 	compression = require('compression'),
 	rename = require('gulp-rename'),
@@ -58,7 +58,7 @@ function getSourceFiles(ext) {
 	return assets;
 }
 
-gulp.task('compile-css', function () {
+gulp.task('compile-css', ['install-bower'], function () {
 	var assets = getSourceFiles('.css');
 	var promises = [];
 
@@ -96,7 +96,7 @@ gulp.task('compile-css', function () {
 
 
 
-gulp.task('compile-js',  function () {
+gulp.task('compile-js', ['install-bower'], function () {
 	var assets = getSourceFiles('.js');
 	var promises = [];
 
@@ -227,7 +227,7 @@ gulp.task('watch', ['assets'], function () {
 	});
 });
 
-gulp.task('browser-sync', ['server-watch'], function () {
+gulp.task('browser-sync', ['serve'], function () {
 	var port = process.env.PORT || 8080,
 		proxy = process.env.PROXY || 8081;
 
@@ -244,20 +244,29 @@ gulp.task('browser-sync', ['server-watch'], function () {
 	});
 });
 
-gulp.task('server-watch', ['server-run'], function () {
-	var port = process.env.PORT || 8080;
-	watch(['./server.js', './app/core/*.js'], function () {
-		server.run(['./server.js'], {env: {PORT: port}});
-	});
+gulp.task('serve', ['install-npm'], function() {
+	var port = process.env.PORT || 8080,
+		server = liveServer(
+			'server.js',
+			{
+				env: {
+					PORT: port
+				}
+			}
+		);
+
+	server.start();
+
+	watch(['server.js', 'app/core/*.js'], server.start);
 });
 
-gulp.task('server-run', function () {
-	var port = process.env.PORT || 8080;
-	server.run(['./server.js'], {env: {PORT: port}});
+gulp.task('install-bower', function () {
+	return gulp.src(['./bower.json'])
+		.pipe(install());
 });
 
-gulp.task('install', function () {
-	return gulp.src(['./bower.json', './package.json'])
+gulp.task('install-npm', function () {
+	return gulp.src(['./package.json'])
 		.pipe(install());
 });
 
@@ -273,8 +282,8 @@ gulp.task('test', ['compile-css', 'compile-js'], function (done) {
 	}, done);
 });
 
-gulp.task('develop', ['install', 'watch', 'browser-sync']);
-gulp.task('production', ['install', 'assets', 'server-run']);
-gulp.task('build', ['install', 'clean'], function() {
+gulp.task('develop', ['watch', 'browser-sync']);
+gulp.task('production', ['assets', 'serve']);
+gulp.task('build', ['clean'], function() {
 	gulp.start('assets');
 });
