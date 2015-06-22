@@ -1,8 +1,8 @@
 {
 	"modifier": "",
 	"decorator": "",
-	"linkText": "linkText",
+	"linkText": "linkText (btn)",
 	"test": {
-		"text": "test.text"
+		"text": "test.text (btn)"
 	}
 }
