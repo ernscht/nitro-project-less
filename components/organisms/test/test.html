@@ -1,15 +1,8 @@
 <div class="o-test{{#if modifier}} o-test--{{modifier}}{{/if}}" data-t-name="Test"{{#if decorator}} data-t-decorator="{{decorator}}{{/if}}">
-
-	<p>{{test.text}} = test.text (test)</p>
-
+	<p>{{#if modifier}}{{test.text}} = {{else}}{{test.text}} = test.text (test){{/if}}</p>
+	<p>{{linkText}} = linkText (test{{#if modifier}} {{modifier}}{{/if}})</p>
 	{{component 'btn'}}
-
-	{{#if modifier}}
-	<p>Hat Modifier "{{modifier}}"</p>
-	{{else}}
-	<p>Kein Modifier</p>
-	{{/if}}
-
-	<p>{{test.text}} = test.text (test)</p>
+	<p>{{linkText}} = linkText (test{{#if modifier}} {{modifier}}{{/if}})</p>
+	<p>{{#if modifier}}{{test.text}} = {{else}}{{test.text}} = test.text (test){{/if}}</p>
 </div>
 

@@ -1,10 +1,6 @@
 {
 	"pageTitle": "pageTitle (view)",
 	"test": {
-		"text": "test.text (view)",
-		"datum": "5/20/2015",
-		"num": 42000,
-		"completed": 0.9,
-		"price": 100.95
+		"text": "test.text (view)"
 	}
 }
