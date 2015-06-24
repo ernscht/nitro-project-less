@@ -1,15 +1,16 @@
-{{#if linkText}}
 <button class="a-btn{{#if modifier}} a-btn--{{modifier}}{{/if}}" data-t-name="Btn"{{#if decorator}} data-t-decorator="{{decorator}}{{/if}}">
-	{{linkText}}
+	{{linkText}} = linkText (btn)
 </button>
-{{/if}}
-{{#if test.text}}
+
 <button class="a-btn{{#if modifier}} a-btn--{{modifier}}{{/if}}" data-t-name="Btn"{{#if decorator}} data-t-decorator="{{decorator}}{{/if}}">
-	{{test.text}}
+	{{test.text}} = test.text (btn)
 </button>
-{{/if}}
-{{#if pageTitle}}
+
 <button class="a-btn{{#if modifier}} a-btn--{{modifier}}{{/if}}" data-t-name="Btn"{{#if decorator}} data-t-decorator="{{decorator}}{{/if}}">
-	{{pageTitle}}
+	{{pageTitle}} = pageTitle (view)
 </button>
-{{/if}}
+
+<button class="a-btn{{#if modifier}} a-btn--{{modifier}}{{/if}}" data-t-name="Btn"{{#if decorator}} data-t-decorator="{{decorator}}{{/if}}">
+	{{test.test}} = ''
+</button>
+

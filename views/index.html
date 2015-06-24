@@ -6,9 +6,18 @@
 <body>
 <div>
 	<div class="container">
+		<p>{{pageTitle}} = pageTitle (view)</p>
+		<p>{{test.text}} = test.text (view)</p>
+		<hr>
 		{{component 'test'}}
+		<hr>
+		{{component 'test' 'test-red'}}
+		<hr>
 		{{component 'Example'}}
+		<hr>
 		{{component 'Example' 'example-blue' }}
+		<hr>
+		<p>{{test.text}} = test.text (view)</p>
 	</div>
 	{{> foot}}
 </div>

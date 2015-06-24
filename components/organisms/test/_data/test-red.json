@@ -1,4 +1,6 @@
 {
 	"modifier": "red",
-	"decorator": "red"
+	"decorator": "red",
+	"linkText": "Go to (test): ",
+	"pageTitle": "pageTitle (test)"
 }
