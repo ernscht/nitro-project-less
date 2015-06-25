@@ -1,0 +1,22 @@
+{
+	"app": {
+		"name": "i18n",
+		"company": {
+			"name": "my \"{1}\" company"
+		},
+		"interpolation" : "Hello __you__ & {you}",
+		"interpolation1" : "The first three letters of %s are: %s, %s and %s",
+		"interpolation2" : "The last two letters of {1} are: {3} and {2}",
+		"interpolation3" : "The first letter of {word} is: {one}",
+
+		"area": "Area 51",
+		"district": "District 9 is cooler than $t(app.area)",
+
+		"insert": "Hello __you__",
+		"child": "__count__ Child",
+		"child_plural": "__count__ Children",
+		"friend_context": "A Friend",
+		"friend_context_male": "A Friend",
+		"friend_context_female": "A Friend"
+	}
+}
