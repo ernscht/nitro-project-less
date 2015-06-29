@@ -1,10 +1,11 @@
 <div class="o-test{{#if modifier}} o-test--{{modifier}}{{/if}}" data-t-name="Test"{{#if decorator}} data-t-decorator="{{decorator}}{{/if}}">
 	<h2 class="test__sub-title">{{t "app.company.name" first}}</h2>
 	<ul class="test__list">
-		<li class="test__item"><em>{{t "app.interpolation" dynInsert}}</em></li>
-		<li class="test__item">{{t "app.interpolation1" "alphabet" "a" "l" "p"}}</li>
-		<li class="test__item">{{t "app.interpolation2" "alphabet" "e" "t"}}</li>
-		<li class="test__item">{{t "app.interpolation3" word="alphabet" one="a" two=two}}</li>
+		<li class="test__item">{{t "test.example.nested"}}</li>
+		<li class="test__item">{{t "test.example.sprintf" "alphabet" "a" "l" "p"}}</li>
+		<li class="test__item"><em>{{t "test.example.interpolation" dynInsert}}</em></li>
+		<li class="test__item">{{t "test.example.interpolation1" "alphabet" "e" "t"}}</li>
+		<li class="test__item">{{t "test.example.interpolation2" word="alphabet" one="a" two=two}}</li>
 	</ul>
 
 	<p>{{#if modifier}}{{test.text}} = {{else}}{{test.text}} = test.text (test){{/if}}</p>

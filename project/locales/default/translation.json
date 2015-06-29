@@ -1,19 +1,23 @@
 {
+	"test": {
+		"example": {
+			"string" : "gold (default)",
+			"nested": "All that glitters is not $t(test.example.string). (default)",
+			"sprintf" : "The first three letters of %s are: %s, %s and %s (default)",
+			"interpolation" : "Hello __you__ & {you} (default)",
+			"interpolation1" : "The last two letters of {1} are: {3} and {2} (default)",
+			"interpolation2" : "The first letter of {word} is: {one} (default)"
+		}
+	},
 	"app": {
 		"so": "mein string",
 		"company": {
 			"name": "my \"{1}\" company (default) "
-		},
-		"interpolation" : "Hello __you__ & {you} (default)",
-		"interpolation1" : "The first three letters of %s are: %s, %s and %s (default)",
-		"interpolation2" : "The last two letters of {1} are: {3} and {2} (default)",
-		"interpolation3" : "The first letter of {word} is: {one} (default)"
+		}
+
 	},
 	"attr": {
 		"placeholder": "translated placeholder",
 		"title": "translated title"
-	},
-	"add": "add",
-	"sprintf": "The first 4 letters of the english alphabet are: %s, %s, %s and %s",
-	"you": "ernscht"
+	}
 }
