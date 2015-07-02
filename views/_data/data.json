@@ -1,3 +1,6 @@
 {
-	"pageTitle": "The \"data\" page"
+	"pageTitle": "The \"data\" page",
+	"test": {
+		"text": "test.text (view)"
+	}
 }
