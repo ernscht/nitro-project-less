@@ -1,19 +1,37 @@
 <div class="o-test{{#if modifier}} o-test--{{modifier}}{{/if}}" data-t-name="Test"{{#if decorator}} data-t-decorator="{{decorator}}{{/if}}">
-	<h2 class="test__sub-title">{{t "app.company.name" first}}</h2>
-	<ul class="test__list">
-		<li class="test__item">{{t "test.example.nested"}}</li>
-		<li class="test__item">{{t "test.example.sprintf" "alphabet" "a" "l" "p"}}</li>
-		<li class="test__item"><em>{{t "test.example.interpolation" dynInsert}}</em></li>
-		<li class="test__item">{{t "test.example.interpolation1" "alphabet" "e" "t"}}</li>
-		<li class="test__item">{{t "test.example.interpolation2" word="alphabet" one="a" two=two}}</li>
+
+	<h2 class="o-test__sub-title">Translations</h2>
+	<ul class="o-test__list">
+		<li class="o-test__item">{{t "app.company.name" first}}</li>
+		<li class="o-test__item">{{t "test.example.nested"}}</li>
+		<li class="o-test__item">{{t "test.example.sprintf" "alphabet" "a" "l" "p"}}</li>
+		<li class="o-test__item"><em>{{t "test.example.interpolation" dynInsert}}</em></li>
+		<li class="o-test__item">{{t "test.example.interpolation1" "alphabet" "e" "t"}}</li>
+		<li class="o-test__item">{{t "test.example.interpolation2" word="alphabet" one="a" two=two}}</li>
 	</ul>
 
-	<p>{{#if modifier}}{{test.text}} = {{else}}{{test.text}} = test.text (test){{/if}}</p>
-	<p>{{linkText}} = linkText (test{{#if modifier}} {{modifier}}{{/if}})</p>
+	<h2 class="o-test__sub-title">linkText / test.text / pageTitle / ...</h2>
+	<ul class="o-test__list">
+		<li class="o-test__item">{{#if modifier}}{{test.text}} = {{else}}{{test.text}} = test.text (test){{/if}}</li>
+		<li class="o-test__item">{{#if modifier}}{{test.text}} = {{else}}{{test.text}} = test.text (test){{/if}}</li>
+		<li class="o-test__item">{{linkText}} = linkText (test{{#if modifier}} {{modifier}}{{/if}})</li>
+	</ul>
 	{{component 'btn'}}
-	<p>{{linkText}} = linkText (test{{#if modifier}} {{modifier}}{{/if}})</p>
-	<p>{{#if modifier}}{{test.text}} = {{else}}{{test.text}} = test.text (test){{/if}}</p>
+	<ul class="o-test__list">
+		<li>{{linkText}} = linkText (test{{#if modifier}} {{modifier}}{{/if}})</li>
+		<li>{{#if modifier}}{{test.text}} = {{else}}{{test.text}} = test.text (test){{/if}}</li>
+	</ul>
+
 	<hr />
+
+	<h2 class="o-test__sub-title">data</h2>
+	<ul class="o-test__list">
+		<li>User: {{user.name}}</li>
+		<li>Email: {{user.email}}</li>
+	</ul>
+
+	<hr />
+
 	<p>{{content}}</p>
 </div>
 
