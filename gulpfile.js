@@ -201,7 +201,8 @@ gulp.task('watch', ['assets'], function () {
 
 	watch([
 		'assets/**/*.js',
-		'components/**/*.js'
+		'components/**/*.js',
+		'!components/**/spec/*.js'
 	], function(e) {
 		clearCache(e);
 		gulp.start('compile-js');
