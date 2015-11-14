@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{{> head}}
+</head>
+<body>
+<div>
+	<div class="container">
+		{{component 'Example'}}
+		{{component 'Example' 'example-blue'}}
+		{{component 'Example' 'example-blue' name='NavMain' data='example'}}
+		<hr />
+		{{component 'Example' 'example' data='example-blue'}}
+		{{component name='Example' template='example2'}}
+		{{component name='Example' data='example-blue' template='example'}}
+		{{component name='Example' data='example-blue' template='example2'}}
+		{{component name='Example' data='example' template='example2'}}
+		<hr />
+		{{component 'NavMain'}}
+		{{component 'NavMain' 'navmain-dec'}}
+		{{component 'NavMain' data='navmain-dec' template='navmain2'}}
+		{{component 'nav-mains' template='navmains2'}}
+		{{component 'Nav Mai'}}
+		<hr />
+		{{! Fehlerfälle}}
+		{{component 'Example' 'example-blue' name='Example' data='example' template='XXX'}}
+	</div>
+	{{> foot}}
+</div>
+</body>
+</html>

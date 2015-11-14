@@ -1,7 +1,7 @@
 {
 	"modifier": "blue",
 	"decorator": "Blue",
-	"title": "Example Module with Skin Blue",
+	"title": "Example Module with Skin Blue (data: example-blue.json)",
 	"links": [
 		{
 			"uri": "index",

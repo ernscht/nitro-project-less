@@ -1,7 +1,7 @@
 {
 	"modifier": "",
 	"decorator": "",
-	"title": "Example Module",
+	"title": "Example Module (data: example.json)",
 	"links": [
 		{
 			"uri": "index",
