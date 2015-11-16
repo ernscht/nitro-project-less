@@ -6,3 +6,8 @@
 		{{/each}}
 	</ul>
 </div>
+
+{{#if subcomponent}}
+{{component 'Test' data=subcomponent}}
+{{!component 'Test' subcomponent}}
+{{/if}}
