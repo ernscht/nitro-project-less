@@ -1,6 +1,6 @@
 Component: nav-mains
 Type:      molecule
-File:      navmains
+File:      nav-mains
 
 User:      ernscht
 Email:     ernscht@gmail.com
