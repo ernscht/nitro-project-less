@@ -14,6 +14,11 @@
 
 			console.log('Test - start [id:' + $ctx.data('t-id') + ']');
 
+			var globalvar = true;
+			if (globalvar == true)
+			var so = 'bli'
+
+
 			resolve();
 		}
 	});
