@@ -1,7 +1,7 @@
 var gulp = require('gulp'),
 	path = require('path'), 
 	precompile = require('gulp-less'), 
-	minify = require('gulp-minify-css'),
+	cssnano = require('gulp-cssnano'),
 	autoprefixer = require('gulp-autoprefixer'),
 	install = require('gulp-install'),
 	concat = require('gulp-concat'),
@@ -128,7 +128,7 @@ gulp.task('minify-css', ['compile-css'], function () {
 	assets.forEach(function (asset) {
 		gulp
 			.src('public/assets/css/' + asset.name)
-			.pipe(minify())
+			.pipe(cssnano({mergeRules:false}))
 			.pipe(rename(asset.name.replace('.css', '.min.css')))
 			.pipe(size({showFiles:true,gzip:true,title:'CSS minified'}))
 			.pipe(gulp.dest('public/assets/css/'));

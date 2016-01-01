@@ -1,6 +1,6 @@
 {
-	"name": "nitro-dev",
-	"version": "0.2.1",
+	"name": "nitro",
+	"version": "0.2.2",
 	"description": "Nitro is a Node.js application for simple and complex frontend development with a tiny footprint.",
 	"license": "MIT",
 	"repository": "namics/generator-nitro",
@@ -41,13 +41,13 @@
 		"gulp-autoprefixer": "^3.1.0",
 		"gulp-cached": "^1.1.0",
 		"gulp-concat": "^2.6.0",
+		"gulp-cssnano": "^2.0.0",
 		"gulp-header": "^1.7.1",
 		"gulp-imagemin": "^2.4.0",
 		"gulp-install": "^0.6.0",
 		"gulp-jshint": "^2.0.0",
 		"gulp-karma": "~0.0.5",
 		"gulp-less": "^3.0.5",
-		"gulp-minify-css": "^1.2.2",
 		"gulp-newer": "^1.1.0",
 		"gulp-plumber": "^1.0.1",
 		"gulp-remember": "^0.3.0",
@@ -60,7 +60,7 @@
 		"jasmine-core": "^2.4.1",
 		"jshint": "^2.8.0",
 		"jshint-stylish": "^2.1.0",
-		"karma": "^0.13.15",
+		"karma": "^0.13.16",
 		"karma-chrome-launcher": "^0.2.2",
 		"karma-jasmine": "~0.3.6"
 	}
