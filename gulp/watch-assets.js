@@ -31,7 +31,6 @@ module.exports = function (gulp, plugins) {
 			'components/**/*.js',
 			'!components/**/spec/*.js'
 		], function () {
-			
 			gulp.start('compile-js');
 		});
 

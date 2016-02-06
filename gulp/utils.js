@@ -38,9 +38,6 @@ function getTask(task) {
 	return require('./' + task)(gulp, plugins);
 }
 
-
-
-
 module.exports = {
 	getSourceFiles: getSourceFiles,
 	getTask: getTask
