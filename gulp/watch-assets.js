@@ -19,17 +19,17 @@ module.exports = function (gulp, plugins) {
 		});
 
 		plugins.watch([
-			'assets/**/*.less',
-			'components/**/*.less'
+			'assets/css/**/*.less',
+			'components/**/css/**/*.less'
 		], function (e) {
 			clearCache(e);
 			gulp.start('compile-css');
 		});
 
 		plugins.watch([
-			'assets/**/*.js',
-			'components/**/*.js',
-			'!components/**/spec/*.js'
+			'assets/js/**/*.js',
+			'components/**/js/**/*.js',
+			'components/**/template/**/*.hbs'
 		], function () {
 			gulp.start('compile-js');
 		});
@@ -39,6 +39,7 @@ module.exports = function (gulp, plugins) {
 			'!' + cfg.nitro.view_partials_directory + '/*.' + cfg.nitro.view_file_extension, // exclude partials
 			'views/_data/**/*.json',
 			'components/**/*.' + cfg.nitro.view_file_extension,
+			'!components/**/template/**/*.hbs',
 			'components/**/_data/*.json'
 		], function () {
 			browserSync.reload();
@@ -53,7 +54,7 @@ module.exports = function (gulp, plugins) {
 		plugins.watch([
 			'assets/font/**/*'
 		], function () {
-			gulp.start('assets-copy');
+			gulp.start('copy-assets');
 		});
 	};
 };

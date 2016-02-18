@@ -1,7 +1,9 @@
 {
-  "generator-nitro": {
+  "generator-nitro-dev": {
     "name": "nitro-bla",
     "preprocessor": "less",
-    "jscompiler": "JavaScript"
+    "jscompiler": "JavaScript",
+    "viewExtension": "html",
+    "clientTemplates": true
   }
 }

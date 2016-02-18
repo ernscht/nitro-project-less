@@ -11,7 +11,7 @@ module.exports = function (gulp, plugins) {
 			
 			promises.push(new Promise(function(resolve) {
 				gulp.src(asset.src)
-				.pipe(plugins.plumber())
+					.pipe(plugins.plumber())
 					.pipe(plugins.jshint())
 					.pipe(plugins.jshint.reporter('jshint-stylish'))
 					.pipe(plugins.concat(asset.name))
