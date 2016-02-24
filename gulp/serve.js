@@ -11,11 +11,9 @@ module.exports = function (gulp, plugins) {
 			},
 			false
 		);
-
-		server.start().then(function(result) {
+		server.start().then(function (result) {
 			console.log('Server exited with result:', result);
 			process.exit(result.code);
 		});
-
 	};
 };

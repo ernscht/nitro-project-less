@@ -19,7 +19,7 @@ function factory() {
 	}, config.nitro);
 
 	config.server = {
-		port: process.env.PORT || 8082,
+		port: process.env.PORT || 8080,
 		proxy: process.env.PROXY || 8081
 	};
 
