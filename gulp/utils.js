@@ -36,6 +36,7 @@ function getSourceFiles(ext) {
 
 function reloadConfig() {
 	cfg = cfg.reload();
+	return cfg;
 }
 
 function getTask(task) {
