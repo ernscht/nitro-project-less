@@ -1,0 +1,18 @@
+{
+	"pageTitle": "The \"component\" page",
+	"test": {
+		"text": "test.text (view)"
+	},
+	"template": "content",
+	"accordion": [
+		{
+			"template": "content-1",
+			"title": "Accordion Section 1",
+			"open": true
+		},
+		{
+			"template": "content-2",
+			"title": "Accordion Section 2"
+		}
+	]
+}
