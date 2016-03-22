@@ -15,7 +15,8 @@ function factory() {
 		view_directory: 'views',
 		view_file_extension: 'html',
 		view_partials_directory: 'views/_partials',
-		view_data_directory: 'views/_data'
+		view_data_directory: 'views/_data',
+		placeholders_directory: 'views/_placeholders'
 	}, config.nitro);
 
 	config.server = {
