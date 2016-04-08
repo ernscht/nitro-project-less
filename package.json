@@ -1,7 +1,7 @@
 {
 	"name": "nitro",
 	"version": "0.0.0",
-	"description": "Nitro is a Node.js application for simple and complex frontend development with a tiny footprint. This app is based on generator-nitro 0.2.10",
+	"description": "Nitro is a Node.js application for simple and complex frontend development with a tiny footprint. This app is based on generator-nitro 0.3.0",
 	"license": "UNLICENSED",
 	"private": true,
 	"author": "The Nitro Team",
@@ -22,7 +22,7 @@
 		"nitro"
 	],
 	"dependencies": {
-		"autoprefixer": "^6.3.4",
+		"autoprefixer": "^6.3.6",
 		"body-parser": "^1.15.0",
 		"browser-sync": "^2.11.2",
 		"compression": "^1.6.1",
