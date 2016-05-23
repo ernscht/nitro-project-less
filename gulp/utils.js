@@ -3,6 +3,10 @@ var path = require('path');
 var gulp = require('gulp');
 var plugins = require('gulp-load-plugins')();
 
+function getBrowserCompatibility() {
+	return cfg.code.compatibility.browsers;
+}
+
 function getSourceFiles(ext) {
 	var assets = [];
 
@@ -34,18 +38,16 @@ function getSourceFiles(ext) {
 	return assets;
 }
 
+function getTask(task) {
+	return require('./' + task)(gulp, plugins);
+}
+
 function reloadConfig() {
 	cfg = cfg.reload();
 	return cfg;
 }
 
-function getTask(task) {
-	return require('./' + task)(gulp, plugins);
-}
 
-function getBrowserCompatibility() {
-	return cfg.code.compatibility.browsers;
-}
 
 module.exports = {
 	getBrowserCompatibility: getBrowserCompatibility,
