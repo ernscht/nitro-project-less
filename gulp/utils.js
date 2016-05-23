@@ -43,8 +43,13 @@ function getTask(task) {
 	return require('./' + task)(gulp, plugins);
 }
 
+function getBrowserCompatibility() {
+	return cfg.code.compatibility.browsers;
+}
+
 module.exports = {
+	getBrowserCompatibility: getBrowserCompatibility,
 	getSourceFiles: getSourceFiles,
-	reloadConfig: reloadConfig,
-	getTask: getTask
+	getTask: getTask,
+	reloadConfig: reloadConfig
 };
