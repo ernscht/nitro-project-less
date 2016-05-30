@@ -1,2 +1,108 @@
 @blue:   #0000ff;
 @gray:   #696969;
+
+
+@color-orange:   #f37300;
+
+@color-gray:     #666;
+@color-gray-1:   #191919;
+@color-gray-2:   #333;
+@color-gray-3:   #4c4c4c;
+@color-gray-4:   @color-gray;
+@color-gray-5:   #7f7f7f;
+@color-gray-6:   #999;
+@color-gray-7:   #b2b2b2;
+@color-gray-8:   #ccc;
+@color-gray-9:   #e5e5e5;
+@color-gray-10:  #f2f2f2;
+
+
+//# General alignment
+@gap: 15px;
+//# Module aligment
+@module-gap: 15px;
+
+
+//# Font sizes
+
+// Default
+@font-size-base: 18px;
+@font-size-large: 20px;
+@font-size-small: 14px;
+
+@font-size-h1: 40px;
+@font-size-h2: 40px;
+@font-size-h3: 25px;
+@font-size-h4: 25px;
+@font-size-h5: @font-size-base;
+@font-size-h6: @font-size-base;
+
+// > @screen-xs-min
+@font-size-xs-base: 16px;
+@font-size-xs-large: 20px;
+@font-size-xs-small: 14px;
+
+@font-size-xs-h1: 64px;
+@font-size-xs-h2: 64px;
+@font-size-xs-h3: 25px;
+@font-size-xs-h4: 25px;
+@font-size-xs-h5: @font-size-xs-base;
+@font-size-xs-h6: @font-size-xs-base;
+
+
+
+//# Media queries breakpoints
+
+// Extra small screen
+@screen-xs: 480px;
+@screen-xs-min: @screen-xs;
+@screen-xs-1: 580px;
+
+// Small screen
+@screen-sm: 768px;
+@screen-sm-min: @screen-sm;
+
+// Medium screen
+@screen-md: 960px;
+@screen-md-min: @screen-md;
+
+// Large screen / wide desktop
+@screen-lg: 1260px;
+@screen-lg-min: @screen-lg;
+
+// So media queries don't overlap when required, provide a maximum
+@screen-xs-max: (@screen-sm-min - 1);
+@screen-sm-max: (@screen-md-min - 1);
+@screen-md-max: (@screen-lg-min - 1);
+
+
+//# Line heights
+
+// Default
+@line-height-base: 1.38888888888889; // 25/18;
+@line-height-large: 1.5; // 30/20
+@line-height-small: 1.42857143; // 18/14
+
+@line-height-h1: 1.16666666666667; // 35/30
+@line-height-h2: 1.16666666666667; // 35/30
+@line-height-h3: 1.16666666666667; // 35/30
+@line-height-h4: 1.25; // 30/24
+@line-height-h5: @line-height-base;
+@line-height-h6: @line-height-base;
+
+// > @screen-xs-min
+@line-height-xs-base: 1.5625; // 25/16;
+@line-height-xs-large: 1.5; // 30/20
+@line-height-xs-small: 1.42857143; // 18/14
+
+@line-height-xs-h1: 1.09375; // 70/64
+@line-height-xs-h2: 1.09375; // 70/64
+@line-height-xs-h3: 1.04166666666667; // 50/48
+@line-height-xs-h4: 1.3;
+@line-height-xs-h5: @line-height-xs-base;
+@line-height-xs-h6: @line-height-xs-base;
+
+//# Icon sizes
+@icon-size-base: 32px;
+@icon-size-large: 48px;
+@icon-size-small: 24px;

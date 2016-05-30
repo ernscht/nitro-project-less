@@ -1,0 +1,91 @@
+{
+	"heading": {
+		"title": "Suva St.Gallen",
+		"description": "Hauptsitz",
+		"marker": "A"
+	},
+	"profile": {
+		"title": "Amelia Notebook",
+		"description": "Sicherheitsingenieurin",
+		"avatar": "avatar",
+		"overlayAction": "api/material/suva-1/open"
+	},
+	"address": {
+		"line1": "Strasse 1",
+		"line2": "Postfach",
+		"zip": "9001",
+		"city": "St.Gallen",
+		"lat": "47.419595",
+		"lng": "9.368852",
+		"image": "",
+		"alt": ""
+	},
+	"additionalAddressInfo": [
+		{
+			"title": "Tel",
+			"text": "071 227 73 78",
+			"link": ""
+		},
+		{
+			"title": "Fax",
+			"text": "071 227 73 77",
+			"link": ""
+		},
+		{
+			"title": "Website",
+			"text": "",
+			"link": {
+				"data": "link",
+				"linkStandard": false,
+				"linkExtern": true,
+				"linkAtom": false
+			}
+		}
+	],
+	"vCard": {
+		"title": "vCard speichern",
+		"url": "/"
+	},
+	"openingInfo": {
+		"title": "Öffnungszeiten",
+		"closed": "Geschlossen",
+		"slots": [
+			{
+				"dayStart": "Montag",
+				"dayEnd": "Donnerstag",
+				"isOpen": true,
+				"open": "07:30",
+				"break": "12:00",
+				"breakEnd": "13:30",
+				"close": "18:00"
+			},
+			{
+				"dayStart": "Freitag",
+				"dayEnd": "",
+				"isOpen": true,
+				"open": "07:30",
+				"break": "12:00",
+				"breakEnd": "13:30",
+				"close": "16:30"
+			},
+			{
+				"dayStart": "Samstag",
+				"dayEnd": "Sonntag",
+				"isOpen": false,
+				"open": "",
+				"break": "",
+				"breakEnd": "",
+				"close": ""
+			}
+		]
+	},
+	"phone": "link-act-phone",
+	"mail": "link-act-mail",
+	"route": "link-act-routeplanner",
+	"teaser": {
+		"image": "image-half-16x9",
+		"title": "Militärversicherung Assistance",
+		"description": "Militarische Hilfe bei Krankheit und Unfall im Ausland"
+	},
+	"freeText": "Renzo Ambrosetti, Gewerkschaft Unia, Bern"
+}

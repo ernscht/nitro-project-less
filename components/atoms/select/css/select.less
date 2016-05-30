@@ -1,0 +1,36 @@
+.a-select {
+	appearance: none;
+	background-color: @color-gray-9;
+	background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDI0IDI0OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PGc+PHBvbHlnb24gcG9pbnRzPSIxMiwxOC42IDAsNi42IDEuMiw1LjQgMTIsMTYuMSAyMi44LDUuNCAyNCw2LjYgIi8+PC9nPjwvc3ZnPg==");
+	background-position: 97% center;
+	background-repeat: no-repeat;
+	background-size: @gap @gap;
+	border: 1px solid @color-gray-9;
+	border-radius: 0;
+	color: @color-gray;
+	font-family: inherit;
+	padding: @gap/2 @gap;
+	width: 100%;
+	height: 44px;
+	display: table-cell;
+
+	&:focus {
+		outline: none;
+		border-color: @color-gray;
+		box-shadow: 0 0 3px rgba(102, 102, 102, .5);
+	}
+
+	&::-ms-expand {
+		display: none;
+	}
+
+	&::-ms-value {
+		color: inherit;
+		background-color: transparent;
+	}
+}
+@media (min-width: 480px) {
+	.a-select {
+		height: 41px;
+	}
+}

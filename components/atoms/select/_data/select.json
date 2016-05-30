@@ -1,0 +1,31 @@
+{
+	"name": "select-name",
+	"id": "select-1",
+	"items": [
+		{
+			"title": "Alle",
+			"val": "all"
+		},
+		{
+			"title": "Select Section 1",
+			"val": "section1",
+			"selected": true
+		},
+		{
+			"title": "Select Section 2",
+			"val": "section2"
+		},
+		{
+			"title": "Select Section 3",
+			"val": "section3"
+		},
+		{
+			"title": "Select Section 4",
+			"val": "section4"
+		},
+		{
+			"title": "Select Section 5",
+			"val": "section5"
+		}
+	]
+}

@@ -71,3 +71,136 @@
 	filter: ~"progid:DXImageTransform.Microsoft.gradient(enabled = false)";
 	-ms-filter: ~"progid:DXImageTransform.Microsoft.gradient(enabled = false)";
 }
+
+
+
+
+//# Fonts
+
+// Default
+.font-light() {
+	font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-style: normal;
+	font-weight: 300;
+}
+
+.font-bold() {
+	font-weight: 700;
+}
+
+.font-base() {
+	font-size: @font-size-base;
+	line-height: @line-height-base;
+}
+
+.font-small() {
+	font-size: @font-size-small;
+	line-height: @line-height-small;
+}
+
+.font-large() {
+	font-size: @font-size-large;
+	line-height: @line-height-large;
+}
+
+.font-h1() {
+	font-size: @font-size-h1;
+	line-height: @line-height-h1;
+}
+
+.font-h2() {
+	font-size: @font-size-h2;
+	line-height: @line-height-h2;
+}
+
+.font-h3() {
+	font-size: @font-size-h3;
+	line-height: @line-height-h3;
+}
+
+.font-h4() {
+	font-size: @font-size-h4;
+	line-height: @line-height-h4;
+}
+
+.font-h5() {
+	font-size: @font-size-h5;
+	line-height: @line-height-h5;
+}
+
+.font-h6() {
+	font-size: @font-size-h6;
+	line-height: @line-height-h6;
+}
+
+// > @screen-xs-min
+.font-xs-base() {
+	font-size: @font-size-xs-base;
+	line-height: @line-height-xs-base;
+}
+
+.font-xs-small() {
+	font-size: @font-size-xs-small;
+	line-height: @line-height-xs-small;
+}
+
+.font-xs-large() {
+	font-size: @font-size-xs-large;
+	line-height: @line-height-xs-large;
+}
+
+.font-xs-h1() {
+	font-size: @font-size-xs-h1;
+	line-height: @line-height-xs-h1;
+}
+
+.font-xs-h2() {
+	font-size: @font-size-xs-h2;
+	line-height: @line-height-xs-h2;
+}
+
+.font-xs-h3() {
+	font-size: @font-size-xs-h3;
+	line-height: @line-height-xs-h3;
+}
+
+.font-xs-h4() {
+	font-size: @font-size-xs-h4;
+	line-height: @line-height-xs-h4;
+}
+
+.font-xs-h5() {
+	font-size: @font-size-xs-h5;
+	line-height: @line-height-xs-h5;
+}
+
+.font-xs-h6() {
+	font-size: @font-size-xs-h6;
+	line-height: @line-height-xs-h6;
+}
+
+
+
+.hyphen() {
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	hyphens: auto;
+}
+
+//# Clearfix
+.clearfix() {
+	&:before,
+	&:after {
+		content: " ";
+		display: table;
+	}
+	&:after {
+		clear: both;
+	}
+}
+
+//# WebKit-style focus
+.tab-focus() {
+	// Default
+	outline: thin dotted;
+}

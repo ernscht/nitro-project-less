@@ -1,0 +1,19 @@
+{
+	"id": "accordion",
+	"nid": "generic",
+	"items" : [
+		{
+			"id": "section-1",
+			"title": "Accordion Section 1",
+			"open": true
+		},
+		{
+			"id": "section-2",
+			"title": "Accordion Section 2"
+		},
+		{
+			"id": "section-3",
+			"title": "Accordion Section 3"
+		}
+	]
+}
