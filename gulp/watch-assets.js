@@ -1,5 +1,6 @@
 var cfg = require('../app/core/config');
 var utils = require('./utils');
+var globby = require('globby');
 var browserSync = utils.getBrowserSyncInstance();
 
 module.exports = function (gulp, plugins) {
@@ -8,8 +9,8 @@ module.exports = function (gulp, plugins) {
 			var isDependent = false;
 			var cssAssets = utils.getSourcePatterns('css');
 			cssAssets.forEach(function (asset) {
-				asset.deps.forEach(function(dep) {
-					if ( file.replace(/\\/g, '/').endsWith(dep) ) {
+				globby.sync(asset.deps).forEach(function (path) {
+					if ( file.replace(/\\/g, '/').endsWith(path) ) {
 						isDependent = true;
 					}
 				});
