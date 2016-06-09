@@ -1,16 +1,14 @@
 {
 	"assets": {
 		"app.css": [
-			"+assets/css/variables.less",
-			"+assets/css/mixins.less",
+			"+assets/css/*s.less",
 			"assets/css/reset.css",
 			"assets/css/basic.less",
 			"components/**/css/*.less",
 			"components/**/css/modifier/*.less"
 		],
 		"app.2.css": [
-			"+assets/css/variables.less",
-			"+assets/css/mixins.less",
+			"+assets/css/*s.less",
 			"components/**/css/*.less"
 		],
 		"app.js": [
