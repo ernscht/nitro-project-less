@@ -1,7 +1,13 @@
 .a-btn {
 	font-size: 1.4rem;
 	margin: .5rem 0;
+
+	&.state-disabled,
+	&[disabled] {
+		opacity: .5;
+	}
 }
+
 
 .a-btn--stylelint {
 	a { line-height: 0.5; }
