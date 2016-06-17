@@ -65,8 +65,10 @@
 .m-contact__openinginfo {
 	display: none;
 }
-.m-contact__openinginfo.state-open {
-	display: block;
+.m-contact__openinginfo {
+	&.state-m-contact--open {
+		display: block;
+	}
 }
 .m-contact__openinginfo-day {
 	margin-bottom: 15px;
@@ -103,11 +105,13 @@
 }
 .m-contact__link:hover,
 .m-contact__link:active,
-.m-contact__link.state-active {
+.m-contact__link.state-m-contact__link--active {
 	color: #f37300;
 }
 .m-contact__link-wrap {
-	display: table-cell;
+	&[data-state=disabled] {
+		display: table-cell;
+	}
 }
 .m-contact__link-icon {
 	display: table-cell;

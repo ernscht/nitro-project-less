@@ -13,7 +13,7 @@
 	.font-h3();
 	transition: color .3s ease-in;
 
-	&.state-active,
+	&.state-m-accordion--active,
 	&:hover {
 		color: @color-orange;
 	}
@@ -45,7 +45,7 @@
 	display: none;
 	.clearfix();
 
-	&.state-open {
+	&.state-m-accordion--open {
 		display: block;
 	}
 
@@ -54,6 +54,10 @@
 			margin-bottom: 0;
 		}
 	}
+}
+
+.state-m-accordion__content-modified {
+	padding: @gap;
 }
 
 @media (min-width: @screen-xs-min) {
