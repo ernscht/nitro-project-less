@@ -10,14 +10,15 @@
 		}
 	},
 	"app": {
-		"so": "mein string",
+		"so": "my string (default)",
+		"fallback" : "fallback (default)",
 		"company": {
-			"name": "my \"{1}\" company (default) "
+			"name": "my \"{1}\" company (default)"
 		}
 
 	},
 	"attr": {
-		"placeholder": "translated placeholder",
-		"title": "translated title"
+		"placeholder": "translated placeholder (default)",
+		"title": "translated title (default)"
 	}
 }
