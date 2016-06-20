@@ -11,7 +11,7 @@
  * Usage (with children)
  * {{#component name='Button'}}Click Me{{/component}}
  * {{#component name='Button' disabled=true}}Not Clickable{{/component}}
- * 
+ *
  */
 var fs = require('fs');
 var hbs = require('hbs');
@@ -89,12 +89,12 @@ module.exports = function component () {
 								extend(true, componentData, contextDataRoot._query);
 							}
 
-							// Add attribtues e.g. 'disabled' of {{component 'Button' disabled=true}}
+							// Add attribtues e.g. "disabled" of {{component "Button" disabled=true}}
 							if (context.hash) {
 								extend(true, componentData, context.hash);
 							}
 
-							// Add children e.g. {{#component 'Button'}}Click me{{/component}}
+							// Add children e.g. {{#component "Button"}}Click me{{/component}}
 							if (context.fn) {
 								componentData.children = context.fn(this);
 							}
