@@ -47,6 +47,21 @@
 			{{placeholder 'accordion' template=template}}
 			{{placeholder name='accordion' template=template}}
 		{{/each}}
+
+		<h1>Data as attributes</h1>
+		{{component 'button'}}
+		{{component name='button' disabled=true text='special button'}}
+		{{component name='box'}}
+		{{component 'box' modifier='dark'}}
+
+		<h1>Transclusion</h1>
+		{{#component 'button'}}My Text{{/component}}
+		{{#component name='box'}}Mein <strong>Markup</strong>{{/component}}
+		{{#component 'box'}}
+			This box is filled with Text<br />
+			{{#component 'button'}}Send{{/component}}
+			{{#component 'button' disabled=true}}Reset{{/component}}
+		{{/component}}
 	</div>
 	{{> foot}}
 </div>
