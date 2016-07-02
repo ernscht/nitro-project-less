@@ -1,27 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	{{> head}}
-</head>
-<body>
-<div>
-	<div class="container">
-		<p>{{pageTitle}} = pageTitle (view)</p>
-		<p>{{test.text}} = test.text (view)</p>
-		<hr>
-		{{component 'test' 'test-red'}}
-		<hr>
-		{{component 'test'}}
-		<hr>
-		{{component 'test' 'test-red'}}
-		<hr>
-		{{component 'Example'}}
-		<hr>
-		{{component 'Example' 'example-subcomponent'}}
-		<hr />
-		<p>{{test.text}} = test.text (view)</p>
-	</div>
-	{{> foot}}
+<div class="container">
+	<p>{{pageTitle}} = pageTitle (view)</p>
+	<p>{{test.text}} = test.text (view)</p>
+	<hr>
+	{{component 'test' 'test-red'}}
+	<hr>
+	{{component 'test'}}
+	<hr>
+	{{component 'test' 'test-red'}}
+	<hr>
+	{{component 'Example'}}
+	<hr>
+	{{component 'Example' 'example-subcomponent'}}
+	<hr />
+	<p>{{test.text}} = test.text (view)</p>
 </div>
-</body>
-</html>

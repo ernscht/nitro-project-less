@@ -1,69 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	{{> head}}
-	<style>
-		h1 {
-			font: italic small-caps bold 1.2rem Georgia;
-			padding: 1rem 2rem 0;
-		}
-	</style>
-</head>
-<body>
-<div>
-	<div class="container">
-		<h1>Example</h1>
-		{{component 'Example'}}
-		{{component 'Example' 'example-blue'}}
-		{{component 'Example' 'example-blue' name='NavMain' data='example'}}
+<style>
+	h1 {
+		font: italic small-caps bold 1.2rem Georgia;
+		padding: 1rem 2rem 0;
+	}
+</style>
 
-		<h1>Example Tests</h1>
-		{{component 'Example' 'example' data='example-blue'}}
-		{{component name='Example' template='example2'}}
-		{{component name='Example' data='example-blue' template='example'}}
-		{{component name='Example' data='example-blue' template='example2'}}
-		{{component name='Example' data='example' template='example2'}}
+<div class="container">
+	<h1>Example</h1>
+	{{component 'Example'}}
+	{{component 'Example' 'example-blue'}}
+	{{component 'Example' 'example-blue' name='NavMain' data='example'}}
 
-		<h1>NavMain ...</h1>
-		{{component 'NavMain'}}
-		{{component 'NavMain' 'navmain-dec'}}
-		{{component 'NavMain' data='navmain-dec' template='navmain2'}}
-		{{component 'nav-mains'}}
-		{{component 'nav-mains' template='nav-mains2'}}
-		{{component 'Nav Mai'}}
+	<h1>Example Tests</h1>
+	{{component 'Example' 'example' data='example-blue'}}
+	{{component name='Example' template='example2'}}
+	{{component name='Example' data='example-blue' template='example'}}
+	{{component name='Example' data='example-blue' template='example2'}}
+	{{component name='Example' data='example' template='example2'}}
 
-		<h1>Fehlerfälle</h1>
-		{{component 'Example' 'example-blue' name='Example' data='example' template='XXX'}}
-		{{component 'Example' template='other-example'}}
+	<h1>NavMain ...</h1>
+	{{component 'NavMain'}}
+	{{component 'NavMain' 'navmain-dec'}}
+	{{component 'NavMain' data='navmain-dec' template='navmain2'}}
+	{{component 'nav-mains'}}
+	{{component 'nav-mains' template='nav-mains2'}}
+	{{component 'Nav Mai'}}
 
-		<h1>Placeholder</h1>
-		{{placeholder 'content' 'xample'}}
-		{{placeholder 'content' template='xample'}}
-		{{placeholder name='content' template='xample'}}
-		{{#each accordion}}
-			{{placeholder 'accordion' template}}
-		{{/each}}
-		{{#each accordion}}
-			{{placeholder 'accordion' template=template}}
-			{{placeholder name='accordion' template=template}}
-		{{/each}}
+	<h1>Fehlerfälle</h1>
+	{{component 'Example' 'example-blue' name='Example' data='example' template='XXX'}}
+	{{component 'Example' template='other-example'}}
 
-		<h1>Data as attributes</h1>
-		{{component 'button'}}
-		{{component name='button' disabled=true text='special button'}}
-		{{component name='box'}}
-		{{component 'box' modifier='dark'}}
+	<h1>Placeholder</h1>
+	{{placeholder 'content' 'xample'}}
+	{{placeholder 'content' template='xample'}}
+	{{placeholder name='content' template='xample'}}
+	{{#each accordion}}
+		{{placeholder 'accordion' template}}
+	{{/each}}
+	{{#each accordion}}
+		{{placeholder 'accordion' template=template}}
+		{{placeholder name='accordion' template=template}}
+	{{/each}}
 
-		<h1>Transclusion</h1>
-		{{#component 'button'}}My Text{{/component}}
-		{{#component name='box'}}Mein <strong>Markup</strong>{{/component}}
-		{{#component 'box'}}
-			This box is filled with Text<br />
-			{{#component 'button'}}Send{{/component}}
-			{{#component 'button' disabled=true}}Reset{{/component}}
-		{{/component}}
-	</div>
-	{{> foot}}
+	<h1>Data as attributes</h1>
+	{{component 'button'}}
+	{{component name='button' disabled=true text='special button'}}
+	{{component name='box'}}
+	{{component 'box' modifier='dark'}}
+
+	<h1>Transclusion</h1>
+	{{#component 'button'}}My Text{{/component}}
+	{{#component name='box'}}Mein <strong>Markup</strong>{{/component}}
+	{{#component 'box'}}
+		This box is filled with Text<br />
+		{{#component 'button'}}Send{{/component}}
+		{{#component 'button' disabled=true}}Reset{{/component}}
+	{{/component}}
 </div>
-</body>
-</html>
