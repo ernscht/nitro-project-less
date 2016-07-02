@@ -1,7 +1,7 @@
 {
   "name": "nitro",
   "version": "0.0.0",
-  "description": "Nitro is a Node.js application for simple and complex frontend development with a tiny footprint. This app is based on generator-nitro 0.3.8",
+  "description": "Nitro is a Node.js application for simple and complex frontend development with a tiny footprint. This app is based on generator-nitro 0.3.9",
   "license": "UNLICENSED",
   "private": true,
   "author": "The Nitro Team",
@@ -64,13 +64,12 @@
     "jasmine-core": "~2.4.1",
     "jshint": "~2.9.2",
     "jshint-stylish": "~2.2.0",
-    "karma": "~1.0.0",
+    "karma": "~1.1.0",
     "karma-chrome-launcher": "~1.0.1",
     "karma-jasmine": "~1.0.2",
     "merge-stream": "~1.0.0"
   },
   "devDependencies": {
-    "gulp-install": "~0.6.0",
     "gulp-watch": "~4.3.8"
   }
 }

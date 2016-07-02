@@ -414,8 +414,12 @@ Nitro uses [Gulp](http://gulpjs.com/) under the hood and can therefore be used o
 ### Git Hooks
 
 Nitro tries to install a `post-merge` git hook with every `npm install`.
-This hook will run a `npm install` if someone changes `package.json` 
-and will run `bower install` if someone changes `bower.json`. 
+
+This hook will:
+
+* run `npm install` if someone changes `package.json` 
+* run `bower install` if someone changes `bower.json`. 
+* sync this git hooks if someone changes one.
  
 You may [change this or add other hooks](../.githooks/README.md) in `project/.githooks`.
 
@@ -442,5 +446,5 @@ All of these can be updated with `bower update` as new versions are released.
 
 ### Credits
 
-This app was generated with yeoman and the [generator-nitro](https://www.npmjs.com/package/generator-nitro) package (version 0.3.8).  
+This app was generated with yeoman and the [generator-nitro](https://www.npmjs.com/package/generator-nitro) package (version 0.3.9).  
 Nitro is an alternative to [Terrific Micro](https://github.com/namics/terrific-micro) which is developed by Namics AG.
