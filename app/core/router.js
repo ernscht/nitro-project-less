@@ -9,7 +9,6 @@ var router = express.Router({
 	caseSensitive: false,
 	strict:        false
 });
-var hbsLayout = require('./hbsLayout');
 
 /**
  * static routes
@@ -60,7 +59,7 @@ function getView(req, res, next) {
 	var tpl = req.params.view ? req.params.view.toLowerCase() : 'index';
 	var data = {
 		pageTitle: tpl,
-		_layout: 'default'
+		_layout: cfg.nitro.default_layout
 	};
 	var viewPathes = getViewCombinations(tpl);
 	var rendered = false;
@@ -106,11 +105,11 @@ function getView(req, res, next) {
 
 				// layout handling
 				if (data._layout) {
-					if (hbsLayout.isHandlebarsLayout(data._layout)) {
-						data.layout = hbsLayout.getHandlebarsLayoutPath(data._layout);
+					if (utils.layoutExists(data._layout)) {
+						data.layout = utils.getLayoutPath(data._layout);
 					}
-					else if (hbsLayout.isHandlebarsLayout('default')) {
-						data.layout = hbsLayout.getHandlebarsLayoutPath('default');
+					else if (utils.layoutExists(cfg.nitro.default_layout)) {
+						data.layout = utils.getLayoutPath(cfg.nitro.default_layout);
 					}
 				}
 
@@ -137,8 +136,8 @@ router.get('/:view', getView);
  */
 router.use(function (req, res) {
 	res.locals.pageTitle = '404 - Not Found';
-	if (hbsLayout.isHandlebarsLayout('default')) {
-		res.locals.layout = hbsLayout.getHandlebarsLayoutPath('default');
+	if (utils.layoutExists(cfg.nitro.default_layout)) {
+		res.locals.layout = utils.getLayoutPath(cfg.nitro.default_layout);
 	}
 	res.status(404);
 	res.render('404', function (err, html) {
