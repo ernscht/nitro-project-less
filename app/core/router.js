@@ -9,6 +9,7 @@ var router = express.Router({
 	caseSensitive: false,
 	strict:        false
 });
+var hbsLayout = require('./hbsLayout');
 
 /**
  * static routes
@@ -58,7 +59,8 @@ function getView(req, res, next) {
 
 	var tpl = req.params.view ? req.params.view.toLowerCase() : 'index';
 	var data = {
-		pageTitle: tpl
+		pageTitle: tpl,
+		_layout: 'default'
 	};
 	var viewPathes = getViewCombinations(tpl);
 	var rendered = false;
@@ -94,13 +96,25 @@ function getView(req, res, next) {
 					extend(true, data, JSON.parse(fs.readFileSync(dataPath, 'utf8')));
 				}
 
-				if (Object.keys(req.query).length !== 0) { // handle query string parameters
+				// handle query string parameters
+				if (Object.keys(req.query).length !== 0) {
 					var reqQuery = JSON.parse(JSON.stringify(req.query)); // simple clone
 					dot.object(reqQuery);
 					extend(true, data, reqQuery);
 					data._query = reqQuery; // save query for use in components
 				}
 
+				// layout handling
+				if (data._layout) {
+					if (hbsLayout.isHandlebarsLayout(data._layout)) {
+						data.layout = hbsLayout.getHandlebarsLayoutPath(data._layout);
+					}
+					else if (hbsLayout.isHandlebarsLayout('default')) {
+						data.layout = hbsLayout.getHandlebarsLayoutPath('default');
+					}
+				}
+
+				// locals
 				extend(true, data, res.locals);
 				res.locals = data;
 
@@ -123,6 +137,9 @@ router.get('/:view', getView);
  */
 router.use(function (req, res) {
 	res.locals.pageTitle = '404 - Not Found';
+	if (hbsLayout.isHandlebarsLayout('default')) {
+		res.locals.layout = hbsLayout.getHandlebarsLayoutPath('default');
+	}
 	res.status(404);
 	res.render('404', function (err, html) {
 		if (err) {
