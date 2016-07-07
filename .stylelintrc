@@ -1,12 +1,18 @@
 {
+	"plugins": [
+		"@namics/stylelint-bem"
+	],
 	"rules": {
+		"plugin/stylelint-bem-namics": {
+			"namespace": ""
+		},
 		"at-rule-no-vendor-prefix": true,
 		"block-closing-brace-space-before": ["always-single-line", {"severity": "warning"}],
 		"block-opening-brace-space-after": ["always-single-line", {"severity": "warning"}],
 		"block-opening-brace-space-before": ["always", {"severity": "warning"}],
 		"color-hex-case": ["lower", {"severity": "warning"}],
 		"color-hex-length": ["short", {"severity": "warning"}],
-		"color-named": ["never", {"severity": "warning"}],
+		"color-named": "never",
 		"color-no-invalid-hex": [true, {"severity": "warning"}],
 		"comment-word-blacklist": ["todo", {"severity": "warning"}],
 		"declaration-block-no-duplicate-properties": [true, {"severity": "warning"}],
