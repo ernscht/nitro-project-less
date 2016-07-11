@@ -70,7 +70,6 @@ module.exports = function (gulp, plugins) {
 
 		plugins.watch([
 			'views/**/*.' + cfg.nitro.view_file_extension,
-			'!' + cfg.nitro.view_partials_directory + '/*.' + cfg.nitro.view_file_extension, // exclude partials
 			cfg.nitro.view_data_directory + '/**/*.json',
 			'components/**/*.' + cfg.nitro.view_file_extension,
 			'!components/**/template/**/*.hbs',
