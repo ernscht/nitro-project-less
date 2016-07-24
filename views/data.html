@@ -1,7 +1,5 @@
-{{#extend 'start'}}
 <p>{{pageTitle}} = pageTitle (view)</p>
 <p>{{test.text}} = test.text (view)</p>
-{{/extend}}
 
 <div class="container">
 	{{component 'test' 'test-red'}}
@@ -13,9 +11,8 @@
 	{{component 'Example'}}
 </div>
 
-{{#extend 'end'}}
-	<hr>
-	{{component 'Example' 'example-subcomponent'}}
-	<hr />
-	<p>{{test.text}} = test.text (view)</p>
-{{/extend}}
+<hr>
+{{component 'Example' 'example-subcomponent'}}
+<hr />
+<p>{{test.text}} = test.text (view)</p>
+
