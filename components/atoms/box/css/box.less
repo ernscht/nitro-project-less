@@ -20,3 +20,19 @@
 		border-right: 2rem solid @color-gray-8;
 	}
 }
+
+// inline mixins
+.box-mixin() {
+	display: block;
+}
+.m-selector__example {
+	.box-mixin();
+}
+
+.box-mixin-alternative(@display: block) {
+	display: @display;
+}
+.m-selector__example {
+	.box-mixin-alternative();
+	.box-mixin-alternative(block);
+}
