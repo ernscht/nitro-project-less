@@ -24,7 +24,7 @@
     "modular"
   ],
   "dependencies": {
-    "@namics/stylelint-bem": "~2.1.0",
+    "@namics/stylelint-bem": "~3.0.0",
     "autoprefixer": "~6.4.0",
     "body-parser": "~1.15.2",
     "browser-sync": "~2.14.0",
