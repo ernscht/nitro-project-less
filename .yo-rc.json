@@ -4,13 +4,17 @@
     "preprocessor": "less",
     "jscompiler": "JavaScript",
     "viewExtension": "html",
-    "clientTemplates": true
+    "clientTemplates": true,
+    "exporter": false,
+    "release": false
   },
   "generator-nitro": {
     "name": "nitro-bla",
     "preprocessor": "less",
     "jscompiler": "JavaScript",
     "viewExtension": "html",
-    "clientTemplates": true
+    "clientTemplates": true,
+    "exporter": false,
+    "release": false
   }
 }
