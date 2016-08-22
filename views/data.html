@@ -1,6 +1,7 @@
 <p>{{pageTitle}} = pageTitle (view)</p>
 <p>{{test.text}} = test.text (view)</p>
 
+{{#unless _production}}
 <div class="container">
 	{{component 'test' 'test-red'}}
 	<hr>
@@ -10,6 +11,7 @@
 	<hr>
 	{{component 'Example'}}
 </div>
+{{/unless}}
 
 <hr>
 {{component 'Example' 'example-subcomponent'}}
