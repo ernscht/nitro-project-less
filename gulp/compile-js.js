@@ -1,15 +1,17 @@
-var utils = require('./utils');
-var Promise = require('es6-promise').Promise;
+'use strict';
 
-module.exports = function (gulp, plugins) {
-	return function () {
-		var assets = utils.getSourcePatterns('js');
-		var browserSync = utils.getBrowserSyncInstance();
-		var promises = [];
+const utils = require('./utils');
+const Promise = require('es6-promise').Promise;
 
-		assets.forEach(function (asset) {
+module.exports = (gulp, plugins) => {
+	return () => {
+		const assets = utils.getSourcePatterns('js');
+		const browserSync = utils.getBrowserSyncInstance();
+		let promises = [];
+
+		assets.forEach((asset) => {
 			
-			promises.push(new Promise(function(resolve) {
+			promises.push(new Promise((resolve) => {
 				gulp.src(asset.src, {base: '.'})
 					.pipe(plugins.plumber())
 					.pipe(plugins.cached(asset.name))
@@ -20,7 +22,7 @@ module.exports = function (gulp, plugins) {
 					.pipe(plugins.concat(asset.name))
 					.pipe(plugins.sourcemaps.write('.'))
 					.pipe(gulp.dest('public/assets/js'))
-					.on('end', function () {
+					.on('end', () => {
 						resolve();
 					})
 					.pipe(browserSync.stream());
@@ -30,4 +32,3 @@ module.exports = function (gulp, plugins) {
 		return Promise.all(promises);
 	};
 };
-

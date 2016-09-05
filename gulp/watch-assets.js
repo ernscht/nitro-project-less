@@ -1,15 +1,17 @@
-var cfg = require('../app/core/config');
-var utils = require('./utils');
-var globby = require('globby');
+'use strict';
 
-module.exports = function (gulp, plugins) {
-	return function () {
-		var isDependentStyleSource = function(file) {
-			var browserSync = utils.getBrowserSyncInstance();
-			var isDependent = false;
-			var cssAssets = utils.getSourcePatterns('css');
-			cssAssets.forEach(function (asset) {
-				globby.sync(asset.deps).forEach(function (path) {
+let config = require('../app/core/config');
+const utils = require('./utils');
+const globby = require('globby');
+
+module.exports = (gulp, plugins) => {
+	return () => {
+		const browserSync = utils.getBrowserSyncInstance();
+		const isDependentStyleSource = (file) => {
+			let isDependent = false;
+			const cssAssets = utils.getSourcePatterns('css');
+			cssAssets.forEach((asset) => {
+				globby.sync(asset.deps).forEach((path) => {
 					if ( file.replace(/\\/g, '/').endsWith(path) ) {
 						isDependent = true;
 					}
@@ -18,7 +20,7 @@ module.exports = function (gulp, plugins) {
 
 			return isDependent;
 		};
-		var clearCache = function (e) {
+		const clearCache = (e) => {
 			if (
 				'unlink' === e.event ||
 				'add' === e.event ||
@@ -27,14 +29,14 @@ module.exports = function (gulp, plugins) {
 			) {
 				// forget all
 				plugins.cached.caches = {};
-				var cssAssets = utils.getSourcePatterns('css');
-				cssAssets.forEach(function (asset) {
+				const cssAssets = utils.getSourcePatterns('css');
+				cssAssets.forEach((asset) => {
 					if (plugins.remember.cacheFor(asset.name)) {
 						plugins.remember.forgetAll(asset.name);
 					}
 				});
-				var jsAssets = utils.getSourcePatterns('js');
-				jsAssets.forEach(function (asset) {
+				const jsAssets = utils.getSourcePatterns('js');
+				jsAssets.forEach((asset) => {
 					if (plugins.remember.cacheFor(asset.name)) {
 						plugins.remember.forgetAll(asset.name);
 					}
@@ -44,8 +46,8 @@ module.exports = function (gulp, plugins) {
 
 		plugins.watch([
 			'config.json'
-		], function (e) {
-			cfg = utils.reloadConfig();
+		], (e) => {
+			config = utils.reloadConfig();
 			clearCache(e);
 			utils.updateSourcePatterns();
 			gulp.start('compile-css');
@@ -54,39 +56,39 @@ module.exports = function (gulp, plugins) {
 
 		plugins.watch([
 			'assets/css/**/*.less',
-			'components/**/css/**/*.less'
-		], function (e) {
+			'patterns/**/css/**/*.less'
+		], (e) => {
 			clearCache(e);
 			gulp.start('compile-css');
 		});
 
 		plugins.watch([
 			'assets/js/**/*.js',
-			'components/**/js/**/*.js',
-			'components/**/template/**/*.hbs'
-		], function () {
+			'patterns/**/js/**/*.js',
+			'patterns/**/template/**/*.hbs'
+		], () => {
 			gulp.start('compile-js');
 		});
 
 		plugins.watch([
-			'views/**/*.' + cfg.nitro.view_file_extension,
-			cfg.nitro.view_data_directory + '/**/*.json',
-			'components/**/*.' + cfg.nitro.view_file_extension,
-			'!components/**/template/**/*.hbs',
-			'components/**/_data/*.json'
-		], function () {
+			'views/**/*.' + config.nitro.view_file_extension,
+			config.nitro.view_data_directory + '/**/*.json',
+			'patterns/**/*.' + config.nitro.view_file_extension,
+			'!patterns/**/template/**/*.hbs',
+			'patterns/**/_data/*.json'
+		], () => {
 			browserSync.reload();
 		});
 
 		plugins.watch([
 			'assets/img/**/*'
-		], function () {
+		], () => {
 			gulp.start('minify-img');
 		});
 
 		plugins.watch([
 			'assets/font/**/*'
-		], function () {
+		], () => {
 			gulp.start('copy-assets');
 		});
 	};

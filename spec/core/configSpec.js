@@ -1,35 +1,37 @@
-var cfg = require('../../app/core/config');
+'use strict';
 
-describe('Nitro Config', function () {
-	it('contains a base path', function () {
-		expect(cfg.nitro.base_path).toBeDefined();
+const config = require('../../app/core/config');
+
+describe('Nitro Config', () => {
+	it('contains a base path', () => {
+		expect(config.nitro.base_path).toBeDefined();
 	});
 
-	it('contains a view file extension', function () {
-		expect(cfg.nitro.view_file_extension).toBeDefined();
+	it('contains a view file extension', () => {
+		expect(config.nitro.view_file_extension).toBeDefined();
 	});
 
-	it('contains a view directory', function () {
-		expect(cfg.nitro.view_directory).toBeDefined();
+	it('contains a view directory', () => {
+		expect(config.nitro.view_directory).toBeDefined();
 	});
 
-	it('contains a view partials directory', function () {
-		expect(cfg.nitro.view_partials_directory).toBeDefined();
+	it('contains a view partials directory', () => {
+		expect(config.nitro.view_partials_directory).toBeDefined();
 	});
 
-	it('contains a view data directory', function () {
-		expect(cfg.nitro.view_data_directory).toBeDefined();
+	it('contains a view data directory', () => {
+		expect(config.nitro.view_data_directory).toBeDefined();
 	});
 
-	it('contains a view layouts directory', function () {
-		expect(cfg.nitro.view_layouts_directory).toBeDefined();
-	});
-	
-	it('contains a components map', function () {
-		expect(cfg.nitro.components).toEqual(jasmine.any(Object));
+	it('contains a view layouts directory', () => {
+		expect(config.nitro.view_layouts_directory).toBeDefined();
 	});
 
-	it('contains an assets map', function () {
-		expect(cfg.assets).toEqual(jasmine.any(Object));
+	it('contains a pattern map', () => {
+		expect(config.nitro.patterns).toEqual(jasmine.any(Object));
+	});
+
+	it('contains an assets map', () => {
+		expect(config.assets).toEqual(jasmine.any(Object));
 	});
 });

@@ -1,17 +1,19 @@
-var cfg = require('../app/core/config');
-var fs = require('fs');
-var path = require('path');
-var gulp = require('gulp');
-var plugins = require('gulp-load-plugins')();
-var browserSync;
-var assets = {};
+'use strict';
+
+let config = require('../app/core/config');
+const path = require('path');
+const fs = require('fs');
+const gulp = require('gulp');
+const plugins = require('gulp-load-plugins')();
+let browserSync;
+let assets = {};
 
 function getBrowserCompatibility() {
-	return cfg.code.compatibility.browsers;
+	return config.code.compatibility.browsers;
 }
 
 function getBrowserSyncInstance() {
-	var name = 'Nitro' + cfg.server.port;
+	const name = 'Nitro' + config.server.port;
 	if (!browserSync) {
 		browserSync = require('browser-sync').create(name);
 	}
@@ -19,33 +21,33 @@ function getBrowserSyncInstance() {
 }
 
 function getSourcePatterns(ext) {
-	var type = typeof ext === 'string' && ( ext === 'js' || ext === 'css' ) ? ext : null;
+	const type = typeof ext === 'string' && ( ext === 'js' || ext === 'css' ) ? ext : null;
 
 	if (!assets.hasOwnProperty('js') || !assets.hasOwnProperty('css')) {
 		updateSourcePatterns();
 	}
 
-	return type ?  assets[type] : assets;
+	return type ? assets[type] : assets;
 }
 
 function updateSourcePatterns() {
-	var key, ext, type, asset, result, patternKey, patternPath;
+	let key, ext, type, asset, result, patternKey, patternPath;
 
 	assets = {
 		css: [],
 		js: []
 	};
 
-	for (key in cfg.assets) {
-		if (cfg.assets.hasOwnProperty(key)) {
+	for (key in config.assets) {
+		if (config.assets.hasOwnProperty(key)) {
 			ext = path.extname(key);
 			if (ext) {
 				type = ext.replace(/[^a-z]/g, '');
-				asset = cfg.assets[key];
+				asset = config.assets[key];
 				result = {
 					name: key,
 					deps: [],
-					src:  []
+					src: []
 				};
 
 				for (patternKey in asset) {
@@ -70,8 +72,8 @@ function getTask(task) {
 }
 
 function reloadConfig() {
-	cfg = cfg.reload();
-	return cfg;
+	config = config.reload();
+	return config;
 }
 
 
@@ -94,5 +96,5 @@ module.exports = {
 	getSourcePatterns: getSourcePatterns,
 	getTask: getTask,
 	reloadConfig: reloadConfig,
-	updateSourcePatterns: updateSourcePatterns
+	updateSourcePatterns: updateSourcePatterns,
 };

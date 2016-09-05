@@ -1,12 +1,14 @@
-var fs = require('fs');
-var utils = require('./utils');
+'use strict';
+
+const fs = require('fs');
+const utils = require('./utils');
 
 module.exports = function (gulp, plugins) {
 	return function (callback) {
-		var pidFile = '.servepid';
+		const pidFile = '.servepid';
 
 		if (utils.fileExistsSync(pidFile)) {
-			var pid = fs.readFileSync(pidFile, {
+			const pid = fs.readFileSync(pidFile, {
 				encoding: 'utf8'
 			});
 			process.kill(pid);

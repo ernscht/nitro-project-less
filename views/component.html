@@ -7,28 +7,28 @@
 
 <div class="container">
 	<h1>Example</h1>
-	{{component 'Example'}}
-	{{component 'Example' 'example-blue'}}
-	{{component 'Example' 'example-blue' name='NavMain' data='example'}}
+	{{pattern 'Example'}}
+	{{pattern 'Example' 'example-blue'}}
+	{{pattern 'Example' 'example-blue' name='NavMain' data='example'}}
 
 	<h1>Example Tests</h1>
-	{{component 'Example' 'example' data='example-blue'}}
-	{{component name='Example' template='example2'}}
-	{{component name='Example' data='example-blue' template='example'}}
-	{{component name='Example' data='example-blue' template='example2'}}
-	{{component name='Example' data='example' template='example2'}}
+	{{pattern 'Example' 'example' data='example-blue'}}
+	{{pattern name='Example' template='example2'}}
+	{{pattern name='Example' data='example-blue' template='example'}}
+	{{pattern name='Example' data='example-blue' template='example2'}}
+	{{pattern name='Example' data='example' template='example2'}}
 
 	<h1>NavMain ...</h1>
-	{{component 'NavMain'}}
-	{{component 'NavMain' 'navmain-dec'}}
-	{{component 'NavMain' data='navmain-dec' template='navmain2'}}
-	{{component 'nav-mains'}}
-	{{component 'nav-mains' template='nav-mains2'}}
-	{{component 'Nav Mai'}}
+	{{pattern 'NavMain'}}
+	{{pattern 'NavMain' 'navmain-dec'}}
+	{{pattern 'NavMain' data='navmain-dec' template='navmain2'}}
+	{{pattern 'nav-mains'}}
+	{{pattern 'nav-mains' template='nav-mains2'}}
+	{{pattern 'Nav Mai'}}
 
 	<h1>Fehlerfälle</h1>
-	{{component 'Example' 'example-blue' name='Example' data='example' template='XXX'}}
-	{{component 'Example' template='other-example'}}
+	{{pattern 'Example' 'example-blue' name='Example' data='example' template='XXX'}}
+	{{pattern 'Example' template='other-example'}}
 
 	<h1>Placeholder</h1>
 	{{placeholder 'content' 'xample'}}
@@ -43,17 +43,17 @@
 	{{/each}}
 
 	<h1>Data as attributes</h1>
-	{{component 'button'}}
-	{{component name='button' disabled=true text='special button'}}
-	{{component name='box'}}
-	{{component 'box' modifier='dark'}}
+	{{pattern 'button'}}
+	{{pattern name='button' disabled=true text='special button'}}
+	{{pattern name='box'}}
+	{{pattern 'box' modifier='dark'}}
 
 	<h1>Transclusion</h1>
-	{{#component 'button'}}My Text{{/component}}
-	{{#component name='box'}}Mein <strong>Markup</strong>{{/component}}
-	{{#component 'box'}}
+	{{#pattern 'button'}}My Text{{/pattern}}
+	{{#pattern name='box'}}Mein <strong>Markup</strong>{{/pattern}}
+	{{#pattern 'box'}}
 		This box is filled with Text<br />
-		{{#component 'button'}}Send{{/component}}
-		{{#component 'button' disabled=true}}Reset{{/component}}
-	{{/component}}
+		{{#pattern 'button'}}Send{{/pattern}}
+		{{#pattern 'button' disabled=true}}Reset{{/pattern}}
+	{{/pattern}}
 </div>

@@ -1,13 +1,15 @@
-var config = require('../app/core/config');
-var fs = require('fs');
-var utils = require('./utils');
+'use strict';
+
+const config = require('../app/core/config');
+const fs = require('fs');
+const utils = require('./utils');
 
 module.exports = function (gulp, plugins) {
-	var taskCallbackCalled = false;
+	let taskCallbackCalled = false;
 
-	return function (callback) {
-		var pidFile = '.servepid';
-		var server = plugins.liveServer(
+	return (callback) => {
+		const pidFile = '.servepid';
+		const server = plugins.liveServer(
 			'server.js',
 			{
 				env: {
@@ -17,8 +19,8 @@ module.exports = function (gulp, plugins) {
 			},
 			false
 		);
-		return server.start().then(function (result) {
-			console.log('Server exited with result:', result);
+		return server.start().then((result) => {
+			console.log('Nitro exited with result:', result);
 			if (utils.fileExistsSync(pidFile)) {
 				fs.unlinkSync(pidFile);
 			}
@@ -27,9 +29,9 @@ module.exports = function (gulp, plugins) {
 				taskCallbackCalled = true;
 				callback();
 			}
-		}, function () {
+		}, () => {
 
-		}, function() {
+		}, () => {
 			fs.writeFileSync(pidFile, server.server.pid);
 			if(!taskCallbackCalled) {
 				taskCallbackCalled = true;

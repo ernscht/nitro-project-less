@@ -1,5 +1,7 @@
-var gulp = require('gulp');
-var getTask = require('./gulp/utils').getTask;
+'use strict';
+
+const gulp = require('gulp');
+const getTask = require('./gulp/utils').getTask;
 
 gulp.task('sync-githooks', getTask('sync-githooks'));
 gulp.task('compile-css', getTask('compile-css'));

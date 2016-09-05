@@ -1,17 +1,19 @@
-var config = require('../app/core/config');
-var utils = require('./utils');
-var compression = require('compression');
+'use strict';
 
-module.exports = function (gulp, plugins) {
-	return function () {
-		var browserSync = utils.getBrowserSyncInstance();
+const config = require('../app/core/config');
+const utils = require('./utils');
+const compression = require('compression');
+
+module.exports = (gulp, plugins) => {
+	return () => {
+		const browserSync = utils.getBrowserSyncInstance();
 		browserSync.init({
 			proxy: {
 				target: 'localhost:' + config.server.port,
 				middleware: [compression()]
 			},
 			port: config.server.proxy
-		}, function (e) {
+		}, (e) => {
 			if (!e) {
 				browserSync.notify('Compiling your assets, please wait!');
 			}
