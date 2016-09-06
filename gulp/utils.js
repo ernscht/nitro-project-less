@@ -90,11 +90,11 @@ function fileExistsSync(filename) {
 }
 
 module.exports = {
-	fileExistsSync: fileExistsSync,
-	getBrowserCompatibility: getBrowserCompatibility,
-	getBrowserSyncInstance: getBrowserSyncInstance,
-	getSourcePatterns: getSourcePatterns,
-	getTask: getTask,
-	reloadConfig: reloadConfig,
-	updateSourcePatterns: updateSourcePatterns,
+	fileExistsSync,
+	getBrowserCompatibility,
+	getBrowserSyncInstance,
+	getSourcePatterns,
+	getTask,
+	reloadConfig,
+	updateSourcePatterns
 };
