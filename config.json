@@ -12,10 +12,10 @@
 			"patterns/**/css/*.less"
 		],
 		"app.js": [
-			"assets/vendor/es6-promise/promise.min.js",
-			"assets/vendor/jquery/dist/jquery.min.js",
-			"assets/vendor/terrific/dist/terrific.min.js",
-			"assets/vendor/handlebars/handlebars.runtime.min.js",
+			"node_modules/es6-promise/dist/es6-promise.min.js",
+			"node_modules/jquery/dist/jquery.min.js",
+			"node_modules/terrific/dist/terrific.min.js",
+			"node_modules/handlebars/dist/handlebars.runtime.min.js",
 			"assets/js/*.js",
 			"patterns/**/js/*.js",
 			"patterns/**/js/decorator/*.js",
