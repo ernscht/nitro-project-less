@@ -13,6 +13,8 @@
     "githooks": "gulp sync-githooks",
     "postinstall": "npm run githooks",
     "test": "karma start --single-run --no-auto-watch",
+    "lint": "npm run lint:js",
+    "lint:js": "./node_modules/.bin/eslint ./patterns ./assets/js || true",
     "start": "node server"
   },
   "keywords": [
@@ -29,7 +31,9 @@
     "terrific": "~3.0.0"
   },
   "devDependencies": {
+    "@namics/eslint-config": "^1.0.0",
     "autoprefixer": "~6.4.1",
+    "babel-preset-es2015": "~6.14.0",
     "body-parser": "~1.15.2",
     "browser-sync": "~2.15.0",
     "compression": "~1.6.2",
@@ -40,11 +44,13 @@
     "extend": "~3.0.0",
     "globby": "~6.0.0",
     "gulp": "~3.9.1",
+    "gulp-babel": "~6.1.2",
     "gulp-cached": "~1.1.0",
     "gulp-change": "~1.0.0",
     "gulp-concat": "~2.6.0",
     "gulp-cssnano": "~2.1.2",
     "gulp-declare": "~0.3.0",
+    "gulp-eslint": "^3.0.1",
     "gulp-handlebars": "~4.0.0",
     "gulp-header": "~1.8.8",
     "gulp-imagemin": "~3.0.3",

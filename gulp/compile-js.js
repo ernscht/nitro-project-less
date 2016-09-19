@@ -10,14 +10,15 @@ module.exports = (gulp, plugins) => {
 		let promises = [];
 
 		assets.forEach((asset) => {
-			
+
 			promises.push(new Promise((resolve) => {
 				gulp.src(asset.src, {base: '.'})
 					.pipe(plugins.plumber())
 					.pipe(plugins.cached(asset.name))
 					.pipe(plugins.sourcemaps.init({loadMaps: true}))
-					.pipe(plugins.jshint())
-					.pipe(plugins.jshint.reporter('jshint-stylish'))
+					.pipe(plugins.eslint())
+					.pipe(plugins.eslint.format())
+					.pipe(plugins.babel({presets: ['es2015'], ignore: ['node_modules', 'patterns/**/template/*.js', 'patterns/**/template/partial/*.js']}))
 					.pipe(plugins.remember(asset.name))
 					.pipe(plugins.concat(asset.name))
 					.pipe(plugins.sourcemaps.write('.'))

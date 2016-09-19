@@ -1,28 +1,32 @@
-(function ($) {
-	'use strict';
-	/**
-	 * Blue decorator implementation for the Example module.
-	 *
-	 * @author Pre Name <pre.name@domain.com>
-	 * @namespace T.Module.Example
-	 * @class Blue
-	 * @extends T.Module
-	 * @constructor
-	 */
-	T.Module.Example.Blue = T.createDecorator({
-		start: function (resolve) {
-			var $ctx = $(this._ctx);
+'use strict';
 
-			console.log('Example Decorator Blue - start id: [' + $ctx.data('t-id') + ']');
+// import $ from 'jquery';
+// import T from 'terrific';
 
-			this._parent.start(resolve); // calling original method
-		},
-		sync: function () {
-			var $ctx = $(this._ctx);
+/**
+ * Blue decorator implementation for the Example module.
+ *
+ * @author Pre Name <pre.name@domain.com>
+ */
+T.Module.Example.Blue = T.createDecorator({
+	start(resolve) {
+		const $ctx = $(this._ctx);
 
-			console.log('Example Decorator Blue - sync id: [' + $ctx.data('t-id') + ']');
+		/* eslint-disable no-console */
+		console.log(`Example Decorator Blue - start id: [${$ctx.data('t-id')}]`);
+		/* eslint-enable no-console */
 
-			this._parent.sync(); // calling original method
-		}
-	});
-}(jQuery));
+		// calling original method
+		this._parent.start(resolve);
+	},
+	sync() {
+		const $ctx = $(this._ctx);
+
+		/* eslint-disable no-console */
+		console.log(`Example Decorator Blue - sync id: [${$ctx.data('t-id')}]`);
+		/* eslint-enable no-console */
+
+		// calling original method
+		this._parent.sync();
+	}
+});
