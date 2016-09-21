@@ -10,7 +10,7 @@ module.exports = (gulp, plugins) => {
 		let promises = [];
 
 		assets.forEach((asset) => {
-
+			
 			promises.push(new Promise((resolve) => {
 				gulp.src(asset.src, {base: '.'})
 					.pipe(plugins.plumber())
