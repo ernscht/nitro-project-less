@@ -1,95 +1,97 @@
-'use strict';
+((($) => {
+	'use strict';
 
-// import $ from 'jquery';
-// import T from 'terrific';
+	// import $ from 'jquery';
+	// import T from 'terrific';
 
-/**
- * accordion module implementation.
- *
- * @author Denis Skeledzic-Gemperli <denis.skeledzic@namics.com>
- */
-T.Module.Accordion = T.createModule({
-	start(resolve) {
-		const $ctx = $(this._ctx);
-		const $sections = $ctx.find('.js-m-accordion__section');
-		this.id = $ctx.data('m-accordion-id');
+	/**
+	 * accordion module implementation.
+	 *
+	 * @author Denis Skeledzic-Gemperli <denis.skeledzic@namics.com>
+	 */
+	T.Module.Accordion = T.createModule({
+		start(resolve) {
+			const $ctx = $(this._ctx);
+			const $sections = $ctx.find('.js-m-accordion__section');
+			this.id = $ctx.data('m-accordion-id');
 
-		$ctx.on('click', '.js-m-accordion__section', (e) => {
-			e.preventDefault();
-			const $target = $(e.currentTarget);
-			if ($target.hasClass('state-open')) {
-				this.close($target);
-			} else {
-				this.open($target);
-			}
-		});
-
-		// event emitter
-		this._events.on('m-accordion.close', (id, sectionIds) => {
-			if (id === this.id) {
-				let $targets = $sections;
-				if (sectionIds && Array.isArray(sectionIds)) {
-					$targets = this._filterSections($sections, sectionIds);
+			$ctx.on('click', '.js-m-accordion__section', (e) => {
+				e.preventDefault();
+				const $target = $(e.currentTarget);
+				if ($target.hasClass('state-open')) {
+					this.close($target);
+				} else {
+					this.open($target);
 				}
+			});
 
-				$targets.each((i, el) => {
-					this.close($(el));
-				});
-			}
-		});
+			// event emitter
+			this._events.on('m-accordion.close', (id, sectionIds) => {
+				if (id === this.id) {
+					let $targets = $sections;
+					if (sectionIds && Array.isArray(sectionIds)) {
+						$targets = this._filterSections($sections, sectionIds);
+					}
 
-		this._events.on('m-accordion.open', (id, sectionIds) => {
-			if (id === this.id) {
-				let $targets = $sections;
-				if (sectionIds && Array.isArray(sectionIds)) {
-					$targets = this._filterSections($sections, sectionIds);
+					$targets.each((i, el) => {
+						this.close($(el));
+					});
 				}
+			});
 
-				$targets.each((i, el) => {
-					this.open($(el));
-				});
-			}
-		});
+			this._events.on('m-accordion.open', (id, sectionIds) => {
+				if (id === this.id) {
+					let $targets = $sections;
+					if (sectionIds && Array.isArray(sectionIds)) {
+						$targets = this._filterSections($sections, sectionIds);
+					}
 
-		resolve();
-	},
+					$targets.each((i, el) => {
+						this.open($(el));
+					});
+				}
+			});
 
-	open($target) {
-		$target.addClass('state-open');
+			resolve();
+		},
 
-		const $icon = $target.find('.js-m-accordion__icon');
-		$icon.addClass('state-end');
+		open($target) {
+			$target.addClass('state-open');
 
-		const $content = $target.next('.js-m-accordion__content');
-		$content.velocity('slideDown', {
-			duration: 400,
-			easing: 'swing'
-		});
+			const $icon = $target.find('.js-m-accordion__icon');
+			$icon.addClass('state-end');
 
-		this._events.emit('m-accordion.opened', this.id, $target.attr('data-m-accordion-section-id'));
-	},
+			const $content = $target.next('.js-m-accordion__content');
+			$content.velocity('slideDown', {
+				duration: 400,
+				easing: 'swing'
+			});
 
-	close($target) {
-		$target.removeClass('state-open');
+			this._events.emit('m-accordion.opened', this.id, $target.attr('data-m-accordion-section-id'));
+		},
 
-		const $icon = $target.find('.js-m-accordion__icon');
-		$icon.removeClass('state-end');
+		close($target) {
+			$target.removeClass('state-open');
 
-		const $content = $target.next('.js-m-accordion__content');
-		$content.velocity('slideUp', {
-			duration: 400,
-			easing: 'swing'
-		});
+			const $icon = $target.find('.js-m-accordion__icon');
+			$icon.removeClass('state-end');
 
-		this._events.emit('m-accordion.closed', this.id, $target.attr('data-m-accordion-section-id'));
-	},
+			const $content = $target.next('.js-m-accordion__content');
+			$content.velocity('slideUp', {
+				duration: 400,
+				easing: 'swing'
+			});
 
-	_filterSections($sections, sectionIds) {
-		return $sections.filter((i, el) => {
-			if (sectionIds.indexOf($(el).attr('data-m-accordion-section-id')) > -1) {
-				return true;
-			}
-			return false;
-		});
-	}
-});
+			this._events.emit('m-accordion.closed', this.id, $target.attr('data-m-accordion-section-id'));
+		},
+
+		_filterSections($sections, sectionIds) {
+			return $sections.filter((i, el) => {
+				if (sectionIds.indexOf($(el).attr('data-m-accordion-section-id')) > -1) {
+					return true;
+				}
+				return false;
+			});
+		}
+	});
+})(jQuery));
