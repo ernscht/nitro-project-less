@@ -29,6 +29,6 @@
 
 			// calling original method
 			this._parent.sync();
-		}
+		},
 	});
 })(jQuery));

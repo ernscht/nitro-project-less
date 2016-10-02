@@ -19,7 +19,7 @@
 
 			// calling original method
 			this._parent.start(resolve);
-		}
+		},
 	});
 
 })(jQuery));

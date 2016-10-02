@@ -18,7 +18,7 @@
 			/* eslint-enable no-console */
 
 			resolve();
-		}
+		},
 	});
 
 })(jQuery));

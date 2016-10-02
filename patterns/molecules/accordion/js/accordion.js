@@ -64,7 +64,7 @@
 			const $content = $target.next('.js-m-accordion__content');
 			$content.velocity('slideDown', {
 				duration: 400,
-				easing: 'swing'
+				easing: 'swing',
 			});
 
 			this._events.emit('m-accordion.opened', this.id, $target.attr('data-m-accordion-section-id'));
@@ -79,7 +79,7 @@
 			const $content = $target.next('.js-m-accordion__content');
 			$content.velocity('slideUp', {
 				duration: 400,
-				easing: 'swing'
+				easing: 'swing',
 			});
 
 			this._events.emit('m-accordion.closed', this.id, $target.attr('data-m-accordion-section-id'));
@@ -92,6 +92,6 @@
 				}
 				return false;
 			});
-		}
+		},
 	});
 })(jQuery));

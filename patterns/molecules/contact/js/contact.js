@@ -52,7 +52,7 @@
 			this.$openingInfo.velocity('slideDown', {
 				duration: 300,
 				easing: 'swing',
-				display: null
+				display: null,
 			});
 		},
 
@@ -69,14 +69,14 @@
 				display: null,
 				complete: () => {
 					this.$openingInfo.removeClass('state-open');
-				}
+				},
 			});
 		},
 
 		openAction($target) {
 			const url = $target.data('m-contact-action');
 			this._events.emit('m-overlay.open', 'overlay', $target, url);
-		}
+		},
 
 	});
 })(jQuery));
