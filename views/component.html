@@ -8,7 +8,7 @@
 <div class="container">
 	<h1>Example</h1>
 	{{pattern 'Example'}}
-	{{pattern 'Example' 'example-blue'}}
+	{{component 'Example' 'example-blue'}}
 	{{pattern 'Example' 'example-blue' name='NavMain' data='example'}}
 
 	<h1>Example Tests</h1>
@@ -50,7 +50,7 @@
 
 	<h1>Transclusion</h1>
 	{{#pattern 'button'}}My Text{{/pattern}}
-	{{#pattern name='box'}}Mein <strong>Markup</strong>{{/pattern}}
+	{{#component name='box'}}Mein <strong>Markup</strong>{{/component}}
 	{{#pattern 'box'}}
 		This box is filled with Text<br />
 		{{#pattern 'button'}}Send{{/pattern}}
