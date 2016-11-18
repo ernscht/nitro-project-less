@@ -26,7 +26,7 @@ const options = {
 	},
 	detection: {
 		// order and from where user language should be detected
-		order: ['querystring', 'header'],
+		order: ['querystring'],
 		// keys or params to lookup language from
 		lookupQuerystring: 'lang',
 	},

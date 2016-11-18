@@ -4,20 +4,20 @@
 			"string" : "gold",
 			"nested": "All that glitters is not $t(test.example.string).",
 			"sprintf" : "The first three letters of %s are: %s, %s and %s",
-			"interpolation" : "Hello __you__ & {you}",
-			"interpolation1" : "The last two letters of {1} are: {3} and {2}",
-			"interpolation2" : "The first letter of {word} is: {one}"
+			"interpolation" : "Hello {{you}} & {{you}}",
+			"interpolation1" : "The last two letters of {{word}} are: {{two}} and {{one}}",
+			"interpolation2" : "The first letter of {{word}} is: {{one}}"
 		}
 	},
 	"app": {
 		"name": "i18n",
 		"company": {
-			"name": "my \"{1}\" company"
+			"name": "my \"%s\" company"
 		},
 		"area": "Area 51",
 		"district": "District 9 is cooler than $t(app.area)",
 
-		"insert": "Hello __you__",
+		"insert": "Hello {{you}}",
 		"child": "__count__ Child",
 		"child_plural": "__count__ Children",
 		"friend_context": "A Friend",

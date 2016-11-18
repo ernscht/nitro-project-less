@@ -4,16 +4,16 @@
 			"string" : "gold (default)",
 			"nested": "All that glitters is not $t(test.example.string). (default)",
 			"sprintf" : "The first three letters of %s are: %s, %s and %s (default)",
-			"interpolation" : "Hello __you__ & {you} (default)",
-			"interpolation1" : "The last two letters of {1} are: {3} and {2} (default)",
-			"interpolation2" : "The first letter of {word} is: {one} (default)"
+			"interpolation" : "Hello {{you}} & {{you}} (default)",
+			"interpolation1" : "The last two letters of {{word}} are: {{two}} and {{one}} (default)",
+			"interpolation2" : "The first letter of {{word}} is: {{one}} (default)"
 		}
 	},
 	"app": {
 		"so": "my string (default)",
 		"fallback" : "fallback (default)",
 		"company": {
-			"name": "my \"{1}\" company (default)"
+			"name": "my \"%s\" company (default)"
 		}
 
 	},

@@ -4,16 +4,16 @@
 			"string" : "Gold",
 			"nested": "Nicht alles was glänzt ist $t(test.example.string)",
 			"sprintf" : "Die ersten drei Buchstaben von %s sind: %s, %s und %s",
-			"interpolation" : "Hallo __you__ & {you}",
-			"interpolation1" : "Die letzten zwei Buchstaben von {1} sind: {3} und {2}",
-			"interpolation2" : "Erster Buchstabe von {word} ist: {one}"
+			"interpolation" : "Hallo {{you}} & {{you}}",
+			"interpolation1" : "Die letzten zwei Buchstaben von {{word}} sind: {{two}} und {{one}}",
+			"interpolation2" : "Erster Buchstabe von {{word}} ist: {{one}}"
 		}
 	},
 	"app": {
 		"so": "min schtring",
 		"name": "i18n",
 		"company": {
-			"name": "Meine \"{1}\" Firma"
+			"name": "Meine \"%s\" Firma"
 		},
 		"area": "Area 51",
 		"district": "District 9 ist spassiger als $t(app.area)",
