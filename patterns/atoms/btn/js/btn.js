@@ -10,7 +10,7 @@
  */
 
 T.Module.Btn = T.createModule({
-	start: function(resolve) {
+	start(resolve) {
 		const $ctx = $(this._ctx);
 
 		console.log('Btn - start [id:' + $ctx.data('t-id') + ']');
