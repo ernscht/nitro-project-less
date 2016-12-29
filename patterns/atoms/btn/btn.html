@@ -2,16 +2,16 @@
 	{{linkText}} = linkText (btn)
 </button>
 
-<button class="a-btn{{#if modifier}} a-btn--{{modifier}}{{/if}}" data-t-name="Btn"{{#if decorator}} data-t-decorator="{{decorator}}{{/if}}">
+<button class="notunique a-btn{{#if modifier}} a-btn--{{modifier}}{{/if}} notunique" data-t-name="Btn"{{#if decorator}} data-t-decorator="{{decorator}}{{/if}}">
 	{{test.text}} = test.text (btn)
 </button>
 
-<button class="a-btn{{#if modifier}} a-btn--{{modifier}}{{/if}}" data-t-name="Btn"{{#if decorator}} data-t-decorator="{{decorator}}{{/if}}">
+<button id="notunique" class="a-btn{{#if modifier}} a-btn--{{modifier}}{{/if}}" data-t-name="Btn"{{#if decorator}} data-t-decorator="{{decorator}}{{/if}}">
 	{{pageTitle}} = pageTitle (view)
 </button>
 
-<button class="a-btn{{#if modifier}} a-btn--{{modifier}}{{/if}}" data-t-name="Btn"{{#if decorator}} data-t-decorator="{{decorator}}{{/if}}">
-	{{test.test}} =
+<button id="notunique" class="a-btn{{#if modifier}} a-btn--{{modifier}}{{/if}}" data-t-name="Btn"{{#if decorator}} data-t-decorator="{{decorator}}{{/if}}">
+	{{test.test}}=
 </button>
 
 <p>Give data with Request ?dynInsert.you=...: <strong>{{t "test.example.interpolation" dynInsert}}</strong></p>
