@@ -25,9 +25,15 @@ const replaceAt = function replaceAt(string, index, character) {
 };
 
 /**
+ * @typedef {Object} View
+ * @property {string} name View name
+ * @property {string} url View url
+ */
+
+/**
  * get all views
  * @param dir string to-be-traversed directory
- * @returns {Array} all views
+ * @returns {View} an array of views
  */
 function getViews(dir) {
 	let results = [];
@@ -49,10 +55,7 @@ function getViews(dir) {
 			});
 			const url = relativePath.replace(extReg, '').replace(/\//g, '-').replace(/\\/g, '-');
 
-			results.push({
-				name: name,
-				url: url
-			});
+			results.push({name, url});
 		}
 	});
 
@@ -60,9 +63,9 @@ function getViews(dir) {
 }
 
 /**
- * get pathes
- * @param action
- * @returns {[*]}
+ * get possible view paths
+ * @param action The requested route (e.g. content-example)
+ * @returns {Array} array of strings of possible paths to view files (e.g. content-example, content/example)
  */
 function getViewCombinations(action) {
 	const pathes = [action];
