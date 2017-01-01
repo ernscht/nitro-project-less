@@ -9,7 +9,7 @@ module.exports = function view_list () {
 	let markup = ['<ul>'];
 
 	views.forEach((view) => {
-		markup.push(`<li><a href="/${view.view_url}">${view.view_name}</a></li>`);
+		markup.push(`<li><a href="/${view.url}">${view.name}</a></li>`);
 	});
 
 	markup.push('</ul>');

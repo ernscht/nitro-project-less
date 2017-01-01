@@ -50,8 +50,8 @@ function getViews(dir) {
 			const url = relativePath.replace(extReg, '').replace(/\//g, '-').replace(/\\/g, '-');
 
 			results.push({
-				view_name: name,
-				view_url: url
+				name: name,
+				url: url
 			});
 		}
 	});
