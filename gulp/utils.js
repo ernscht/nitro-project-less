@@ -71,12 +71,18 @@ function getTask(task) {
 	return require('./' + task)(gulp, plugins);
 }
 
+function getTmpDirectory (subPath) {
+	let tmpPath = 'project/tmp';
+	if (subPath && typeof subPath === 'string') {
+		tmpPath += '/' + subPath
+	}
+	return tmpPath;
+}
+
 function reloadConfig() {
 	config = config.reload();
 	return config;
 }
-
-
 
 function fileExistsSync(filename) {
 	// Substitution for the deprecated fs.existsSync() method @see https://nodejs.org/api/fs.html#fs_fs_existssync_path
@@ -95,6 +101,7 @@ module.exports = {
 	getBrowserSyncInstance,
 	getSourcePatterns,
 	getTask,
+	getTmpDirectory,
 	reloadConfig,
 	updateSourcePatterns
 };
