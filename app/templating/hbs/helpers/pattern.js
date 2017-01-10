@@ -121,8 +121,8 @@ module.exports = function pattern () {
 							}
 
 							const html = hbs.handlebars.compile(
-									fs.readFileSync(templatePath, 'utf8')
-								)(patternData, context);
+								fs.readFileSync(templatePath, 'utf8')
+							)(patternData, context);
 
 							// lint html snippet
 							if (!config.server.production) {

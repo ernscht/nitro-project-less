@@ -15,33 +15,33 @@ function getViews () {
 
 module.exports = function (gulp, plugins) {
 	return () => {
-		return getPort().then((port) => {
+		return getPort()
+			.then((port) => {
+				const server = plugins.liveServer('server', {
+					env: {
+						PORT: port,
+						NODE_ENV: 'production'
+					}
+				}, false);
 
-			const server = plugins.liveServer('server', {
-				env: {
-					PORT: port,
-					NODE_ENV: 'production'
+				function dumpViews() {
+					return del(tmpDirectory)
+						.then(() => {
+								return plugins.remoteSrc(getViews(), {
+									base: `http://localhost:${port}/`,
+									buffer: true
+								})
+									.pipe(plugins.rename({extname: '.html'}))
+									.pipe(gulp.dest(tmpDirectory))
+									.on('end', () => {
+										server.stop();
+									});
+							}
+						);
 				}
-			}, false);
 
-			function dumpViews() {
-				return del(tmpDirectory)
-					.then(() => {
-						return plugins.remoteSrc(getViews(), {
-							base: `http://localhost:${port}/`,
-							buffer: true
-						})
-							.pipe(plugins.rename({extname: '.html'}))
-							.pipe(gulp.dest(tmpDirectory))
-							.on('end', () => {
-								server.stop();
-							});
-						}
-					);
-			}
-
-			return server.start()
-				.then(() => {},() => {}, () => dumpViews());
-		});
+				return server.start()
+					.then(() => {},() => {}, () => dumpViews());
+			});
 	};
 };
