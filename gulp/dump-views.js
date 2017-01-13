@@ -10,6 +10,7 @@ const tmpDirectory = utils.getTmpDirectory('views');
 function getViews () {
 	return view
 		.getViews(config.nitro.base_path + config.nitro.view_directory)
+		.filter((view) => view.url !== 'component') // this has errors
 		.map((view) => view.url);
 }
 
