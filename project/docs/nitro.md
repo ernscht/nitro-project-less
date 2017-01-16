@@ -193,7 +193,7 @@ Render a partial (HTML snippet). Partials are placed in `views/_partials/` as `*
 ### Render placeholders
 
 Using a placeholder is another way to output some markup. Placeholders are placed in a folder inside `views/_placeholders/` as `*.html` files.  
-The following two examples do the same and render the file `Content/example.html` from `views/_placeholders/`.
+The following two examples do the same and render the file `content/example.html` from `views/_placeholders/`.
 
     {{placeholder 'content' 'example'}}
     {{placeholder name='content' template='example'}}
@@ -456,8 +456,8 @@ You may [change this or add other hooks](../.githooks/README.md) in `project/.gi
 
 ### Contributing
 
-* For Bugs and Features please use [GitHub](https://github.com/namics/generator-nitro/issues)
-* Feel free to fork and send PRs to the current `develop` branch. That's the best way to discuss your ideas.
+* For bugs and features please use [GitHub Issues](https://github.com/namics/generator-nitro/issues)
+* Feel free to fork and send PRs to the current `develop` branch. That's a good way to discuss your ideas.
 
 ### Example Project Includes
 
@@ -472,7 +472,8 @@ The following packages are installed by the [app](#name) generator as npm depend
 * [jQuery 3.1.1](http://jquery.com/)
 * [TerrificJS 3.0.0](https://github.com/brunschgi/terrificjs)
 * [Handlebars 4.0.6](https://github.com/components/handlebars.js)
+* [Babel Polyfill 6.20.0](https://www.npmjs.com/package/babel-polyfill)
 
 ### Credits
 
-This app was generated with yeoman and the [generator-nitro](https://www.npmjs.com/package/generator-nitro) package (version 1.0.0-BETA).
+This app was generated with yeoman and the [generator-nitro](https://www.npmjs.com/package/generator-nitro) package (version 1.0.0-ALPHA).
