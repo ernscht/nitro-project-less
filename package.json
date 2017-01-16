@@ -16,7 +16,7 @@
     "lint:css": "stylelint assets/**/*.*ss patterns/**/*.*ss",
     "lint:html": "gulp lint-html",
     "postinstall": "npm run githooks",
-    "test": "karma start --single-run --no-auto-watch",
+    "test": "npm run lint && gulp test",
     "start": "node server"
   },
   "keywords": [
@@ -87,8 +87,10 @@
     "imagemin-pngquant": "5.0.0",
     "jasmine-core": "2.5.2",
     "karma": "1.3.0",
+    "karma-babel-preprocessor": "6.0.1",
     "karma-chrome-launcher": "2.0.0",
     "karma-jasmine": "1.1.0",
+    "karma-phantomjs-launcher": "1.0.2",
     "merge-stream": "1.0.1",
     "npm-run-all": "4.0.0",
     "stylelint": "7.7.1"
