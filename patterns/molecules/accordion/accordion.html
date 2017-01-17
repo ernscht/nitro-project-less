@@ -1,8 +1,8 @@
 <div class="m-accordion{{#if modifier}} m-accordion--{{modifier}}{{/if}}" data-t-name="Accordion"
-     data-m-accordion-id="{{id}}">
+	data-m-accordion-id="{{id}}">
 	{{#each items}}
 	<a class="m-accordion__section js-m-accordion__section{{#if open}} state-open{{/if}}" href="javascript:;"
-	   data-m-accordion-section-id="{{id}}">
+		data-m-accordion-section-id="{{id}}">
 		{{#if open}}
 		{{pattern name='icon-animation' template='iconanimation-cross' data='iconanimation-accordion-reverse'}}
 		{{else}}
