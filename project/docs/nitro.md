@@ -43,7 +43,7 @@ Install the project dependencies in the project root:
 
 Use
 
-    gulp develop
+    npm run dev
 
 ... to start in development mode
 
@@ -55,12 +55,12 @@ or
 
 For production mode add `NODE_ENV=production` environment variable
 
-    NODE_ENV=production && gulp production
+    NODE_ENV=production && npm run prod
 
-The Nitro app will run on port `8080` by default, the proxy on `8081` (only run with `develop` task).  
-If you want the app to run on another port put them before the gulp task like this:
+The Nitro app will run on port `8080` by default, the proxy on `8081` (only run with `dev` task).  
+If you want the app to run on another port put them before the start task like this:
 
-    PORT=8000 PROXY=8001 gulp develop
+    PORT=8000 PROXY=8001 npm run dev
 
 The port to be used in production can be set the same way:
  
@@ -68,9 +68,9 @@ The port to be used in production can be set the same way:
 
 This works a bit different on **Windows**. Use the following commands in prompt:
  
-    set PORT=8000 && set PROXY=8001 && gulp develop
+    set PORT=8000 && set PROXY=8001 && npm run dev
     set PORT=3000 && node server
-    set NODE_ENV=production && gulp production
+    set NODE_ENV=production && npm run prod
 
 ## Daily Work - Creating Patterns & Pages
 
@@ -78,7 +78,7 @@ This works a bit different on **Windows**. Use the following commands in prompt:
 
 Patterns are created in the `patterns` folder. A pattern is an encapsulated block of markup 
 with corresponding styles, scripts and data.  
-For a better overview it is useful to define different types of patterns. It is recommended to make 
+For a better overview it is useful to define different types of patterns in `config.json`. It is recommended to make 
 subfolders like `atoms`, `molecules` & `organisms`  
 A pattern uses the following structure:
 
@@ -100,6 +100,8 @@ Different data variations has to be placed in the `_data` folder:
 ### Creating patterns with yo
 
     yo nitro:pattern
+
+This will copy the templates (nitro.patterns.<type>.template) from `config.json` to the configured target.
 
 ### Creating pages
 
@@ -241,7 +243,7 @@ If you need a different layout for a page, do so in the corresponding data file:
 #### Dynamic view data
 
 If you want to use dynamic view data (i.e. using data from a database or data which is available in different views), 
-you can define those "routes" in the directory [`project/viewData/`](../viewData/README.md). 
+you can define those "routes" in the directory [`project/viewData/`](../viewData/readme.md). 
 
 #### Data per pattern
 
@@ -452,7 +454,7 @@ This hook will:
 * run `npm install` if someone changes `package.json` 
 * sync this git hooks if someone changes one.
  
-You may [change this or add other hooks](../.githooks/README.md) in `project/.githooks`.
+You may [change this or add other hooks](../.githooks/readme.md) in `project/.githooks`.
 
 ### Contributing
 

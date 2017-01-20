@@ -84,7 +84,6 @@ function reloadConfig() {
 	return config;
 }
 
-
 module.exports = {
 	getBrowserCompatibility,
 	getBrowserSyncInstance,
