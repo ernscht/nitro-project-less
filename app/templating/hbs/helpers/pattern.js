@@ -31,11 +31,11 @@ const patternBasePaths = Object.keys(config.nitro.patterns).map((key) => {
 
 function getPattern(folder, templateFile, dataFile) {
 
-	let pattern = {};
+	let pattern = null;
 
-	// look for base pattern
+	// search base pattern
 	patternBasePaths.forEach((patternBasePath) => {
-		if (!pattern.templateFilePath) {
+		if (!pattern) {
 			const templateFilePath = path.join(
 				config.nitro.base_path,
 				patternBasePath,
@@ -54,30 +54,36 @@ function getPattern(folder, templateFile, dataFile) {
 			);
 
 			if (fs.existsSync(templateFilePath)) {
-				pattern.templateFilePath = templateFilePath;
-				pattern.jsonFilePath = jsonFilePath;
+				pattern = {
+					templateFilePath: templateFilePath,
+					jsonFilePath: jsonFilePath,
+				}
 			}
 		}
 	});
 
 	// maybe its an element...
-	if (!pattern.templateFilePath) {
+	if (!pattern) {
 
 		const elementGlobs = patternBasePaths.map((patternBasePath) => {
 			return `${patternBasePath}/*/elements/${folder}/${templateFile}.${config.nitro.view_file_extension}`;
 		});
 
 		globby.sync(elementGlobs).forEach((templatePath) => {
-			pattern.templateFilePath = templatePath;
-			pattern.jsonFilePath = path.join(
-				path.dirname(templatePath),
-				'/_data/',
-				`${dataFile}.json`
-			);
+			if (!pattern) {
+				pattern =  {
+					templateFilePath: templatePath,
+					jsonFilePath: path.join(
+						path.dirname(templatePath),
+						'/_data/',
+						`${dataFile}.json`
+					)
+				}
+			}
 		});
 	}
 
-	return pattern.templateFilePath ? pattern : null;
+	return pattern;
 }
 
 module.exports = function pattern () {
