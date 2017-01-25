@@ -2,8 +2,7 @@
 	<h2 class="m-example__headline">2. Template - {{title}}</h2>
 	<ul>
 		{{#each links}}
-		<li><a class="m-example__link" href="{{uri}}">{{text}}</a></li>
+		{{pattern 'Example-link' data=this}}
 		{{/each}}
 	</ul>
-
 </div>
