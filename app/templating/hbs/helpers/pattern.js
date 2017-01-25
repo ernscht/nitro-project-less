@@ -71,7 +71,7 @@ function getPattern(folder, templateFile, dataFile) {
 
 		globby.sync(elementGlobs).forEach((templatePath) => {
 			if (pattern) {
-				throw new Error(`You have multiple patterns defined with the name \`${folder}\``);
+				throw new Error(`You have multiple elements defined with the name \`${folder}\``);
 			} else {
 				pattern =  {
 					templateFilePath: templatePath,
