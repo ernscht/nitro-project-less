@@ -1,0 +1,29 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"title": "test",
+	"description": "A test organism",
+	"type": "object",
+	"properties": {
+		"modifier": {
+			"description": "A pattern modifier",
+			"type": "string"
+		},
+		"decorator": {
+			"description": "A pattern decorator",
+			"type": "string"
+		},
+		"linkText": { "type": "string" },
+		"pageTitle": { "type": "string" },
+		"first": { "type": "string" },
+		"one": { "type": "string" },
+		"two": { "type": "string" },
+		"three": { "type": "string" },
+		"four": { "type": "string" },
+		"content": { "type": "string" }
+	},
+	"required": ["linkText"],
+	"dependencies": {
+		"one": ["first"],
+		"pageTitle": ["linkText"]
+	}
+}

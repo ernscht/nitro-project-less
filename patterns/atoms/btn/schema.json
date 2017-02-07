@@ -1,0 +1,33 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"title": "btn",
+	"description": "A btn atom",
+	"type": "object",
+	"properties": {
+		"modifier": {
+			"description": "A pattern modifier",
+			"type": "string"
+		},
+		"decorator": {
+			"description": "A pattern modifier",
+			"type": "string"
+		},
+		"linkText": {
+			"type": "string"
+		},
+		"linkTextli": { "type": "string" },
+		"test": {
+			"type": "object",
+			"properties": {
+				"text": {
+					"type": "string"
+				}
+			},
+			"required": ["text"]
+		}
+	},
+	"anyOf": [
+		{"required": ["linkText", "test"]},
+		{"required": ["linkTextli"]}
+	]
+}
