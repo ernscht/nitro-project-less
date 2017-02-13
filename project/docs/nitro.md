@@ -77,13 +77,17 @@ This works a bit different on **Windows**. Use the following commands in prompt:
 ### Creating Patterns
 
 Patterns are created in the `patterns` folder. A pattern is an encapsulated block of markup 
-with corresponding styles, scripts and data.  
+with corresponding styles, scripts and data. The pattern data can be described in `schema.json` 
+with [JSON schema](http://json-schema.org) format. Nitro uses [ajv](http://epoberezkin.github.io/ajv/) for validation.
+
 For a better overview it is useful to define different types of patterns in `config.json`. It is recommended to make 
 subfolders like `atoms`, `molecules` & `organisms`  
+
 A pattern uses the following structure:
 
     /example
     /example/example.html
+    /example/schema.json
     /example/css/example.css
     /example/js/example.js
     /example/_data/example.json
@@ -504,4 +508,4 @@ The following packages are installed by the [app](#name) generator as npm depend
 
 ### Credits
 
-This app was generated with yeoman and the [generator-nitro](https://www.npmjs.com/package/generator-nitro) package (version 1.0.2).
+This app was generated with yeoman and the [generator-nitro](https://www.npmjs.com/package/generator-nitro) package (version 1.0.3).
