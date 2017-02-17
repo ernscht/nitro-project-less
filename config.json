@@ -30,6 +30,11 @@
 	},
 	"nitro": {
 		"patterns": {
+			"aaa": {
+				"template": "project/blueprints/pattern",
+				"path": "patterns/aaa",
+				"pattern_prefix": "a"
+			},
 			"atom": {
 				"template": "project/blueprints/pattern",
 				"path": "patterns/atoms",

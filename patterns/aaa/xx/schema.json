@@ -1,0 +1,18 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"title": "xx",
+	"description": "A xx aaa",
+	"type": "object",
+	"properties": {
+		"modifier": {
+			"description": "A modifier",
+			"type": "string"
+		},
+		"decorator": {
+			"description": "A decorator",
+			"type": "string"
+		}
+	},
+	"required": ["modifier"],
+	"dependencies": {}
+}
