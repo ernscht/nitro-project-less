@@ -7,15 +7,30 @@
 			"patterns/**/css/*.less",
 			"patterns/**/css/modifier/*.less"
 		],
-		"app.2.css": [
+		"vendor.css": [
 			"+assets/css/*s.less",
+			"assets/css/reset.css",
+			"assets/css/*"
+		],
+		"app.brand.css": [
+			"+assets/css/*s.less",
+			"assets/css/basic.less",
 			"patterns/**/css/*.less"
 		],
 		"app.js": [
+			"assets/js/*.js",
+			"patterns/**/js/*.js",
+			"patterns/**/js/decorator/*.js",
+			"patterns/**/template/*.js",
+			"patterns/**/template/partial/*.js"
+		],
+		"vendor.js": [
 			"node_modules/babel-polyfill/dist/polyfill.min.js",
 			"node_modules/jquery/dist/jquery.min.js",
 			"node_modules/terrific/dist/terrific.min.js",
-			"node_modules/handlebars/dist/handlebars.runtime.min.js",
+			"node_modules/handlebars/dist/handlebars.runtime.min.js"
+		],
+		"app.brand.js": [
 			"assets/js/*.js",
 			"patterns/**/js/*.js",
 			"patterns/**/js/decorator/*.js",
