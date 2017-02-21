@@ -93,7 +93,7 @@ module.exports = (gulp, plugins) => {
 			'assets/js/**/*.js',
 			'patterns/**/js/**/*.js',
 			'patterns/**/template/**/*.hbs'
-		], (e) => {
+		], () => {
 			processChange('js', function() {
 				gulp.start('compile-js');
 			});
