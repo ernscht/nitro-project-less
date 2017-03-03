@@ -1,10 +1,14 @@
 'use strict';
 
+const merge = require('merge-stream');
+
 module.exports = (gulp, plugins) => {
 	return () => {
-		return gulp
-			.src(['assets/font/**/*'])
+		const fonts = gulp
+			.src(['assets/font/**/*.*'])
 			.pipe(plugins.newer('public/assets/font'))
 			.pipe(gulp.dest('public/assets/font'));
+
+		return merge(fonts);
 	};
 };
