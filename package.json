@@ -1,7 +1,7 @@
 {
   "name": "nitro-project",
   "version": "0.0.0",
-  "description": "Nitro is a Node.js application for simple and complex frontend development with a tiny footprint. This app is based on generator-nitro 1.1.2",
+  "description": "Nitro is a Node.js application for simple and complex frontend development with a tiny footprint. This app is based on generator-nitro 1.1.3",
   "license": "UNLICENSED",
   "private": true,
   "author": "The Nitro Team",
@@ -39,7 +39,7 @@
   "devDependencies": {
     "@namics/eslint-config": "2.2.0",
     "@namics/stylelint-bem": "3.1.1",
-    "ajv": "4.11.3",
+    "ajv": "4.11.4",
     "autoprefixer": "6.7.6",
     "babel-preset-es2015": "6.22.0",
     "body-parser": "1.17.0",
