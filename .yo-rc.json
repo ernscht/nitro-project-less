@@ -5,7 +5,7 @@
     "jscompiler": "JavaScript",
     "viewExtension": "html",
     "clientTemplates": true,
-    "exporter": false,
+    "exporter": true,
     "release": false
   },
   "generator-nitro": {
@@ -14,7 +14,7 @@
     "jscompiler": "JavaScript",
     "viewExtension": "html",
     "clientTemplates": true,
-    "exporter": false,
+    "exporter": true,
     "release": false
   }
 }
