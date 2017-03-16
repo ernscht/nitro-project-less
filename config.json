@@ -1,19 +1,20 @@
 {
 	"assets": {
 		"app.css": [
-			"+assets/css/*s.less",
-			"assets/css/reset.css",
-			"assets/css/basic.less",
+			"+assets/css/example/*s.less",
+			"+assets/css/dep/*s.less",
+			"assets/css/example/reset.css",
+			"assets/css/*.less",
 			"patterns/**/css/*.less",
 			"patterns/**/css/modifier/*.less"
 		],
 		"vendor.css": [
-			"+assets/css/*s.less",
 			"assets/css/reset.css",
 			"assets/css/*"
 		],
 		"app.brand.css": [
-			"+assets/css/*s.less",
+			"+assets/css/example/*s.less",
+			"+assets/css/dep/*s.less",
 			"assets/css/basic.less",
 			"patterns/**/css/*.less"
 		],
