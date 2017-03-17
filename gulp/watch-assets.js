@@ -119,6 +119,12 @@ module.exports = (gulp, plugins) => {
 		});
 
 		plugins.watch([
+			'patterns/atoms/icon/img/icons/*.svg'
+		], () => {
+			gulp.start('svg-sprite');
+		});
+
+		plugins.watch([
 			'assets/font/**/*'
 		], () => {
 			gulp.start('copy-assets');
