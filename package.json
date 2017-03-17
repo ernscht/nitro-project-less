@@ -102,9 +102,10 @@
     "karma-jasmine": "1.1.0",
     "karma-phantomjs-launcher": "1.0.4",
     "merge-stream": "1.0.1",
-    "nitro-exporter": "0.2.1",
+    "nitro-exporter": "0.3.2",
     "npm-run-all": "4.0.2",
     "stylelint": "7.9.0",
-    "text-table": "0.2.0"
+    "text-table": "0.2.0",
+    "yargs": "7.0.2"
   }
 }
