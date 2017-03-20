@@ -502,11 +502,11 @@ You may [change this or add other hooks](../.githooks/readme.md) in `project/.gi
 
 The following packages are installed by the [app](#name) generator as npm dependencies:
 
-* [jQuery 3.1.1](http://jquery.com/)
+* [jQuery 3.2.0](http://jquery.com/)
 * [TerrificJS 3.0.0](https://github.com/brunschgi/terrificjs)
 * [Handlebars 4.0.6](https://github.com/components/handlebars.js)
 * [Babel Polyfill 6.23.0](https://www.npmjs.com/package/babel-polyfill)
 
 ### Credits
 
-This app was generated with yeoman and the [generator-nitro](https://www.npmjs.com/package/generator-nitro) package (version 1.1.3).
+This app was generated with yeoman and the [generator-nitro](https://www.npmjs.com/package/generator-nitro) package (version 1.2.0).
