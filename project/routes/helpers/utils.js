@@ -1,3 +1,5 @@
+'use strict';
+
 //var gulp = require('gulp');
 
 function getRandomInt(min, max) {
@@ -5,5 +7,5 @@ function getRandomInt(min, max) {
 }
 
 module.exports = {
-	getRandomInt: getRandomInt
+	getRandomInt
 };
