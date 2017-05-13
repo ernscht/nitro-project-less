@@ -45,8 +45,8 @@
 		},
 		"validation": {
 			"jsonSchema": {
-				"logMissingSchemaAsWarning": true,
-				"logMissingSchemaAsError": false
+				"logMissingSchemaAsError": false,
+				"logMissingSchemaAsWarning": true
 			}
 		}
 	},

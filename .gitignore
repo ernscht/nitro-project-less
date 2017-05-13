@@ -22,14 +22,14 @@ atlassian-ide-plugin.xml
 /components/**/template/*.js
 /components/**/template/partial/*.js
 /config/local*
-/dist
+dist
 /node_modules
+/npm-debug.log
 /patterns/**/template/*.js
 /patterns/**/template/partial/*.js
 /project/tmp
 /public/assets
 /.servepid
-/npm-debug.log
 
 # Build
 /node
