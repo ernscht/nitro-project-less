@@ -51,7 +51,7 @@
 		}
 	},
 	"exporter": {
-		"dest": "dist",
+		"dest": "dist/export",
 		"i18n": [],
 		"publics": true,
 		"renames": [
