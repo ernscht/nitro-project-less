@@ -29,7 +29,7 @@ function getViews () {
 		.map((view) => view.url);
 }
 
-module.exports = function (gulp, plugins) {
+module.exports = (gulp, plugins) => {
 	return () => {
 		return getPort()
 			.then((port) => {
@@ -63,11 +63,11 @@ module.exports = function (gulp, plugins) {
 									base: `http://localhost:${port}/`,
 									buffer: true
 								})
-									.pipe(plugins.rename(function (path) {
+									.pipe(plugins.rename((path) => {
 										const lang = path.basename.match(/\?lang=([a-z]+)/);
 										path.extname = '.html';
 										if(lang) {
-											path.basename = path.basename.replace(/\?lang=[a-z]+/, '')
+											path.basename = path.basename.replace(/\?lang=[a-z]+/, '');
 											path.basename += `-${lang[1]}`;
 										}
 									}))

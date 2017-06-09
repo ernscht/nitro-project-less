@@ -31,4 +31,3 @@ module.exports = (gulp, plugins) => {
 		return Promise.all(promises);
 	};
 };
-
