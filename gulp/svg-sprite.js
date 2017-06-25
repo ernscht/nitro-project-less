@@ -25,7 +25,26 @@ module.exports = (gulp, plugins) => {
 			.pipe(plugins.svgstore({ inlineSvg: true }))
 			.pipe(gulp.dest('public/assets/svg'));
 
-		// or return merge(svgIcons, otherStream);
-		return svgIcons;
+		const svgIcos = gulp
+			.src('patterns/atoms/ico/img/icos/*.svg')
+			.pipe(plugins.svgmin((file) => {
+				var prefix = path.basename(file.relative, path.extname(file.relative));
+				return {
+					plugins: [
+						{
+							removeDoctype: true
+						}, {
+							cleanupIDs: {
+								prefix: prefix + '-',
+								minify: true
+							}
+						}
+					]
+				}
+			}))
+			.pipe(plugins.svgstore({ inlineSvg: true }))
+			.pipe(gulp.dest('public/assets/svg'));
+
+		return merge(svgIcons, svgIcos);
 	};
 };
