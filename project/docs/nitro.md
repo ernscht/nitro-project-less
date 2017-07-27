@@ -96,8 +96,8 @@ set NODE_ENV=production && npm run prod
 
 ## Configuring
 
-Nitro uses the very flexible `node-config` package for configuration. 
-* local, environment, ... differnet file formats, ...
+Nitro uses the flexible [config package](https://www.npmjs.com/package/config) for project configuration. 
+This lets you to extend the default configuration for different deployment environments or local usage.  
 See details in [config readme](nitro-config.md)
 
 ## Daily Work - Creating Patterns & Pages
@@ -490,6 +490,7 @@ If you don't want to use [Handlebars](http://handlebarsjs.com/) as Nitro's Templ
 you can configure your own Engine.  
 This example shows how to replace Handlebars with [Nunjucks](https://mozilla.github.io/nunjucks/) as an example.
 
+All these steps need to be performed in `server.js`.
 All these steps need to be performed in `server.js`.
 
 1. Replace the line `hbs = require('./app/templating/hbs/engine')` with `nunjucks = require('nunjucks')`
