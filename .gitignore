@@ -21,7 +21,8 @@ atlassian-ide-plugin.xml
 /assets/vendor
 /components/**/template/*.js
 /components/**/template/partial/*.js
-/config/local*
+/config/local.*
+/config/local-*
 /dist
 /node_modules
 npm-debug.log

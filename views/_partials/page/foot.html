@@ -1,4 +1,6 @@
+<script src="/assets/js/vendor{{#if _minified}}.min{{/if}}.js"></script>
 <script src="/assets/js/app{{#if _minified}}.min{{/if}}.js"></script>
+
 <script>
 	$(document).ready(function () {
 		var application = new T.Application();
@@ -6,3 +8,5 @@
 		application.start();
 	});
 </script>
+
+<p>{{pageTitle}} = pageTitle (view)</p>
