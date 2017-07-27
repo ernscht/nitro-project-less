@@ -1,3 +1,3 @@
-# Example
+# Test
 
-This is only an example.
+This is a test pattern. 
