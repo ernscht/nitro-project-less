@@ -3,7 +3,7 @@
 const gulp = require('gulp');
 const getTask = require('./gulp/utils').getTask;
 const gulpSequence = require('gulp-sequence').use(gulp);
-const config = require('./app/core/config');
+const config = require('config');
 require('nitro-exporter')(gulp, config);
 
 gulp.task('sync-githooks', getTask('sync-githooks'));

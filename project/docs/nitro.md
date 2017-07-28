@@ -8,11 +8,11 @@ Nitro is simple, fast and flexible. Use this app for all your frontend work.
 
 ## Features
 
-* Simple project structure
+* Simple and proven project structure
 * CSS/JS concatenation and minification
 * LESS/SCSS support (with caching for optimal performance)
 * ES2015 with babel transpiling
-* Source Maps, Linting, PostCSS & Browsersync
+* Linting, Source Maps, PostCSS & Browsersync
 * Jasmine tests with Karma test runner
 * Yeoman pattern generator
 * [Client side templates](client-templates.md)
@@ -21,13 +21,14 @@ Nitro is simple, fast and flexible. Use this app for all your frontend work.
 ## Preparation
 
 This application was created by the yeoman generator for nitro.  
-Before using, you need of course [node and npm](https://nodejs.org/) installed.
-Currently supported node.js versions are 4.x and 6.x. So everything between should work.  
-And also you need the yeoman [generator-nitro](https://www.npmjs.com/package/generator-nitro)
-and the [yeoman cli tool](https://www.npmjs.com/package/yo) installed globally.
+Before using, you need of course [node](https://nodejs.org/) installed.
+Nitro is tested with the current LTS versions of the node.js releases 4 and 6
+and should also work with node.js release 8.  
+And also you need [yarn](https://www.npmjs.com/package/yarn), the [yeoman cli tool](https://www.npmjs.com/package/yo) 
+and the yeoman [generator-nitro](https://www.npmjs.com/package/generator-nitro) globally.
 
 ```
-npm install -g yo generator-nitro
+npm install -g yarn yo generator-nitro
 ```
 
 Keep your global packages up to date:
@@ -45,7 +46,7 @@ npm update -g
 Install the project dependencies in the project root:
 
 ```
-npm install
+yarn install
 ```
 
 ## Starting the app
@@ -53,7 +54,7 @@ npm install
 Use
 
 ```
-npm run dev
+yarn dev
 ```
 
 ... to start in development mode
@@ -69,14 +70,14 @@ node server
 For production mode add `NODE_ENV=production` environment variable
 
 ```
-NODE_ENV=production && npm run prod
+NODE_ENV=production && yarn prod
 ```
 
 The Nitro app will run on port `8080` by default, the proxy on `8081` (only run with `dev` task).  
 If you want the app to run on another port put them before the start task like this:
 
 ```
-PORT=8000 PROXY=8001 npm run dev
+PORT=8000 PROXY=8001 yarn dev
 ```
 
 The port to be used in production can be set the same way:
@@ -88,10 +89,16 @@ PORT=3000 node server
 This works a bit different on **Windows**. Use the following commands in prompt:
 
 ```
-set PORT=8000 && set PROXY=8001 && npm run dev
+set PORT=8000 && set PROXY=8001 && yarn dev
 set PORT=3000 && node server
-set NODE_ENV=production && npm run prod
+set NODE_ENV=production && yarn prod
 ```
+
+## Configuring
+
+Nitro uses the flexible [config package](https://www.npmjs.com/package/config) for project configuration. 
+This lets you to extend the default configuration for different deployment environments or local usage.  
+See details in [config readme](nitro-config.md)
 
 ## Daily Work - Creating Patterns & Pages
 
@@ -99,10 +106,11 @@ set NODE_ENV=production && npm run prod
 
 Patterns are created in the `patterns` folder. A pattern is an encapsulated block of markup
 with corresponding styles, scripts and data. The pattern data can be described in `schema.json`
-with [JSON schema](http://json-schema.org) format. Nitro uses [ajv](http://epoberezkin.github.io/ajv/) for validation.
+with [JSON schema](http://json-schema.org) format (draft-04). Nitro uses [ajv](http://epoberezkin.github.io/ajv/) for validation.
 
-For a better overview it is useful to define different types of patterns in `config.json`. It is recommended to make
-subfolders like `atoms`, `molecules` & `organisms`
+For a better overview it is useful to define different types of patterns in [config](nitro-config.md).
+
+It is recommended to make subfolders like `atoms`, `molecules` & `organisms`.
 
 A pattern uses the following structure:
 
@@ -134,7 +142,7 @@ Different data variations have to be placed in the `_data` folder:
 yo nitro:pattern
 ```
 
-This will copy the templates (nitro.patterns.<type>.template) from `config.json` to the configured target.
+This will copy the templates (nitro.patterns.<type>.template) from config to the configured target.
 
 ### Creating pattern elements
 
@@ -292,6 +300,10 @@ Render a partial (HTML snippet). Partials are placed in `views/_partials/` as `*
 {{> head}}
 ```
 
+Partials are registered with [hbs-utils](https://www.npmjs.com/package/hbs-utils#partials), 
+so keep in mind that every space or hyphen in filenames is replaced with an underscore.
+(e.g. use `{{> file_name}}` to load `views/_partials/file-name.html`)
+
 ### Render placeholders
 
 Using a placeholder is another way to output some markup. Placeholders are placed in a folder inside `views/_placeholders/` as `*.html` files.  
@@ -370,65 +382,9 @@ It's also possible to use dot notation for object data:
 ## Assets
 
 One of Nitro's main feature is asset concatenation for CSS and JavaScript files.
-If changed, the files will be updated on every change,
-therefore you'll always get the latest version.
+If changed, the files will be updated on every change, therefore you'll always get the latest version.
 
-### Assets Configuration
-
-You can configure the include order of your assets by defining patterns in `config.json`.
-
-```json
-"assets": {
-    "app.css": [
-        "!assets/css/somefile.*",
-        "assets/css/cssreset.css",
-        "assets/css/*.*",
-        "patterns/**/css/*.*",
-        "patterns/**/css/modifier/*.*"
-    ],
-    "app.js": [
-        "!assets/js/somefile.js",
-        "assets/vendor/jquery/dist/jquery.min.js",
-        "assets/vendor/terrific/dist/terrific.min.js",
-        "assets/js/*.js",
-        "patterns/**/js/*.js",
-        "patterns/**/js/decorator/*.js"
-    ]
-}
-```
-
-#### Pattern
-
-The matching patterns follow the standard node glob patterns.  
-Glob patterns are similar to regular expression but simplified. They are used by several shells.  
-You should always try to keep the patterns simple. Usually you only need the asterisks `*` `**` and the exclamation mark `!` for negation.
-
-You can read more on the standard [node glob patterns](https://github.com/isaacs/node-glob#glob-primer).
-
-#### Special Pattern Prefixes
-
-* You can negate a pattern by starting with an exclamation mark `!`.
-  `!` = exclude pattern
-* Define all your dependencies for the compiling-process with the `+` prefix
-  `+` = exclude file but prepend it to every compile call for files with the same file extension.
-
-The order of these special patterns does not matter.
-
-#### Examples
-
-* `"!patterns/*/test*"`         Exclude all patterns starting with `test`
-* `"!**/*-test.*"`              Exclude all filenames ending with `-test`.
-* `"+assets/css/mixins.less"`   Exclude `assets/css/mixins.less` but prepend to every compile call of every .less file
-
-### Other asset files
-
-You can configure as many different assets as you wish.
-
-```
-"brand.css": [
-    "assets/css/reset.css",
-    ...
-```
+You can configure the include order of your assets by defining patterns in [config](nitro-config.md).
 
 ## Translations
 
@@ -520,7 +476,7 @@ The helper name will automatically match the filename, so if you name your file 
 
 ### JSON Endpoints
 
-If you need to mock service endpoints, you can put JSON files into a directory inside the `/public` directory as
+If you need to mock service endpoints, you can simply put JSON files into a directory inside the `/public` directory as
 those are directly exposed.
 
 `/public/service/posts.json` will be available under `/service/posts.json`
@@ -540,17 +496,17 @@ This example shows how to replace Handlebars with [Nunjucks](https://mozilla.git
 
 All these steps need to be performed in `server.js`.
 
-1. Replace the line `hbs = require('./app/core/hbs')` with `nunjucks = require('nunjucks')`
-2. Remove the line `app.engine(config.nitro.view_file_extension, hbs.__express);`
+1. Replace the line `hbs = require('./app/templating/hbs/engine')` with `nunjucks = require('nunjucks')`
+2. Remove the partials line and  `app.engine(config.get('nitro.viewFileExtension'), hbs.__express);`
 3. Configure nunjucks as Express' Template Engine with the following block:
 
 ```js
 nunjucks.configure(
-    config.nitro.base_path + config.nitro.view_directory,
+    config.get('nitro.basePath') + config.get('nitro.viewDirectory'),
     {
         autoescape: true,
         express: app
-    }
+    },
 );
 ```
 
@@ -567,11 +523,11 @@ Nitro uses [Gulp](http://gulpjs.com/) under the hood and can therefore be used o
 
 ### Git Hooks
 
-Nitro tries to install a `post-merge` git hook with every `npm install` (if we are in git root).
+Nitro tries to install a `post-merge` git hook with every `yarn install` (if we are in git root).
 
 This hook will:
 
-* run `npm install` if someone changes `package.json`
+* run `yarn install` if someone changes `package.json`
 * sync this git hooks if someone changes one.
 
 You may [change this or add other hooks](../.githooks/readme.md) in `project/.githooks`.
@@ -585,11 +541,11 @@ You may [change this or add other hooks](../.githooks/readme.md) in `project/.gi
 
 * [YUI CSS Reset 3.18.1](http://yuilibrary.com/yui/docs/cssreset/)
 * Favicon & Home-Icons from Nitro (replace with your own)
-* Pattern `example` and some styles in assets/css (you don't need them)
+* Pattern `example` and `icon` and some styles in assets/css (you don't need them)
 
 #### Client Dependencies
 
-The following packages are installed by the [app](#name) generator as npm dependencies:
+The following packages are installed by the [app](#name) generator as dependencies:
 
 * [jQuery 3.2.0](http://jquery.com/)
 * [TerrificJS 3.0.0](https://github.com/brunschgi/terrificjs)
@@ -598,4 +554,4 @@ The following packages are installed by the [app](#name) generator as npm depend
 
 ### Credits
 
-This app was generated with yeoman and the [generator-nitro](https://www.npmjs.com/package/generator-nitro) package (version 1.3.3).
+This app was generated with yeoman and the [generator-nitro](https://www.npmjs.com/package/generator-nitro) package (version 2.0.0-beta).

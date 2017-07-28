@@ -1,31 +1,25 @@
 'use strict';
 
-let config = require('../app/core/config');
+const config = require('config');
 const utils = require('./utils');
 const globby = require('globby');
 
 module.exports = (gulp, plugins) => {
 
+	const throttleBase = config.get('nitro.watch.throttle.base');
+	const throttleCache = config.get('nitro.watch.throttle.cache');
+	const lastRun = {};
+
 	function isDependentStyleSource(file) {
 		let isDependent = false;
 		utils.getSourcePatterns('css').forEach((asset) => {
 			globby.sync(asset.deps).forEach((path) => {
-				if ( file.replace(/\\/g, '/').endsWith(path) ) {
+				if (file.replace(/\\/g, '/').endsWith(path)) {
 					isDependent = true;
 				}
 			});
 		});
 		return isDependent;
-	}
-	function clearJsCache() {
-		utils.getSourcePatterns('js').forEach((asset) => {
-			if (plugins.cached.caches && plugins.cached.caches[asset.name]) {
-				delete plugins.cached.caches[asset.name];
-			}
-			if (plugins.remember.cacheFor(asset.name)) {
-				plugins.remember.forgetAll(asset.name);
-			}
-		});
 	}
 	function clearCssCache() {
 		utils.getSourcePatterns('css').forEach((asset) => {
@@ -40,21 +34,15 @@ module.exports = (gulp, plugins) => {
 	function checkCssCache(e) {
 		if (
 			isDependentStyleSource(e.path) ||
-			'unlink' === e.event
+			e.event === 'unlink'
 		) {
-			processChange('cssCache', clearCssCache, 5000);
+			processChange('cssCache', clearCssCache, throttleCache);
 		}
 	}
-	function clearCache() {
-		processChange('jsCache', clearJsCache, 5000);
-		processChange('cssCache', clearCssCache, 5000);
-	}
-
-	const lastRun = {};
 	function processChange(type, func, throttle) {
 		type = type || 'other';
-		func = func || function(){};
-		throttle = throttle || 1000;
+		func = func || function () {};
+		throttle = throttle || throttleBase;
 
 		// call function only once in defined time
 		lastRun[type] = lastRun[type] || 0;
@@ -68,20 +56,8 @@ module.exports = (gulp, plugins) => {
 		const browserSync = utils.getBrowserSyncInstance();
 
 		plugins.watch([
-			'config.json'
-		], () => {
-			processChange('config', () => {
-				config = utils.reloadConfig();
-				clearCache();
-				utils.updateSourcePatterns();
-				gulp.start('compile-css');
-				gulp.start('compile-js');
-			}, 6000);
-		});
-
-		plugins.watch([
 			'assets/css/**/*.less',
-			'patterns/**/css/**/*.less'
+			'patterns/**/css/**/*.less',
 		], (e) => {
 			processChange('css', () => {
 				checkCssCache(e);
@@ -92,7 +68,7 @@ module.exports = (gulp, plugins) => {
 		plugins.watch([
 			'assets/js/**/*.js',
 			'patterns/**/js/**/*.js',
-			'patterns/**/template/**/*.hbs'
+			'patterns/**/template/**/*.hbs',
 		], () => {
 			processChange('js', () => {
 				gulp.start('compile-js');
@@ -100,32 +76,34 @@ module.exports = (gulp, plugins) => {
 		});
 
 		plugins.watch([
-			'views/**/*.' + config.nitro.view_file_extension,
-			config.nitro.view_data_directory + '/**/*.json',
-			'patterns/**/*.' + config.nitro.view_file_extension,
+			`views/**/*.${config.get('nitro.viewFileExtension')}`,
+			`${config.get('nitro.viewDataDirectory')}/**/*.json`,
+			`patterns/**/*.${config.get('nitro.viewFileExtension')}`,
 			'!patterns/**/template/**/*.hbs',
 			'patterns/**/schema.json',
-			'patterns/**/_data/*.json'
+			'patterns/**/_data/*.json',
 		], () => {
 			processChange('data', () => {
-				browserSync.reload();
+				if (config.get('nitro.mode.livereload')) {
+					browserSync.reload('*.html');
+				}
 			});
 		});
 
 		plugins.watch([
-			'assets/img/**/*'
+			'assets/img/**/*',
 		], () => {
 			gulp.start('minify-img');
 		});
 
 		plugins.watch([
-			'patterns/atoms/icon/img/icons/*.svg'
+			'patterns/atoms/icon/img/icons/*.svg',
 		], () => {
 			gulp.start('svg-sprite');
 		});
 
 		plugins.watch([
-			'assets/font/**/*'
+			'assets/font/**/*',
 		], () => {
 			gulp.start('copy-assets');
 		});
