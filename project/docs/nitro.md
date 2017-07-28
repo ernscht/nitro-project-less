@@ -24,8 +24,9 @@ This application was created by the yeoman generator for nitro.
 Before using, you need of course [node](https://nodejs.org/) installed.
 Nitro is tested with the current LTS versions of the node.js releases 4 and 6
 and should also work with node.js release 8.  
-And also you need [yarn](https://www.npmjs.com/package/yarn), the [yeoman cli tool](https://www.npmjs.com/package/yo) 
-and the yeoman [generator-nitro](https://www.npmjs.com/package/generator-nitro) globally.
+And also you need [yarn](https://www.npmjs.com/package/yarn), 
+the [yeoman cli tool](https://www.npmjs.com/package/yo) and
+the yeoman [generator-nitro](https://www.npmjs.com/package/generator-nitro) installed globally.
 
 ```
 npm install -g yarn yo generator-nitro
@@ -527,7 +528,7 @@ Nitro tries to install a `post-merge` git hook with every `yarn install` (if we 
 
 This hook will:
 
-* run `yarn install` if someone changes `package.json`
+* run `yarn install` if someone changes `yarn.lock`
 * sync this git hooks if someone changes one.
 
 You may [change this or add other hooks](../.githooks/readme.md) in `project/.githooks`.
