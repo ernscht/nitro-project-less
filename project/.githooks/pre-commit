@@ -5,17 +5,8 @@
 # git hook to run commands before `git commit` if specific source files were changed.
 # Run `chmod +x pre-commit` to make it executable then put it into `.git/hooks/`.
 
-# stash unstaged changes
-#STASH_NAME="pre-commit-$(date +%s)"
-#git stash save -q --keep-index $STASH_NAME
-
-# debug information
-#node --version
-#npm --version
-#yarn --version
-
 # ok if there are no changed source files
-FILES_PATTERN="\.(less|js|html)$"
+FILES_PATTERN="\.(less|js|html|json)$"
 if git diff --cached --name-only | grep -E --quiet "$FILES_PATTERN"
 then
   yarn test
@@ -23,13 +14,6 @@ then
 else
   exitCode=0
 fi
-
-# restore stashed files
-#STASHES=$(git stash list)
-#if [[ $STASHES == "$STASH_NAME" ]]
-#then
-#  git stash pop -q
-#fi
 
 # Exit code
 exit $exitCode
