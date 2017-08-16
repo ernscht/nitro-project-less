@@ -1,7 +1,7 @@
 {
   "name": "nitro-project",
   "version": "0.0.0",
-  "description": "Nitro is a Node.js application for simple and complex frontend development with a tiny footprint. This app is based on generator-nitro 2.0.0",
+  "description": "Nitro is a Node.js application for simple and complex frontend development with a tiny footprint. This app is based on generator-nitro 2.0.3",
   "license": "UNLICENSED",
   "private": true,
   "author": "The Nitro Team",
@@ -86,7 +86,7 @@
     "gulp-sequence": "0.4.6",
     "gulp-size": "2.1.0",
     "gulp-sourcemaps": "2.6.0",
-    "gulp-stylelint": "4.0.0",
+    "gulp-stylelint": "3.9.0",
     "gulp-svgmin": "1.2.4",
     "gulp-svgstore": "6.1.0",
     "gulp-uglify": "3.0.0",
@@ -109,7 +109,7 @@
     "merge-stream": "1.0.1",
     "nitro-exporter": "0.3.2",
     "npm-run-all": "4.0.2",
-    "stylelint": "8.0.0",
+    "stylelint": "7.13.0",
     "text-table": "0.2.0",
     "yargs": "8.0.2"
   }
