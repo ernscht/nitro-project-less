@@ -22,8 +22,8 @@ Nitro is simple, fast and flexible. Use this app for all your frontend work.
 
 This application was created by the yeoman generator for nitro.  
 Before using, you need of course [node](https://nodejs.org/) installed.
-Nitro is tested with the current LTS versions of the node.js releases 4 and 6
-and should also work with node.js release 8.  
+Nitro is tested with the current LTS version of node.js (release 6)
+and also works with node.js release 8.  
 And also you need [yarn](https://www.npmjs.com/package/yarn), 
 the [yeoman cli tool](https://www.npmjs.com/package/yo) and
 the yeoman [generator-nitro](https://www.npmjs.com/package/generator-nitro) installed globally.
@@ -544,7 +544,7 @@ You may [change this or add other hooks](../.githooks/readme.md) in `project/.gi
 
 * [YUI CSS Reset 3.18.1](http://yuilibrary.com/yui/docs/cssreset/)
 * Favicon & Home-Icons from Nitro (replace with your own)
-* Pattern `example` and `icon` and some styles in assets/css (you don't need them)
+* Pattern `example` and `icon` and some styles in src/assets/css (you don't need them)
 
 #### Client Dependencies
 
@@ -557,4 +557,4 @@ The following packages are installed by the [app](#name) generator as dependenci
 
 ### Credits
 
-This app was generated with yeoman and the [generator-nitro](https://www.npmjs.com/package/generator-nitro) package (version 2.0.5).
+This app was generated with yeoman and the [generator-nitro](https://www.npmjs.com/package/generator-nitro) package (version 3.0.0-alpha).

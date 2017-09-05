@@ -1,21 +1,21 @@
 {
   "name": "nitro-project",
   "version": "0.0.0",
-  "description": "Nitro is a Node.js application for simple and complex frontend development with a tiny footprint. This app is based on generator-nitro 2.0.5",
+  "description": "Nitro is a Node.js application for simple and complex frontend development with a tiny footprint. This app is based on generator-nitro 3.0.0-alpha",
   "license": "UNLICENSED",
   "private": true,
   "author": "The Nitro Team",
   "engines": {
-    "node": ">=4 <9",
+    "node": ">=6 <9",
     "npm": ">=3 <6"
   },
   "scripts": {
     "githooks": "gulp sync-githooks",
     "lint": "npm-run-all lint:*",
-    "lint:accessibility": "gulp lint-accessibility",
-    "lint:css": "stylelint assets/**/*.*ss patterns/**/*.*ss",
+    "XXlint:accessibility": "gulp lint-accessibility",
+    "lint:css": "stylelint src/assets/**/*.*ss src/patterns/**/*.*ss",
     "lint:html": "gulp lint-html",
-    "lint:js": "eslint ./patterns ./assets/js",
+    "lint:js": "eslint ./src/patterns ./src/assets/js",
     "lint:data": "node app/scripts/validate-pattern-data.js",
     "postinstall": "yarn githooks",
     "test": "yarn lint && gulp test",

@@ -1,14 +1,14 @@
 {
 	"assets": {
 		"vendor.css": [
-			"assets/css/reset.css",
-			"assets/css/*"
+			"src/assets/css/reset.css",
+			"src/assets/css/*"
 		],
 		"app.brand.css": [
-			"+assets/css/example/*s.less",
-			"+assets/css/dep/*s.less",
-			"assets/css/basic.less",
-			"patterns/**/css/*.less"
+			"+src/assets/css/example/*s.less",
+			"+src/assets/css/dep/*s.less",
+			"src/assets/css/basic.less",
+			"src/patterns/**/css/*.less"
 		],
 		"vendor.js": [
 			"node_modules/babel-polyfill/dist/polyfill.min.js",
@@ -17,11 +17,11 @@
 			"node_modules/handlebars/dist/handlebars.runtime.min.js"
 		],
 		"app.brand.js": [
-			"assets/js/*.js",
-			"patterns/**/js/*.js",
-			"patterns/**/js/decorator/*.js",
-			"patterns/**/template/*.js",
-			"patterns/**/template/partial/*.js"
+			"src/assets/js/*.js",
+			"src/patterns/**/js/*.js",
+			"src/patterns/**/js/decorator/*.js",
+			"src/patterns/**/template/*.js",
+			"src/patterns/**/template/partial/*.js"
 		]
 	},
 	"nitro": {

@@ -6,7 +6,7 @@ const merge = require('merge-stream');
 module.exports = (gulp, plugins) => {
 	return () => {
 		const svgIcons = gulp
-			.src('patterns/atoms/icon/img/icons/*.svg')
+			.src('src/patterns/atoms/icon/img/icons/*.svg')
 			.pipe(plugins.svgmin((file) => {
 				const prefix = path.basename(file.relative, path.extname(file.relative));
 				return {
@@ -26,7 +26,7 @@ module.exports = (gulp, plugins) => {
 			.pipe(gulp.dest('public/assets/svg'));
 
 		const svgIcos = gulp
-			.src('patterns/atoms/ico/img/icos/*.svg')
+			.src('src/patterns/atoms/ico/img/icos/*.svg')
 			.pipe(plugins.svgmin((file) => {
 				const prefix = path.basename(file.relative, path.extname(file.relative));
 				return {

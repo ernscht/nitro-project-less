@@ -19,7 +19,7 @@ module.exports = function (config) {
 		files: [
 			'public/assets/js/vendor.js',
 			'public/assets/js/app.js',
-			'patterns/**/spec/*Spec.js',
+			'src/patterns/**/spec/*Spec.js',
 		],
 
 		// list of files to exclude
@@ -28,7 +28,7 @@ module.exports = function (config) {
 		// preprocess matching files before serving them to the browser
 		// available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
 		preprocessors: {
-			'patterns/**/spec/*Spec.js': ['babel'],
+			'src/patterns/**/spec/*Spec.js': ['babel'],
 		},
 		babelPreprocessor: {
 			options: {
