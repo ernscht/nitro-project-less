@@ -1,0 +1,125 @@
+{
+	"assets": {
+		"vendor.css": [
+			"assets/css/reset.css",
+			"assets/css/*"
+		],
+		"app.brand.css": [
+			"+assets/css/example/*s.less",
+			"+assets/css/dep/*s.less",
+			"assets/css/basic.less",
+			"patterns/**/css/*.less"
+		],
+		"vendor.js": [
+			"node_modules/babel-polyfill/dist/polyfill.min.js",
+			"node_modules/jquery/dist/jquery.min.js",
+			"node_modules/terrific/dist/terrific.min.js",
+			"node_modules/handlebars/dist/handlebars.runtime.min.js"
+		],
+		"app.brand.js": [
+			"assets/js/*.js",
+			"patterns/**/js/*.js",
+			"patterns/**/js/decorator/*.js",
+			"patterns/**/template/*.js",
+			"patterns/**/template/partial/*.js"
+		]
+	},
+	"nitro": {
+		"view_file_extension": "html",
+		"patterns": {
+			"aaa": {
+				"template": "project/blueprints/pattern",
+				"path": "patterns/aaa",
+				"pattern_prefix": "a"
+			}
+		}
+	},
+	"exporter": [
+		{
+			"dest": "dist",
+			"i18n": [],
+			"publics": true,
+			"renames": [
+				{
+					"src": "dist/assets/**",
+					"base": "dist/assets",
+					"dest": "dist/"
+				}
+			],
+			"replacements": [
+				{
+					"glob": ["dist/*.html", "dist/css/*.css"],
+					"replace": [
+						{
+							"from": "/assets/",
+							"to": ""
+						}
+					]
+				},
+				{
+					"glob": ["dist/js/*.js"],
+					"replace": [
+						{
+							"from": "/api",
+							"to": "api"
+						}
+					]
+				},
+				{
+					"glob": ["dist/*.html"],
+					"replace": [
+						{
+							"from": "([a-z]+)\\.(css|js)",
+							"to": "$1.min.$2"
+						}
+					]
+				}
+			],
+			"views": true,
+			"zip": false
+		},
+		{
+			"dest": "dist2",
+			"i18n": [],
+			"publics": true,
+			"renames": [
+				{
+					"src": "dist2/assets/**",
+					"base": "dist2/assets",
+					"dest": "dist2/"
+				}
+			],
+			"replacements": [
+				{
+					"glob": ["dist2/*.html", "dist2/css/*.css"],
+					"replace": [
+						{
+							"from": "/assets/",
+							"to": ""
+						}
+					]
+				},
+				{
+					"glob": ["dist2/js/*.js"],
+					"replace": [
+						{
+							"from": "/api",
+							"to": "api"
+						}
+					]
+				},
+				{
+					"glob": ["dist2/*.html"],
+					"replace": [
+						{
+							"from": "([a-z]+)\\.(css|js)",
+							"to": "$1.min.$2"
+						}
+					]
+				}
+			],
+			"views": true,
+			"zip": false
+		}
+	]
+}
