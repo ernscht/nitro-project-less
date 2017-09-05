@@ -44,6 +44,7 @@ const defaultConfig = {
 				cache: 3000,
 			},
 		},
+		viewFileExtension: 'html',
 	},
 	server: {
 		port: 8080,
