@@ -1,5 +1,7 @@
 {
-	"pageTitle": "pageTitle (view)",
+	"_nitro": {
+		"pageTitle": "pageTitle (view)"
+	},
 	"test": {
 		"text": "test.text (view)"
 	}

@@ -1,7 +1,7 @@
-<p>{{pageTitle}} = pageTitle (view)</p>
+<p>{{_nitro.pageTitle}} = pageTitle (view)</p>
 <p>{{test.text}} = test.text (view)</p>
 
-{{#unless _production}}
+{{#unless _nitro.production}}
 <div class="container">
 	{{pattern 'test' 'test-red'}}
 	<hr>
@@ -17,4 +17,3 @@
 {{pattern 'Ex' 'ex-subpattern'}}
 <hr />
 <p>{{test.text}} = test.text (view)</p>
-

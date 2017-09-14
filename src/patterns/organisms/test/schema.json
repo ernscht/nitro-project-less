@@ -13,7 +13,12 @@
 			"type": "string"
 		},
 		"linkText": { "type": "string" },
-		"pageTitle": { "type": "string" },
+		"_nitro": {
+			"type": "object",
+			"properties": {
+				"pageTitle": { "type": "string" }
+			}
+		},
 		"first": { "type": "string" },
 		"one": { "type": "string" },
 		"two": { "type": "string" },
@@ -24,6 +29,6 @@
 	"required": ["linkText"],
 	"dependencies": {
 		"one": ["first"],
-		"pageTitle": ["linkText"]
+		"_nitro.pageTitle": ["linkText"]
 	}
 }

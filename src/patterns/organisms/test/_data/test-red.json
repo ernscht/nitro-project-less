@@ -2,7 +2,9 @@
 	"modifier": "red",
 	"decorator": "red",
 	"linkText": "linkText (test red)",
-	"pageTitle": "pageTitle (test)",
+	"_nitro": {
+		"pageTitle": "pageTitle (test)"
+	},
 	"test": {
 		"text": ""
 	},

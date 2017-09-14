@@ -1,5 +1,7 @@
 {
-	"pageTitle": "The \"pattern\" page",
+	"_nitro": {
+		"pageTitle": "The \"pattern\" page"
+	},
 	"test": {
 		"text": "test.text (view)"
 	},
