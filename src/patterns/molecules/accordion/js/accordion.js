@@ -4,6 +4,29 @@
 	// import $ from 'jquery';
 	// import T from 'terrific';
 
+	const funcA = (type) => {
+		console.log(`funcA: type=${type}`); // eslint-disable-line
+	};
+
+	const funcB = (type = 'default') => {
+		console.log(`funcB: type=${type}`); // eslint-disable-line
+	};
+
+	funcA('fromFunc');
+	funcB();
+	funcB('fromFunc');
+
+	// oder
+	const multiply = (a, b = 1.12345) => {
+		return a * b;
+	};
+
+	/* eslint-disable */
+	console.log(multiply(5, 2)); // 10
+	console.log(multiply(5, 1)); // 5
+	console.log(multiply(5)); // 5
+	/* eslint-enable */
+
 	/**
 	 * accordion module implementation.
 	 *
