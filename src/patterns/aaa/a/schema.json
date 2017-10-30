@@ -1,17 +1,24 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"title": "a",
-	"description": "A a at",
+	"description": "A a aaa",
 	"type": "object",
 	"properties": {
 		"modifier": {
 			"description": "A modifier",
 			"type": "string"
 		},
-		"decorator": {
-			"description": "A decorator",
-			"type": "string"
+		"listitems": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"text": {
+						"type": "string"
+					}
+				}
+			}
 		}
 	},
-	"dependencies": {}
+	"required": ["listitems"]
 }

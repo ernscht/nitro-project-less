@@ -1,4 +1,23 @@
 {
 	"modifier": "",
-	"decorator": ""
+	"listitems": [
+		{
+			"text": "ffffffrom b"
+		},
+		{
+			"text": "ffffffrom b"
+		},
+		{
+			"text": "ffffffrom b"
+		},
+		{
+			"text": "ffffffrom b"
+		},
+		{
+			"text": "ffffffrom b"
+		}
+	],
+	"test": {
+		"othertext": "othertext"
+	}
 }

@@ -1,4 +1,14 @@
 {
 	"modifier": "",
-	"decorator": ""
+	"listitems": [
+		{
+			"text": "aaaaaa"
+		},
+		{
+			"text": "bbbbbb"
+		},
+		{
+			"text": "cccccc"
+		}
+	]
 }
