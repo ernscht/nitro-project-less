@@ -29,7 +29,7 @@
 		"patterns": {
 			"aaa": {
 				"template": "project/blueprints/pattern",
-				"path": "patterns/aaa",
+				"path": "src/patterns/aaa",
 				"pattern_prefix": "a"
 			}
 		}
