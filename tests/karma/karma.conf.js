@@ -65,6 +65,10 @@ module.exports = function (config) {
 			exitOnResourceError: true,
 		},
 
+		// transport methods between the browser and testing server
+		// using polling prevents PhantomJS crashes on some systems
+		transports: ['polling'],
+
 		// Continuous Integration mode
 		// if true, Karma captures browsers, runs the tests and exits
 		singleRun: true,
