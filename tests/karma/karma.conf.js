@@ -66,7 +66,7 @@ module.exports = function (config) {
 		},
 
 		// transport methods between the browser and testing server
-		// using polling prevents PhantomJS crashes on some systems
+		// not using 'websocket' prevents PhantomJS crashes on some systems
 		transports: ['polling'],
 
 		// Continuous Integration mode
