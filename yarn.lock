@@ -3782,9 +3782,9 @@ generate-object-property@^1.1.0:
   dependencies:
     is-property "^1.0.0"
 
-generator-nitro@3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/generator-nitro/-/generator-nitro-3.0.2.tgz#b9abe16d8e16032545d6ecbc9355b4fd7d28aec6"
+generator-nitro@3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/generator-nitro/-/generator-nitro-3.0.3.tgz#275817b420e43003f9977843bf22152d93286a90"
   dependencies:
     adm-zip "0.4.7"
     chalk "2.3.0"
