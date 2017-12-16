@@ -23,7 +23,6 @@ gulp.task('assets', ['svg-sprite', 'copy-assets', 'minify-img', 'minify-js', 'mi
 gulp.task('assets-proto', ['compile-css-proto', 'compile-js-proto']);
 gulp.task('watch-assets', ['assets', 'assets-proto'], getTask('watch-assets'));
 gulp.task('serve', getTask('serve'));
-gulp.task('serve-stop', getTask('serve-stop'));
 gulp.task('watch-serve', ['serve'], getTask('watch-serve'));
 gulp.task('develop', ['watch-assets', 'watch-serve']);
 gulp.task('build', gulpSequence(['clean-assets', 'clean-templates'], 'assets'));
@@ -35,4 +34,5 @@ gulp.task('visual-approve', getTask('visual-approve'));
 gulp.task('visual-reference', ['assets'], getTask('visual-reference'));
 gulp.task('visual-test', ['assets'], getTask('visual-test'));
 gulp.task('test', ['compile-css', 'compile-js'], getTask('test'));
+gulp.task('testcafe', ['compile-css-proto'], getTask('testcafe'));
 gulp.task('watch-test', ['test'], getTask('watch-test'));
