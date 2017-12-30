@@ -16,7 +16,7 @@
     "donotlint:accessibility": "gulp lint-accessibility",
     "lint:css": "stylelint src/assets/**/*.*ss src/patterns/**/*.*ss",
     "lint:data": "node app/scripts/validate-pattern-data.js",
-    "lint:html": "gulp lint-html",
+    "donotlint:html": "gulp lint-html",
     "lint:js": "eslint ./src/patterns ./src/assets/js",
     "lint:license": "license-checker --production --summary --exclude \"Apache-2.0, BSD, ISC, LGPL, MIT, MPL\" --failOn \"AGPL, EPL, GPL\"",
     "postinstall": "yarn githooks",
