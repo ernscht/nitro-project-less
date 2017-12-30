@@ -5,3 +5,6 @@ node_modules/
 src/assets/css/**/reset.css
 src/assets/css/**/variables.*
 src/assets/css/**/mixins.*
+
+# exclude btn
+src/patterns/atoms/btn/css/btn.*
