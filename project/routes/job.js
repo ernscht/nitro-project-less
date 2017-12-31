@@ -1,6 +1,5 @@
 var path = require('path');
 var fs = require('fs');
-var extend = require('extend');
 var utils = require('./helpers/utils.js');
 
 function search(req, res, next) {

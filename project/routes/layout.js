@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * change layout for own pages
+ * change layout for some pages
  */
 
 const utils = require('../../app/core/utils');
