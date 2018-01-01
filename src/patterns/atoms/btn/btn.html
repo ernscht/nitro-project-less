@@ -1,12 +1,13 @@
 <button class="a-btn{{#if modifier}} a-btn--{{modifier}}{{/if}}" data-t-name="Btn"{{#if decorator}} data-t-decorator="{{decorator}}"{{/if}}>
 	{{linkText}} = linkText (btn)
 </button>
-
+<!-- htmllint indent-style="false" class-no-dup="false" -->
 <button class="notunique a-btn{{#if modifier}} a-btn--{{modifier}}{{/if}} notunique" data-t-name="Btn"{{#if decorator}} data-t-decorator="{{decorator}}"{{/if}}>
   {{test.text}} = test.text (btn)
 </button>
+<!-- htmllint indent-style="$previous" class-no-dup="$previous" -->
 
-
+<!-- htmllint id-no-dup="false" -->
 <button id="notunique" class="a-btn{{#if modifier}} a-btn--{{modifier}}{{/if}}" data-t-name="Btn"{{#if decorator}} data-t-decorator="{{decorator}}"{{/if}}>
 	{{_nitro.pageTitle}} = pageTitle (view)
 </button>
@@ -14,5 +15,8 @@
 <button id="notunique" class="a-btn{{#if modifier}} a-btn--{{modifier}}{{/if}}" data-t-name="Btn"{{#if decorator}} data-t-decorator="{{decorator}}"{{/if}}>
 	{{test.test}}=
 </button>
+<!-- htmllint id-no-dup="$previous" -->
 
+<!-- htmllint spec-char-escape="false" -->
 <p>Give data with Request ?dynInsert.you=...: <strong>{{t "test.example.interpolation" dynInsert}}</strong></p>
+<!-- htmllint spec-char-escape="$previous" -->
