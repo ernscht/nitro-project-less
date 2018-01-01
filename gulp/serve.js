@@ -19,6 +19,7 @@ module.exports = (gulp, plugins) => {
 		return server.start().then((result) => {
 			console.log('Nitro exited with result:', result);
 			process.exit(result.code);
+
 			if (!taskCallbackCalled) {
 				taskCallbackCalled = true;
 				cb();
