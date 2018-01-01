@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:8081/" />
+<title>home</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">home</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/page</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>pageTitle (view)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=h2.m-ex__headline</td>
+	<td>Ex Module (data: ex.json)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=div.m-ex.m-ex--blue &gt; h2.m-ex__headline</td>
+	<td>Ex Module with Skin Blue (data: ex-blue.json)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[3]/h2</td>
+	<td>Ex Module with Decorator Template</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=button.m-ex__button.js-m-ex__more</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=button.m-ex__button.js-m-ex__more</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(//a[contains(text(),'Ex One')])[2]</td>
+	<td>Ex One</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=button.m-ex__button.js-m-ex__add</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>//div[4]/h2</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[5]/ul/li[1]</td>
+	<td>my &quot;first&quot; company (default)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[5]/ul/li[3]</td>
+	<td>The first three letters of alphabet are: a, l and p (default)</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=em</td>
+	<td>Hello ernscht &amp; ernscht (default)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[5]/ul/li[5]</td>
+	<td>The last two letters of alphabet are: t and e (default)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[5]/ul/li[6]</td>
+	<td>The first letter of alphabet is: a (default)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//ul[2]/li[2]</td>
+	<td>test.text (test) = test.text (test)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//ul[4]/li</td>
+	<td>user.name: my name</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//ul[4]/li[2]</td>
+	<td>user.email: me@test.com</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//p[2]</td>
+	<td>content string</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=div.container &gt; h2</td>
+	<td>[Partial] pageTitle (view) = pageTitle (view)</td>
+</tr>
+<tr>
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=body &gt; p</td>
+	<td>pageTitle (view) = pageTitle (view)</td>
+</tr>
+<tr>
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=ul.a-a &gt; li</td>
+	<td>ffffffrom b</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[6]/ul/li[2]</td>
+	<td>ffffffrom b</td>
+</tr>
+</tbody></table>
+</body>
+</html>

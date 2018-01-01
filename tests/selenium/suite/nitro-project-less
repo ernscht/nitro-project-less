@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+  <title>Test Suite</title>
+</head>
+<body>
+<table id="suiteTable" cellpadding="1" cellspacing="1" border="1" class="selenium"><tbody>
+<tr><td><b>Test Suite</b></td></tr>
+<tr><td><a href="../case/nitro-project-less/home.html">home</a></td></tr>
+<tr><td><a href="../case/nitro-project-less/home-dyn-query.html">home-dyn-query</a></td></tr>
+<tr><td><a href="../case/nitro-project-less/home-lang.html">home-lang</a></td></tr>
+<tr><td><a href="../case/nitro-project-less/layout.html">layout</a></td></tr>
+<tr><td><a href="../case/nitro-project-less/404-and-linking.html">404-and-linking</a></td></tr>
+<tr><td><a href="../case/nitro-project-less/component.html">component</a></td></tr>
+<tr><td><a href="../case/nitro-project-less/api.html">api</a></td></tr>
+</tbody></table>
+</body>
+</html>

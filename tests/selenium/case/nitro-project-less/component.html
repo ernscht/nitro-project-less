@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:8081/" />
+<title>component</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">component</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/component</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>The &quot;pattern&quot; page</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=h1</td>
+	<td>Ex</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=h2.m-ex__headline</td>
+	<td>Ex Module (data: ex.json)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=div.m-ex.m-ex--blue &gt; h2.m-ex__headline</td>
+	<td>Ex Module with Skin Blue (data: ex-blue.json)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//h1[2]</td>
+	<td>Ex Tests</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[5]/h2</td>
+	<td>2. Template - Ex Module (data: ex.json)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[7]/h2</td>
+	<td>2. Template - Ex Module with Skin Blue (data: ex-blue.json)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[8]/h2</td>
+	<td>2. Template - Ex Module (data: ex.json)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//h1[3]</td>
+	<td>NavMain ...</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=h2.m-nav-main__headline</td>
+	<td>pattern NavMain (data: navmain.json)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[10]/h2</td>
+	<td>pattern NavMain dec (data: navmain-dec.json)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[11]/h2</td>
+	<td>2. Template - pattern NavMain dec (data: navmain-dec.json)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=h2.m-nav-mains__headline</td>
+	<td>pattern nav-mains (data: navmains.json)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[13]/h2</td>
+	<td>2. Template - pattern nav-mains (data: navmains.json)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=h2.m-nav-mai__headline</td>
+	<td>pattern Nav Mai (data: navmai.json)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//h1[4]</td>
+	<td>Fehlerfälle</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=p.nitro-msg.nitro-msg--error</td>
+	<td>Pattern `Ex` with template file `XXX.html` not found in folder `Ex`.</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//p[2]</td>
+	<td>Pattern `Ex` with template file `other-ex.html` not found in folder `Ex`.</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//h1[5]</td>
+	<td>Placeholder</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=div.container &gt; h2</td>
+	<td>xämple</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//p[3]</td>
+	<td>exact:You have multiple elements defined with the name `subelement`</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//p[4]</td>
+	<td>exact:Parse Error in Pattern btn: JSON Schema: data should have required property 'linkText', data should have required property 'linkTextli', data should match some schema in anyOf</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//p[5]</td>
+	<td>exact:pageTitle: The &quot;pattern&quot; page = The &quot;pattern&quot; page (view)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=div.col-sm-6 &gt; div.m-nav-main &gt; h2.m-nav-main__headline</td>
+	<td>pattern NavMain dec (data: navmain-dec.json)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=div.col-sm-6 &gt; div.m-nav-mains &gt; h2.m-nav-mains__headline</td>
+	<td>2. Template - pattern nav-mains (data: navmains.json)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[16]/div[2]</td>
+	<td>2. Template - pattern nav-mains (data: navmains.json) <br /> xämple pageTitle: The &quot;pattern&quot; page = The &quot;pattern&quot; page (view)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[18]/div/div/h2</td>
+	<td>pattern NavMain dec (data: navmain-dec.json)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[19]/div[2]/h2</td>
+	<td>xämple</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[20]/div/div/h2</td>
+	<td>2. Template - Ex Module (data: ex.json)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[20]/div[2]/div/h2</td>
+	<td>2. Template - pattern nav-mains (data: navmains.json)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[20]/div[2]</td>
+	<td>2. Template - pattern nav-mains (data: navmains.json) <br /> xämple pageTitle: The &quot;pattern&quot; page = The &quot;pattern&quot; page (view)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=body &gt; p</td>
+	<td>The &quot;pattern&quot; page = pageTitle (view)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//h1[6]</td>
+	<td>Data as attributes</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=button.a-button</td>
+	<td>do it</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=div.a-box</td>
+	<td>Box Content</td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>css=div.a-box.a-box--dark</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=div.a-box.a-box--dark</td>
+	<td>Box Content</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//h1[7]</td>
+	<td>Transclusion</td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>//button[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//button[3]</td>
+	<td>My Text</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[23]</td>
+	<td>Mein Markup</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[24]</td>
+	<td>This box is filled with Text<br /> Send Reset !</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=div.a-box &gt; button.a-button</td>
+	<td>Send</td>
+</tr>
+</tbody></table>
+</body>
+</html>

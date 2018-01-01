@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:8081/" />
+<title>home-dyn-query</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">home-dyn-query</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/page?test.text=blubber&amp;dynInsert.you=me&amp;_nitro.pageTitle=new</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>new</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//li[6]</td>
+	<td>The first letter of alphabet is: a (default)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//ul[2]/li</td>
+	<td>blubber = test.text (test)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//ul[2]/li[2]</td>
+	<td>blubber = test.text (test)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//ul[2]/li[3]</td>
+	<td>linkText (test) = linkText (test)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=strong</td>
+	<td>Hello me &amp; me (default)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//ul[3]/li[2]</td>
+	<td>blubber = test.text (test)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=div.container &gt; h2</td>
+	<td>[Partial] new = pageTitle (view)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=body &gt; p</td>
+	<td>new = pageTitle (view)</td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/page?_data=component</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>The &quot;pattern&quot; page</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=div.container &gt; h2</td>
+	<td>[Partial] The &quot;pattern&quot; page = pageTitle (view)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=body &gt; p</td>
+	<td>The &quot;pattern&quot; page = pageTitle (view)</td>
+</tr>
+</tbody></table>
+</body>
+</html>

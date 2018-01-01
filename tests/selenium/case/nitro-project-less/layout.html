@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:8081/" />
+<title>layout</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">layout</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/data</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>The &quot;data&quot; page</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=p</td>
+	<td>The &quot;data&quot; page = pageTitle (view)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//p[2]</td>
+	<td>test.text (view) = test.text (view)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[2]/ul/li</td>
+	<td>my &quot;first&quot; company (default)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=h2.m-ex__headline</td>
+	<td>Ex Module (data: ex.json)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>link=Ex 5</td>
+	<td>Ex 5</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=div.m-ex.m-ex--blue &gt; h2.m-ex__headline</td>
+	<td>Ex Module with Skin Blue (data: ex-blue.json)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//p[3]</td>
+	<td>test.text (view) = test.text (view)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//p[4]</td>
+	<td>The &quot;data&quot; page = pageTitle (view)</td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/data?_layout=other</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>The &quot;data&quot; page</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=h1</td>
+	<td>alternative layout</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=p</td>
+	<td>The &quot;data&quot; page = pageTitle (view)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//p[2]</td>
+	<td>test.text (view) = test.text (view)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=h2.m-ex__headline</td>
+	<td>Ex Module (data: ex.json)</td>
+</tr>
+</tbody></table>
+</body>
+</html>

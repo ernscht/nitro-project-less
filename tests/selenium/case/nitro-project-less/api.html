@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:8081/" />
+<title>api</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">api</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/api/countries/search?query=vi</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=html</td>
+	<td>[{&quot;name&quot;:&quot;Bolivia&quot;,&quot;code&quot;:&quot;BO&quot;},{&quot;name&quot;:&quot;Bosnia and Herzegovina&quot;,&quot;code&quot;:&quot;BA&quot;},{&quot;name&quot;:&quot;Falkland Islands (Malvinas)&quot;,&quot;code&quot;:&quot;FK&quot;},{&quot;name&quot;:&quot;Latvia&quot;,&quot;code&quot;:&quot;LV&quot;},{&quot;name&quot;:&quot;Saint Kitts and Nevis&quot;,&quot;code&quot;:&quot;KN&quot;},{&quot;name&quot;:&quot;Saint Vincent and the Grenadines&quot;,&quot;code&quot;:&quot;VC&quot;},{&quot;name&quot;:&quot;Taiwan, Province of China&quot;,&quot;code&quot;:&quot;TW&quot;},{&quot;name&quot;:&quot;Viet Nam&quot;,&quot;code&quot;:&quot;VN&quot;},{&quot;name&quot;:&quot;Virgin Islands, British&quot;,&quot;code&quot;:&quot;VG&quot;},{&quot;name&quot;:&quot;Virgin Islands, U.S.&quot;,&quot;code&quot;:&quot;VI&quot;}]</td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/api/countries/search?query=ala</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=pre</td>
+	<td>[{&quot;name&quot;:&quot;Brunei Darussalam&quot;,&quot;code&quot;:&quot;BN&quot;},{&quot;name&quot;:&quot;Guatemala&quot;,&quot;code&quot;:&quot;GT&quot;},{&quot;name&quot;:&quot;Malawi&quot;,&quot;code&quot;:&quot;MW&quot;},{&quot;name&quot;:&quot;Malaysia&quot;,&quot;code&quot;:&quot;MY&quot;},{&quot;name&quot;:&quot;New Zealand&quot;,&quot;code&quot;:&quot;NZ&quot;},{&quot;name&quot;:&quot;Palau&quot;,&quot;code&quot;:&quot;PW&quot;}]</td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/api/countries/search?query=alabama</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=pre</td>
+	<td>[]</td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/api/jobs/search</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=pre</td>
+	<td>{&quot;success&quot;:true,&quot;messages&quot;:{&quot;noResults&quot;:&quot;&quot;},&quot;jobs&quot;:[{&quot;profile&quot;:{&quot;title&quot;:&quot;Business Analyst / Developer Investment Management&quot;,&quot;description&quot;:&quot;Abteilung Finanzen&quot;,&quot;workplace&quot;:&quot;Luzern&quot;,&quot;action&quot;:&quot;api/material/career/jobs&quot;,&quot;fulltime&quot;:true}},{&quot;profile&quot;:{&quot;title&quot;:&quot;Rechtsanwalt&quot;,&quot;description&quot;:&quot;Rechtsabteilung&quot;,&quot;workplace&quot;:&quot;Luzern&quot;,&quot;action&quot;:&quot;api/material/career/jobs&quot;,&quot;fulltime&quot;:true}},{&quot;profile&quot;:{&quot;title&quot;:&quot;Digital Compliance Officer 80-90 %&quot;,&quot;description&quot;:&quot;Generalsekretariat&quot;,&quot;workplace&quot;:&quot;Luzern&quot;,&quot;action&quot;:&quot;api/material/career/jobs&quot;}},{&quot;profile&quot;:{&quot;title&quot;:&quot;Facharzt/-ärztin Neurologie 50–90 %&quot;,&quot;description&quot;:&quot;Abteilung Versicherungsmedizin&quot;,&quot;workplace&quot;:&quot;Aarau&quot;,&quot;action&quot;:&quot;api/material/career/jobs&quot;}},{&quot;profile&quot;:{&quot;title&quot;:&quot;Prämiensachbearbeiter/in&quot;,&quot;description&quot;:&quot;Agentur Aarau&quot;,&quot;workplace&quot;:&quot;Aarau&quot;,&quot;action&quot;:&quot;api/material/career/jobs&quot;}},{&quot;profile&quot;:{&quot;title&quot;:&quot;Teamleiter/in Schaden- und Leistungserbringermanagement&quot;,&quot;description&quot;:&quot;Agentur Aarau&quot;,&quot;workplace&quot;:&quot;Aarau&quot;,&quot;action&quot;:&quot;api/material/career/jobs&quot;,&quot;fulltime&quot;:true}},{&quot;profile&quot;:{&quot;title&quot;:&quot;Business Analyst (m/w) Digitalisierung&quot;,&quot;description&quot;:&quot;Abteilung Versicherungsleistungen&quot;,&quot;workplace&quot;:&quot;Luzern&quot;,&quot;action&quot;:&quot;api/material/career/jobs&quot;,&quot;fulltime&quot;:true}},{&quot;profile&quot;:{&quot;title&quot;:&quot;Kundenberater/in für Risiko- und Versicherungsfragen&quot;,&quot;description&quot;:&quot;Agentur Bern&quot;,&quot;workplace&quot;:&quot;Bern&quot;,&quot;action&quot;:&quot;api/material/career/jobs&quot;,&quot;fulltime&quot;:true}},{&quot;profile&quot;:{&quot;title&quot;:&quot;Prämiensachbearbeiter/in&quot;,&quot;description&quot;:&quot;Agentur Zürich&quot;,&quot;workplace&quot;:&quot;Zürich&quot;,&quot;action&quot;:&quot;api/material/career/jobs&quot;,&quot;fulltime&quot;:true}},{&quot;profile&quot;:{&quot;title&quot;:&quot;Ausbildung als Versicherungsassistent/in VBV&quot;,&quot;description&quot;:&quot;Agentur Solothurn&quot;,&quot;workplace&quot;:&quot;Solothurn&quot;,&quot;action&quot;:&quot;api/material/career/jobs&quot;,&quot;fulltime&quot;:true}},{&quot;profile&quot;:{&quot;title&quot;:&quot;Sicherheitsingenieurin&quot;,&quot;description&quot;:&quot;Abteilung Sicherhei&quot;,&quot;workplace&quot;:&quot;Basel&quot;,&quot;action&quot;:&quot;api/material/career/jobs&quot;,&quot;fulltime&quot;:true}},{&quot;profile&quot;:{&quot;title&quot;:&quot;Lisa Notebook&quot;,&quot;description&quot;:&quot;Sicherheitsingenieurin&quot;,&quot;workplace&quot;:&quot;Luzern&quot;,&quot;ction&quot;:&quot;api/material/career/jobs&quot;,&quot;fulltime&quot;:true}},{&quot;profile&quot;:{&quot;title&quot;:&quot;Sicherheitsingenieurin&quot;,&quot;description&quot;:&quot;Sicherheit&quot;,&quot;workplace&quot;:&quot;Luzern&quot;,&quot;action&quot;:&quot;api/material/career/jobs&quot;,&quot;fulltime&quot;:true}},{&quot;profile&quot;:{&quot;title&quot;:&quot;Facharzt/-ärztin Neurologie 50–100 %&quot;,&quot;description&quot;:&quot;Abteilung Versicherungsmedizin&quot;,&quot;workplace&quot;:&quot;Luzern&quot;,&quot;action&quot;:&quot;api/material/career/jobs&quot;}},{&quot;profile&quot;:{&quot;title&quot;:&quot;Prämiensachbearbeiter/in&quot;,&quot;description&quot;:&quot;Abteilung Sicherheit&quot;,&quot;workplace&quot;:&quot;Luzern&quot;,&quot;action&quot;:&quot;api/material/career/jobs&quot;,&quot;fulltime&quot;:true}}],&quot;filter&quot;:{&quot;expert&quot;:{&quot;enabled&quot;:true,&quot;name&quot;:&quot;job-search-1&quot;,&quot;id&quot;:&quot;job-search-1&quot;,&quot;items&quot;:[{&quot;title&quot;:&quot;Rechtsabteilung&quot;,&quot;val&quot;:&quot;legal-department&quot;,&quot;count&quot;:55},{&quot;title&quot;:&quot;Generalsekretariat&quot;,&quot;val&quot;:&quot;general-secretariat&quot;,&quot;count&quot;:55},{&quot;title&quot;:&quot;Informatik&quot;,&quot;val&quot;:&quot;computer-science&quot;,&quot;selected&quot;:true,&quot;count&quot;:55},{&quot;title&quot;:&quot;Finanzen&quot;,&quot;val&quot;:&quot;finances&quot;,&quot;count&quot;:55}]},&quot;location&quot;:{&quot;enabled&quot;:true,&quot;name&quot;:&quot;job-search-2&quot;,&quot;id&quot;:&quot;job-search-2&quot;,&quot;items&quot;:[{&quot;title&quot;:&quot;Alle&quot;,&quot;val&quot;:&quot;all&quot;,&quot;count&quot;:55},{&quot;title&quot;:&quot;Aarau&quot;,&quot;val&quot;:&quot;aarau&quot;,&quot;count&quot;:55},{&quot;title&quot;:&quot;Bern&quot;,&quot;val&quot;:&quot;bern&quot;,&quot;count&quot;:55},{&quot;title&quot;:&quot;St. Gallen&quot;,&quot;val&quot;:&quot;stgallen&quot;,&quot;count&quot;:55},{&quot;title&quot;:&quot;Zürich&quot;,&quot;val&quot;:&quot;zurich&quot;,&quot;count&quot;:55}]},&quot;sector&quot;:{&quot;enabled&quot;:true,&quot;name&quot;:&quot;job-search-3&quot;,&quot;id&quot;:&quot;job-search-3&quot;,&quot;items&quot;:[{&quot;title&quot;:&quot;Alle&quot;,&quot;val&quot;:&quot;all&quot;,&quot;count&quot;:55},{&quot;title&quot;:&quot;Option 1&quot;,&quot;val&quot;:&quot;option1&quot;,&quot;count&quot;:55},{&quot;title&quot;:&quot;Option 2&quot;,&quot;val&quot;:&quot;option2&quot;,&quot;count&quot;:55},{&quot;title&quot;:&quot;Option 3&quot;,&quot;val&quot;:&quot;option3&quot;,&quot;count&quot;:55},{&quot;title&quot;:&quot;Option 4&quot;,&quot;val&quot;:&quot;option4&quot;,&quot;count&quot;:55}]},&quot;pensum&quot;:{&quot;enabled&quot;:true,&quot;name&quot;:&quot;optionsCheckbox&quot;,&quot;id&quot;:&quot;pensum&quot;}}}</td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/api/jobs/search?query=Aus</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=pre</td>
+	<td>{&quot;success&quot;:true,&quot;messages&quot;:{&quot;noResults&quot;:&quot;&quot;},&quot;jobs&quot;:[{&quot;profile&quot;:{&quot;title&quot;:&quot;&lt;mark&gt;Aus&lt;/mark&gt;bildung als Versicherungsassistent/in VBV&quot;,&quot;description&quot;:&quot;Agentur Solothurn&quot;,&quot;workplace&quot;:&quot;Solothurn&quot;,&quot;action&quot;:&quot;api/material/career/jobs&quot;,&quot;fulltime&quot;:true}}],&quot;filter&quot;:{&quot;expert&quot;:{&quot;enabled&quot;:true,&quot;name&quot;:&quot;job-search-1&quot;,&quot;id&quot;:&quot;job-search-1&quot;,&quot;items&quot;:[{&quot;title&quot;:&quot;Rechtsabteilung&quot;,&quot;val&quot;:&quot;legal-department&quot;,&quot;count&quot;:55},{&quot;title&quot;:&quot;Generalsekretariat&quot;,&quot;val&quot;:&quot;general-secretariat&quot;,&quot;count&quot;:55},{&quot;title&quot;:&quot;Informatik&quot;,&quot;val&quot;:&quot;computer-science&quot;,&quot;selected&quot;:true,&quot;count&quot;:55},{&quot;title&quot;:&quot;Finanzen&quot;,&quot;val&quot;:&quot;finances&quot;,&quot;count&quot;:55}]},&quot;location&quot;:{&quot;enabled&quot;:true,&quot;name&quot;:&quot;job-search-2&quot;,&quot;id&quot;:&quot;job-search-2&quot;,&quot;items&quot;:[{&quot;title&quot;:&quot;Alle&quot;,&quot;val&quot;:&quot;all&quot;,&quot;count&quot;:55},{&quot;title&quot;:&quot;Aarau&quot;,&quot;val&quot;:&quot;aarau&quot;,&quot;count&quot;:55},{&quot;title&quot;:&quot;Bern&quot;,&quot;val&quot;:&quot;bern&quot;,&quot;count&quot;:55},{&quot;title&quot;:&quot;St. Gallen&quot;,&quot;val&quot;:&quot;stgallen&quot;,&quot;count&quot;:55},{&quot;title&quot;:&quot;Zürich&quot;,&quot;val&quot;:&quot;zurich&quot;,&quot;count&quot;:55}]},&quot;sector&quot;:{&quot;enabled&quot;:true,&quot;name&quot;:&quot;job-search-3&quot;,&quot;id&quot;:&quot;job-search-3&quot;,&quot;items&quot;:[{&quot;title&quot;:&quot;Alle&quot;,&quot;val&quot;:&quot;all&quot;,&quot;count&quot;:55},{&quot;title&quot;:&quot;Option 1&quot;,&quot;val&quot;:&quot;option1&quot;,&quot;count&quot;:55},{&quot;title&quot;:&quot;Option 2&quot;,&quot;val&quot;:&quot;option2&quot;,&quot;count&quot;:55},{&quot;title&quot;:&quot;Option 3&quot;,&quot;val&quot;:&quot;option3&quot;,&quot;count&quot;:55},{&quot;title&quot;:&quot;Option 4&quot;,&quot;val&quot;:&quot;option4&quot;,&quot;count&quot;:55}]},&quot;pensum&quot;:{&quot;enabled&quot;:true,&quot;name&quot;:&quot;optionsCheckbox&quot;,&quot;id&quot;:&quot;pensum&quot;},&quot;query&quot;:&quot;Aus&quot;}}</td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>
