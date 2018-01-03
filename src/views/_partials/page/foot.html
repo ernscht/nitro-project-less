@@ -10,3 +10,9 @@
 </script>
 <script src="/proto/js/prototype.js"></script>
 <p>{{_nitro.pageTitle}} = pageTitle (view)</p>
+
+{{#if _nitro.offline}}
+<script src="static/khan.github.io/tota11y/tota11y/build/tota11y.min.js"></script>
+{{else}}
+<script src="https://khan.github.io/tota11y/tota11y/build/tota11y.min.js"></script>
+{{/if}}

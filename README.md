@@ -1,6 +1,6 @@
-# Your Project
+# Nitro Test Less
 
-Introduction …
+Project to test generated Nitro project
 
 ## Nitro
 

@@ -11,6 +11,7 @@
   },
   "scripts": {
     "create-pattern": "yo nitro:pattern",
+    "get-offline-files": "node project/scripts/get-offline-files.js",
     "githooks": "gulp sync-githooks",
     "lint": "npm-run-all lint:*",
     "donotlint:accessibility": "gulp lint-accessibility",
@@ -124,6 +125,7 @@
     "nsp": "3.1.0",
     "stylelint": "8.4.0",
     "text-table": "0.2.0",
+    "website-scraper": "3.3.2",
     "yargs": "10.0.3",
     "yo": "2.0.0"
   }
