@@ -1,6 +1,48 @@
 /* eslint-disable max-len, no-inline-comments, no-empty, require-jsdoc */
 
 (function () {
+	// config
+	const breakpointMarkup = [
+		'<span class="visible-xs">Extra small devices (xs)</span>',
+		'<span class="visible-sm">Small devices (sm)</span>',
+		'<span class="visible-md">Medium devices (md)</span>',
+		'<span class="visible-lg">Large devices (lg)</span>',
+		'<span class="visible-xl">Extra large devices (xl)</span>',
+	].join('');
+
+	const gridMarkup = ['<div class="container" style="height:100%">',
+		'<div class="row" style="height:100%;outline:none">',
+		'<div class="col-1" style="height: 100%;background:rgba(0,109,115,0.1);outline:none"><div style="height:100%;background:rgba(107,186,195,0.4)"></div></div>',
+		'<div class="col-1" style="height: 100%;background:rgba(0,109,115,0.1);outline:none"><div style="height:100%;background:rgba(107,186,195,0.4)"></div></div>',
+		'<div class="col-1" style="height: 100%;background:rgba(0,109,115,0.1);outline:none"><div style="height:100%;background:rgba(107,186,195,0.4)"></div></div>',
+		'<div class="col-1" style="height: 100%;background:rgba(0,109,115,0.1);outline:none"><div style="height:100%;background:rgba(107,186,195,0.4)"></div></div>',
+		'<div class="col-1" style="height: 100%;background:rgba(0,109,115,0.1);outline:none"><div style="height:100%;background:rgba(107,186,195,0.4)"></div></div>',
+		'<div class="col-1" style="height: 100%;background:rgba(0,109,115,0.1);outline:none"><div style="height:100%;background:rgba(107,186,195,0.4)"></div></div>',
+		'<div class="col-1" style="height: 100%;background:rgba(0,109,115,0.1);outline:none"><div style="height:100%;background:rgba(107,186,195,0.4)"></div></div>',
+		'<div class="col-1" style="height: 100%;background:rgba(0,109,115,0.1);outline:none"><div style="height:100%;background:rgba(107,186,195,0.4)"></div></div>',
+		'<div class="col-1" style="height: 100%;background:rgba(0,109,115,0.1);outline:none"><div style="height:100%;background:rgba(107,186,195,0.4)"></div></div>',
+		'<div class="col-1" style="height: 100%;background:rgba(0,109,115,0.1);outline:none"><div style="height:100%;background:rgba(107,186,195,0.4)"></div></div>',
+		'<div class="col-1" style="height: 100%;background:rgba(0,109,115,0.1);outline:none"><div style="height:100%;background:rgba(107,186,195,0.4)"></div></div>',
+		'<div class="col-1" style="height: 100%;background:rgba(0,109,115,0.1);outline:none"><div style="height:100%;background:rgba(107,186,195,0.4)"></div></div>',
+		'</div>',
+		'</div>'].join('');
+
+	const bootstrapStyles = [
+		'.container {' +
+		'  outline: 9px solid rgba(244, 229, 65, 0.4);' +
+		'}' +
+		'.row {' +
+		'  outline: 6px solid rgba(244, 184, 65, 0.4);' +
+		'}' +
+		'.col, .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12,' +
+		'.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12,' +
+		'.col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12,' +
+		'.col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12,' +
+		'.col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {' +
+		'  outline: 3px solid rgba(244, 65, 88, 0.6);' +
+		'}',
+	].join('\n');
+
 	// Keys is an object which holds callbacks for ctrl+[keycode] | alt+[keycode]
 	const keys = (function () {
 		const controlKeys = {
@@ -45,13 +87,7 @@
 	// toggle breakpoint helper on CTRL+1 | ALT+1
 	(function breakpointHelper() {
 		const div = document.createElement('div');
-		div.innerHTML = [
-			'<span class="visible-xs">Extra small devices (xs)</span>',
-			'<span class="visible-sm">Small devices (sm)</span>',
-			'<span class="visible-md">Medium devices (md)</span>',
-			'<span class="visible-lg">Large devices (lg)</span>',
-			'<span class="visible-xl">Extra large devices (xl)</span>',
-		].join('');
+		div.innerHTML = breakpointMarkup;
 		div.setAttribute('style', [
 			'display:none',
 			'position:fixed',
@@ -83,22 +119,7 @@
 	// toggle grid helper on CTRL+2 / ALT+2
 	(function gridHelper() {
 		const div = document.createElement('div');
-		div.innerHTML = ['<div class="container" style="height:100%">',
-			'<div class="row" style="height:100%;outline:none">',
-			'<div class="col-1" style="height: 100%;background:rgba(0,109,115,0.1);outline:none"><div style="height:100%;background:rgba(107,186,195,0.4)"></div></div>',
-			'<div class="col-1" style="height: 100%;background:rgba(0,109,115,0.1);outline:none"><div style="height:100%;background:rgba(107,186,195,0.4)"></div></div>',
-			'<div class="col-1" style="height: 100%;background:rgba(0,109,115,0.1);outline:none"><div style="height:100%;background:rgba(107,186,195,0.4)"></div></div>',
-			'<div class="col-1" style="height: 100%;background:rgba(0,109,115,0.1);outline:none"><div style="height:100%;background:rgba(107,186,195,0.4)"></div></div>',
-			'<div class="col-1" style="height: 100%;background:rgba(0,109,115,0.1);outline:none"><div style="height:100%;background:rgba(107,186,195,0.4)"></div></div>',
-			'<div class="col-1" style="height: 100%;background:rgba(0,109,115,0.1);outline:none"><div style="height:100%;background:rgba(107,186,195,0.4)"></div></div>',
-			'<div class="col-1" style="height: 100%;background:rgba(0,109,115,0.1);outline:none"><div style="height:100%;background:rgba(107,186,195,0.4)"></div></div>',
-			'<div class="col-1" style="height: 100%;background:rgba(0,109,115,0.1);outline:none"><div style="height:100%;background:rgba(107,186,195,0.4)"></div></div>',
-			'<div class="col-1" style="height: 100%;background:rgba(0,109,115,0.1);outline:none"><div style="height:100%;background:rgba(107,186,195,0.4)"></div></div>',
-			'<div class="col-1" style="height: 100%;background:rgba(0,109,115,0.1);outline:none"><div style="height:100%;background:rgba(107,186,195,0.4)"></div></div>',
-			'<div class="col-1" style="height: 100%;background:rgba(0,109,115,0.1);outline:none"><div style="height:100%;background:rgba(107,186,195,0.4)"></div></div>',
-			'<div class="col-1" style="height: 100%;background:rgba(0,109,115,0.1);outline:none"><div style="height:100%;background:rgba(107,186,195,0.4)"></div></div>',
-			'</div>',
-			'</div>'].join('');
+		div.innerHTML = gridMarkup;
 		div.setAttribute('style', [
 			'position:fixed',
 			'top:0',
@@ -127,21 +148,7 @@
 	// toggle bootstrap grid on CTRL+3 / ALT+3
 	(function bootstrapHelper() {
 		const style = document.createElement('style');
-		style.innerHTML = [
-			'.container {' +
-			'  outline: 9px solid rgba(244, 229, 65, 0.4);' +
-			'}' +
-			'.row {' +
-			'  outline: 6px solid rgba(244, 184, 65, 0.4);' +
-			'}' +
-			'.col, .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12,' +
-			'.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12,' +
-			'.col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12,' +
-			'.col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12,' +
-			'.col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {' +
-			'  outline: 3px solid rgba(244, 65, 88, 0.6);' +
-			'}',
-		].join('\n');
+		style.innerHTML = bootstrapStyles;
 		function toggleBootstrapOutlines() {
 			if (style.parentElement) {
 				style.parentElement.removeChild(style);
