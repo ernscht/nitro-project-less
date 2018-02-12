@@ -28,7 +28,7 @@ let server;
 function getViews() {
 	return view
 		.getViews(`${config.get('nitro.basePath')}${config.get('nitro.viewDirectory')}`)
-		.filter((viewItem) => viewItem.url !== 'component') // this has errors
+		.filter((viewItem) => viewItem.url !== 'component' && viewItem.url !== 'content-btn') // this has errors
 		.map((viewItem) => viewItem.url);
 }
 
@@ -36,6 +36,7 @@ function startTmpServer(port, gulp, plugins, cb) {
 	server = plugins.liveServer('server', {
 		env: {
 			PORT: port,
+			NODE_ENV: 'production',
 		},
 	}, false);
 
