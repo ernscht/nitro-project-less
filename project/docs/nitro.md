@@ -110,7 +110,7 @@ Some global configuration is placed in `package.json`
 
 #### Target Browsers
 
-For defining target browsers, [browserslist](https://github.com/ai/browserslist) is used.  
+For defining target browsers, [browserslist](https://github.com/ai/browserslist) is used.    
 This config is shareable between different frontend tools. If not defined, the default browsers from browserslist would be taken.
 
 ## Daily Work - Creating Patterns & Pages
@@ -580,4 +580,4 @@ The following packages are installed by the [app](#name) generator as dependenci
 
 ### Credits
 
-This app was generated with yeoman and the [generator-nitro](https://www.npmjs.com/package/generator-nitro) package (version 3.1.4).
+This app was generated with yeoman and the [generator-nitro](https://www.npmjs.com/package/generator-nitro) package (version 3.2.0).
