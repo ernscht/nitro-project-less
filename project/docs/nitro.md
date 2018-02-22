@@ -56,7 +56,7 @@ yarn install
 Use
 
 ```
-yarn dev
+yarn start
 ```
 
 ... to start in development mode
@@ -79,7 +79,7 @@ The Nitro app will run on port `8080` by default, the proxy on `8081` (only run 
 If you want the app to run on another port put them before the start task like this:
 
 ```
-PORT=8000 PROXY=8001 yarn dev
+PORT=8000 PROXY=8001 yarn start
 ```
 
 The port to be used in production can be set the same way:
@@ -91,7 +91,7 @@ PORT=3000 node server
 This works a bit different on **Windows**. Use the following commands in prompt:
 
 ```
-set PORT=8000 && set PROXY=8001 && yarn dev
+set PORT=8000 && set PROXY=8001 && yarn start
 set PORT=3000 && node server
 set NODE_ENV=production && yarn prod
 ```
@@ -563,12 +563,6 @@ You may [change this or add other hooks](../.githooks/readme.md) in `project/.gi
 * For bugs and features please use [GitHub Issues](https://github.com/namics/generator-nitro/issues)
 * Feel free to fork and send PRs to the current `develop` branch. That's a good way to discuss your ideas.
 
-### Example Project Includes
-
-* [YUI CSS Reset 3.18.1](http://yuilibrary.com/yui/docs/cssreset/)
-* Favicon & Home-Icons from Nitro (replace with your own)
-* Pattern `example` and `icon` and some styles in src/assets/css (you don't need them)
-
 #### Client Dependencies
 
 The following packages are installed by the [app](#name) generator as dependencies:
@@ -580,4 +574,4 @@ The following packages are installed by the [app](#name) generator as dependenci
 
 ### Credits
 
-This app was generated with yeoman and the [generator-nitro](https://www.npmjs.com/package/generator-nitro) package (version 3.2.0).
+This app was generated with yeoman and the [generator-nitro](https://www.npmjs.com/package/generator-nitro) package (version 3.3.0).
