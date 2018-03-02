@@ -5,6 +5,7 @@
     "jscompiler": "JavaScript",
     "viewExtension": "html",
     "clientTemplates": true,
+	"exampleCode": true,
     "exporter": true,
     "release": false
   },
@@ -14,6 +15,7 @@
     "jscompiler": "JavaScript",
     "viewExtension": "html",
     "clientTemplates": true,
+	"exampleCode": true,
     "exporter": true,
     "release": false
   }
