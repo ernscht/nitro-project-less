@@ -87,7 +87,7 @@
     "gulp-htmllint": "0.0.15",
     "gulp-if": "2.0.2",
     "gulp-imagemin": "4.1.0",
-    "gulp-less": "3.5.0",
+    "gulp-less": "4.0.0",
     "gulp-live-server": "0.0.31",
     "gulp-load-plugins": "1.5.0",
     "gulp-newer": "1.4.0",
