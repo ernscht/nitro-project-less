@@ -1,20 +1,10 @@
 {
 	"assets": {
-		"vendor.css": [
-			"src/assets/css/reset.css",
-			"src/assets/css/*"
-		],
 		"app.brand.css": [
 			"+src/assets/css/example/*s.less",
 			"+src/assets/css/dep/*s.less",
 			"src/assets/css/basic.less",
 			"src/patterns/**/css/*.less"
-		],
-		"vendor.js": [
-			"node_modules/babel-polyfill/dist/polyfill.min.js",
-			"node_modules/jquery/dist/jquery.min.js",
-			"node_modules/terrific/dist/terrific.min.js",
-			"node_modules/handlebars/dist/handlebars.runtime.min.js"
 		],
 		"app.brand.js": [
 			"src/assets/js/*.js",

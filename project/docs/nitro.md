@@ -563,6 +563,12 @@ You may [change this or add other hooks](../.githooks/readme.md) in `project/.gi
 * For bugs and features please use [GitHub Issues](https://github.com/namics/generator-nitro/issues)
 * Feel free to fork and send PRs to the current `develop` branch. That's a good way to discuss your ideas.
 
+### Example Project Includes
+
+* [YUI CSS Reset 3.18.1](http://yuilibrary.com/yui/docs/cssreset/)
+* Favicon & Home-Icons from Nitro (replace with your own)
+* Pattern `example` and `icon` and some styles in src/assets/css (you don't need them)
+
 #### Client Dependencies
 
 The following packages are installed by the [app](#name) generator as dependencies:
@@ -574,4 +580,4 @@ The following packages are installed by the [app](#name) generator as dependenci
 
 ### Credits
 
-This app was generated with yeoman and the [generator-nitro](https://www.npmjs.com/package/generator-nitro) package (version 3.3.0).
+This app was generated with yeoman and the [generator-nitro](https://www.npmjs.com/package/generator-nitro) package (version 3.3.1).
