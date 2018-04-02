@@ -12,8 +12,8 @@ const config = require('config');
 const chalk = require('chalk');
 
 (function globTest() {
-	const folder = '';
-	const templateFile = '';
+	const folder = 'Ex-link';
+	const templateFile = 'ex-link';
 	const patternBasePaths = Object.keys(config.get('nitro.patterns')).map((key) => {
 		const configKey = `nitro.patterns.${key}.path`;
 		const patternPath = config.has(configKey) ? config.get(configKey) : false;
