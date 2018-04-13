@@ -14,7 +14,7 @@ const cssDependencies = [
 	'src/assets/css/example/*s.less',
 	'src/assets/css/dep/*s.less',
 ];
-const assetName = 'prototype.css';
+const assetName = 'proto.css';
 const browserSync = utils.getBrowserSyncInstance();
 const processors = [
 	autoprefixer({
