@@ -1,12 +1,12 @@
 {
 	"assets": {
-		"app.brand.css": [
+		"ui.brand.css": [
 			"+src/assets/css/example/*s.less",
 			"+src/assets/css/dep/*s.less",
 			"src/assets/css/basic.less",
 			"src/patterns/**/css/*.less"
 		],
-		"app.brand.js": [
+		"ui.brand.js": [
 			"src/assets/js/*.js",
 			"src/patterns/**/js/*.js",
 			"src/patterns/**/js/decorator/*.js",

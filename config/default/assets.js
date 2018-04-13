@@ -20,7 +20,7 @@ const config = {
 			getRelativeDependencyPath('terrific/dist/terrific.min.js'),
 			getRelativeDependencyPath('handlebars/dist/handlebars.runtime.min.js'),
 		],
-		'app.css': [
+		'ui.css': [
 			'+src/assets/css/example/*s.less',
 			'+src/assets/css/dep/*s.less',
 			'src/assets/css/example/reset.css',
@@ -28,7 +28,7 @@ const config = {
 			'src/patterns/**/css/*.less',
 			'src/patterns/**/css/modifier/*.less',
 		],
-		'app.js': [
+		'ui.js': [
 			'src/assets/js/*.js',
 			'src/patterns/**/js/*.js',
 			'src/patterns/**/js/decorator/*.js',

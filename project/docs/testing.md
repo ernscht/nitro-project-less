@@ -7,14 +7,14 @@
 ### CSS
 
 * vendor.min.css (139 B | 140 B gzipped)
-* app.brand.min.css (12.4 KB | 3.4 KB gzipped)
-* app.min.css (14.9 kB | 3.98 KB gzipped)
+* ui.brand.min.css (13.3 KB | 3.6 KB gzipped)
+* ui.min.css (15.8 kB | 4.18 KB gzipped)
 
 ### JS
 
-* app.min.js (19 KB | 2.91 KB gzipped)
-* app.brand.min.js (19 KB | 2.91 KB gzipped)
-* vendor.min.js (209 KB | 69.6 KB gzipped)
+* vendor.min.js (209 KB | 70 KB gzipped)
+* ui.min.js (19 KB | 2.93 KB gzipped)
+* ui.brand.min.js (19 KB | 2.93 KB gzipped)
 
 ### img
 
