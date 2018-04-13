@@ -34,7 +34,7 @@
     "build": "gulp build",
     "export": "gulp export",
     "dev": "gulp develop",
-    "prod": "cross-env NODE_ENV=production && gulp production",
+    "prod": "cross-env NODE_ENV=production gulp production",
     "start": "yarn dev"
   },
   "keywords": [
