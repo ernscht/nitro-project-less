@@ -131,7 +131,7 @@
     "text-table": "0.2.0",
     "website-scraper": "3.3.2",
     "yargs": "11.0.0",
-    "yo": "2.0.1"
+    "yo": "2.0.2"
   },
   "browserslist": [
     "> 0.5%",
