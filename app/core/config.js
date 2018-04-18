@@ -52,10 +52,11 @@ const defaultConfig = {
 	},
 	feature: {
 		i18next: {
-			/* used in ./i18n.js
+			/*
+			 * used in ./i18n.js
+			 *
 			 * Fallback translation file: project/locales/default/translation.json
 			 * Other languages in project/locales/[lang]/translation.json
-			 * Language detection from request header
 			 * Language switch with query parameter: ?lang=de
 			 */
 			options: {
