@@ -517,18 +517,24 @@ Nitro only provides a `pattern` helper for handlebars.
 
 ### Commandline
 
-Nitro uses [Gulp](http://gulpjs.com/) under the hood and can therefore be used on the CLI.
+Use or create new scripts in `package.json` to run with yarn.
 
 ### Git Hooks
 
-Nitro tries to install a `post-merge` git hook with every `yarn install` (if we are in git root).
+Info: In next major version, we possibly switch to [husky](https://github.com/typicode/husky), so it's kind of deprecated ;-)
 
-This hook will:
-
-* run `yarn install` if someone changes `yarn.lock`
-* sync this git hooks if someone changes one.
+Nitro tries to install a "post-merge" and a "pre-commit" git hook with every `yarn install` (if we are in git root).
 
 You may [change this or add other hooks](../.githooks/readme.md) in `project/.githooks`.
+
+#### post-merge
+
+* runs `yarn install` if someone changes `yarn.lock`
+* syncs the git hooks if someone changes one.
+
+#### pre-commit
+
+* runs `yarn test` 
 
 ### Contributing
 
@@ -545,11 +551,11 @@ You may [change this or add other hooks](../.githooks/readme.md) in `project/.gi
 
 The following packages are installed by the [app](#name) generator as dependencies:
 
-* [jQuery 3.2.0](http://jquery.com/)
+* [jQuery 3.3.1](http://jquery.com/)
 * [TerrificJS 3.0.0](https://github.com/brunschgi/terrificjs)
-* [Handlebars 4.0.7](https://github.com/components/handlebars.js)
-* [Babel Polyfill 6.23.0](https://www.npmjs.com/package/babel-polyfill)
+* [Handlebars 4.0.11](https://github.com/components/handlebars.js)
+* [Babel Polyfill 6.26.0](https://www.npmjs.com/package/babel-polyfill)
 
 ### Credits
 
-This app was generated with yeoman and the [generator-nitro](https://www.npmjs.com/package/generator-nitro) package (version 3.5.1).
+This app was generated with yeoman and the [generator-nitro](https://www.npmjs.com/package/generator-nitro) package (version 3.5.3).
