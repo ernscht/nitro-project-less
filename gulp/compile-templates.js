@@ -7,7 +7,7 @@ const merge = require('merge-stream');
 
 module.exports = (gulp, plugins) => {
 	return () => {
-		// register nitro handlebars pattern helper
+		// register nitro hbs pattern helper
 		const helpersDir = path.join(__dirname, '../app/templating/hbs/helpers');
 		fs.readdirSync(helpersDir).forEach((helper) => {
 			const name = helper.replace('.js', '');

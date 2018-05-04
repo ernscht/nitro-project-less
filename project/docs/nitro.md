@@ -125,7 +125,7 @@ Different data variations have to be placed in the `_data` folder:
 ### Creating pattern with npm script
 
 ```
-yarn nitro:pattern
+yarn create-pattern
 ```
 
 This will copy the templates (nitro.patterns.<type>.template) from config to the configured target.
@@ -133,7 +133,7 @@ This will copy the templates (nitro.patterns.<type>.template) from config to the
 Optionally you can give the name:
 
 ```
-yarn nitro:pattern <name>
+yarn create-pattern <name>
 ```
 
 ### Creating pattern elements
@@ -151,7 +151,7 @@ Element `example-sub` in pattern `example`:
 /example/elements/example-sub/_data/example-sub.json
 ```
 
-It's recommended to start the name of a subpattern with the pattern name.
+It's recommended to start the name of a subpattern with the pattern name and to use the same pattern type for the sub element.
 
 ### Creating pages
 
@@ -226,30 +226,10 @@ There also is a possibility to pass data to subpatterns by providing a data obje
 {{pattern name='example' data='example-variant' template='example-2'}}
 ```
 
-To be more flexible, you may also pass individual arguments to the pattern, which overrides the defaults from the data-file.
+To be more flexible, you may also pass additional arguments to the pattern, which overrides the defaults from the data-file.
 
 ```
 {{pattern name='example' modifier='blue'}}
-```
-
-#### Render patterns (simplified notation)
-
-A simplified but less clear variant is to use the pattern helper with one or two parameters.
-
-* the first parameter: pattern folder with the default template file
-* the second parameter (optional): the data-file to be used
-
-Render the example pattern (file: `example.html`, data-file: `example.json`):
-
-```
-{{pattern 'example'}}
-{{pattern 'example' 'example'}}
-```
-
-Or you may use the simplified notation with a data object as second parameter:
-
-```
-{{pattern 'example' exampleContent}}
 ```
 
 #### Render patterns with children
@@ -286,7 +266,7 @@ The pattern helper will find also pattern elements.
 
 ### Render partials
 
-Render a partial (HTML snippet). Partials are placed in `views/_partials/` as `*.html` files (e.g. `head.html`).
+Render a partial (html snippet). Partials are placed in `views/_partials/` as `*.html` files (e.g. `head.html`).
 
 ```
 {{> head}}
@@ -372,7 +352,7 @@ Pattern data will overwrite data from views. (Use as described above)
 
 You may overwrite data from views & patterns in request parameters.
 
-`?_nitro.pageTitle=Testpage` will overwrite the data for the handlebars expression `{{_nitro.pageTitle}}`
+`?_nitro.pageTitle=Testpage` will overwrite the data for the hbs expression `{{_nitro.pageTitle}}`
 
 ## Assets
 
@@ -387,7 +367,7 @@ Place [code for development](../../src/proto/readme.md) in the corresponding dir
 
 ## Translations
 
-Nitro uses [i18next](https://www.npmjs.com/package/i18next) as Translation Library and gives you the Handlebars helper `{{t}}`.  
+Nitro uses [i18next](https://www.npmjs.com/package/i18next) as Translation Library and gives you the helper described in the following section.  
 Translations are stored in `project/locales/[lang]/translation.json`.
 
 Express Middleware configuration:
@@ -395,7 +375,7 @@ Express Middleware configuration:
 * Fallback language: `default`
 * Language switch with query parameter: `?lang=de`
 
-### Translation handlebars helper
+### Translation hbs helper
 
 The helper uses the given [library features](http://i18next.com/translate/).
 
@@ -459,10 +439,10 @@ Navigation   -> T.Module.Navigation   -> m-navigation
 NavMain      -> T.Module.NavMain      -> m-nav-main
 AdminNavMain -> T.Module.AdminNavMain -> m-admin-nav-main
 ```
-### Custom Handlebars helpers
+### Custom hbs helpers
 
-Custom handlebars helpers will be automatically loaded if put into to `project/helpers` directory. An example could look like 
-this:
+Custom hbs helpers will be automatically loaded if put into to `project/helpers` directory. 
+An example could look like this:
 
 ```js
 module.exports = function(foo) {
@@ -488,7 +468,7 @@ into the [`project/routes` directory](project/routes/).
 
 ### Using another Template Engine
 
-If you don't want to use [Handlebars](http://handlebarsjs.com/) as Nitro's Template Engine
+If you don't want to use [Handlebars](http://handlebarsjs.com/) or [Twig](https://github.com/twigjs/twig.js) as Nitro's Template Engine
 you can configure your own Engine.  
 This example shows how to replace Handlebars with [Nunjucks](https://mozilla.github.io/nunjucks/) as an example.
 
@@ -511,7 +491,7 @@ nunjucks.configure(
 Now Restart Nitro and it'll run with Nunjucks.
 
 **Be aware**, you'll need to adjust all your views and patterns to work with the new engine. 
-Nitro only provides a `pattern` helper for handlebars.
+Nitro only provides a `pattern` helper for handlebars / twig.
 
 ## Miscellaneous
 
@@ -558,4 +538,4 @@ The following packages are installed by the [app](#name) generator as dependenci
 
 ### Credits
 
-This app was generated with yeoman and the [generator-nitro](https://www.npmjs.com/package/generator-nitro) package (version 3.5.5).
+This app was generated with yeoman and the [generator-nitro](https://www.npmjs.com/package/generator-nitro) package (version 3.6.0).

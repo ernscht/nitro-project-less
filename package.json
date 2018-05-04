@@ -1,12 +1,12 @@
 {
   "name": "nitro-project",
   "version": "0.0.0",
-  "description": "Nitro is a Node.js application for simple and complex frontend development with a tiny footprint. This app is based on generator-nitro 3.5.5",
+  "description": "Nitro is a Node.js application for simple and complex frontend development with a tiny footprint. This app is based on generator-nitro 3.6.0",
   "license": "UNLICENSED",
   "private": true,
   "author": "The Nitro Team",
   "engines": {
-    "node": ">=6 <9",
+    "node": ">=6 <11",
     "npm": ">=3 <6"
   },
   "scripts": {
@@ -74,7 +74,7 @@
     "eslint-plugin-import": "2.11.0",
     "express": "4.16.3",
     "extend": "3.0.1",
-    "generator-nitro": "3.5.5",
+    "generator-nitro": "3.6.0",
     "get-port": "3.2.0",
     "globby": "7.1.1",
     "gulp": "3.9.1",

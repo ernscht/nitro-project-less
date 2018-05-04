@@ -49,7 +49,19 @@ The following js code shows an example how to use a precompiled template.
         $ctx.append($example);
     }
 
-## Partials and helpers
+## Patterns / Partials / helpers
+The usage of patterns, partials or helpers within a clientside template is possible and as described here: 
+
+### Patterns
+
+If you want to use the code of a serverside pattern unchanged within your clientside template you may use the nitro `pattern` helper for this. 
+
+```
+{{pattern name='icon' data='icon'}}
+
+```
+
+This call can be placed within a clientside template and get's resolved during pre-compilation.
 
 ### Partials
 
@@ -59,12 +71,7 @@ Precompiled partials will be stored in the same manner as templates.
 ### Helpers
 
 Clientside handlebars helpers can be stored as normal JavaScript files in the patterns folder or in `src/assets/js`.
-
-### Using the pattern one to one
-
-If you want to use the code of a serverside pattern unchanged for your clientside template you may use the nitro `pattern` helper for this. 
-
-    {{pattern 'example'}}
+After that, they can be used normally in your clientside template
 
 ## Handlebars versions
 
