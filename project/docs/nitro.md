@@ -125,7 +125,7 @@ Different data variations have to be placed in the `_data` folder:
 ### Creating pattern with npm script
 
 ```
-yarn create-pattern
+yarn nitro:pattern
 ```
 
 This will copy the templates (nitro.patterns.<type>.template) from config to the configured target.
@@ -133,7 +133,7 @@ This will copy the templates (nitro.patterns.<type>.template) from config to the
 Optionally you can give the name:
 
 ```
-yarn create-pattern <name>
+yarn nitro:pattern <name>
 ```
 
 ### Creating pattern elements
