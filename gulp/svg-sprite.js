@@ -1,12 +1,13 @@
 'use strict';
 
 const path = require('path');
+const config = require('config');
 const merge = require('merge-stream');
 
 module.exports = (gulp, plugins) => {
 	return () => {
 		const svgIcons = gulp
-			.src('src/patterns/atoms/icon/img/icons/*.svg')
+			.src(config.get('gulp.svgSprite.src'))
 			.pipe(plugins.svgmin((file) => {
 				const prefix = path.basename(file.relative, path.extname(file.relative));
 				return {
@@ -23,7 +24,7 @@ module.exports = (gulp, plugins) => {
 				};
 			}))
 			.pipe(plugins.svgstore({ inlineSvg: true }))
-			.pipe(gulp.dest('public/assets/svg'));
+			.pipe(gulp.dest(config.get('gulp.svgSprite.dest')));
 
 		const svgIcos = gulp
 			.src('src/patterns/atoms/ico/img/icos/*.svg')
